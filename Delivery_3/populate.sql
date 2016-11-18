@@ -34,7 +34,7 @@ insert into Paga(numero, data, metodo) values ('2','2017-11-19','MB');
 INSERT INTO Reserva (numero) VALUES (1);
 INSERT INTO Reserva (numero) VALUES (2);
 
-INSERT INTO Estado(timestamp , estado) VALUES (‘2016-11-18 15:17:56’, ‘aceite’);
-INSERT INTO Estado(timestamp , estado) VALUES (‘2016-11-18 17:23:12’, ‘pendente’);
+INSERT INTO Estado(estado) VALUES (‘aceite’);
+INSERT INTO Estado(estado) VALUES (‘pendente’);
 
 
