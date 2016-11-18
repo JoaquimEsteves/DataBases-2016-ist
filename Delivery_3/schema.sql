@@ -1,4 +1,8 @@
 
+CREATE TABLE Reserva (
+numero integer,
+primary key(numero));
+
 CREATE TABLE User (
 nif integer,
 nome varchar(50),
@@ -88,8 +92,4 @@ timestamp timestamp,
 estado varchar(20),
 primary key (numero, timestamp),
 foreign key (numero) references Reserva (numero));
-
-CREATE TABLE Reserva (
-numero integer,
-primary key(numero));
 
