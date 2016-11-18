@@ -1,8 +1,8 @@
-insert into User (nif, nome, telefone) values ('11111','Joaquim','987765432');
+INSERT INTO User (nif, nome, telefone) VALUES ('11111','Joaquim','987765432');
 insert into User(nif, nome, telefone) values ('22222', 'Raquel', '999777666');
 
-insert into Fiscal(id, empresa) values ('123','sical');
-insert into Fiscal(id, empresa) values ('456','delta');
+INSERT INTO Fiscal(id, empresa) values ('123','sical');
+INSERT INTO Fiscal(id, empresa) values ('456','delta');
 
 insert into Edificio(morada) values ('rua da igreja');
 insert into Edificio(morada) values ('rua da quinta');
@@ -33,8 +33,6 @@ insert into Paga(numero, data, metodo) values ('2','2017-11-19','MB');
 
 INSERT INTO Reserva (numero) VALUES (1);
 INSERT INTO Reserva (numero) VALUES (2);
-
-SET time_zone='+00:00';
 
 INSERT INTO Estado(timestamp , estado) VALUES (‘2016-11-18 15:17:56’, ‘aceite’);
 INSERT INTO Estado(timestamp , estado) VALUES (‘2016-11-18 17:23:12’, ‘pendente’);
