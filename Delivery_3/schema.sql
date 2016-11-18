@@ -43,6 +43,7 @@ foreign key (morada, codigo) references Arrenda (morada, codigo));
 CREATE TABLE Espaco(
 morada varchar(50),
 codigo integer,
+timestamp timestamp,
 primary key (morada, codigo),
 foreign key (morada, codigo) references Alugavel (morada, codigo));
 
