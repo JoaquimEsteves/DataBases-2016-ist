@@ -34,5 +34,5 @@ INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da quin
 INSERT INTO Paga(numero, data, metodo) VALUES ('1','2017-11-18','CASH');
 INSERT INTO Paga(numero, data, metodo) VALUES ('2','2017-11-19','MB');
 
-INSERT INTO Estado(estado) VALUES (‘aceite’);
-INSERT INTO Estado(estado) VALUES (‘pendente’);
+INSERT INTO Estado(numero, timestamp, estado) VALUES ('1', '1993-01-02 13:14:15.000001', 'aceite');
+INSERT INTO Estado(numero, timestamp, estado) VALUES ('2', '2012-01-02 13:14:15.000001', 'pendente');
