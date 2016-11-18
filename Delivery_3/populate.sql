@@ -39,3 +39,4 @@ SET time_zone='+00:00';
 INSERT INTO Estado(timestamp , estado) VALUES (‘2016-11-18 15:17:56’, ‘aceite’);
 INSERT INTO Estado(timestamp , estado) VALUES (‘2016-11-18 17:23:12’, ‘pendente’);
 
+
