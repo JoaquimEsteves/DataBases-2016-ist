@@ -1,7 +1,3 @@
-CREATE TABLE Reserva (
-numero integer,
-primary key(numero));
-
 CREATE TABLE User (
 nif integer,
 nome varchar(50),
