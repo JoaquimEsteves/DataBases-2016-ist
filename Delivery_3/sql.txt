@@ -1,0 +1,24 @@
+a)
+SELECT morada, codigo
+FROM Espacos NATURAL JOIN 
+WHERE 
+
+b)
+SELECT
+FROM
+WHERE
+
+c)
+SELECT
+FROM 
+WHERE
+
+d)
+SELECT
+FROM
+WHERE
+
+e)
+SELECT
+FROM
+WHERE
