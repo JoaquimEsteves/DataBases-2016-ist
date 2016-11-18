@@ -1,3 +1,7 @@
+CREATE TABLE Reserva (
+numero integer,
+primary key(numero));
+
 CREATE TABLE User (
 nif integer,
 nome varchar(50),
@@ -12,10 +16,6 @@ primary key (id));
 CREATE TABLE Edificio (
 morada varchar(50),
 primary key (morada));
-
-CREATE TABLE Reserva (
-numero integer,
-primary key(numero));
 
 CREATE TABLE Alugavel(
 morada varchar(50),
@@ -40,7 +40,7 @@ primary key (id, morada, codigo),
 foreign key (id) references Fiscal (id),
 foreign key (morada, codigo) references Arrenda (morada, codigo));
  
-CREATE TABLE Espaco(
+CREATE TABLE Espaco (
 morada varchar(50),
 codigo integer,
 primary key (morada, codigo),
@@ -54,7 +54,7 @@ primary key (morada, codigo),
 foreign key (morada, codigo) references Alugavel (morada, codigo),
 foreign key (morada, codigo_espaco) references Espaco(morada, codigo));
 
-CREATE TABLE Oferta(
+CREATE TABLE Oferta (
 morada varchar(50),
 codigo integer,
 data_inicio date,
