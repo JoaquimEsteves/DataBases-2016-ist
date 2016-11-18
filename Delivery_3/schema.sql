@@ -1,4 +1,3 @@
-
 CREATE TABLE Reserva (
 numero integer,
 primary key(numero));
@@ -50,7 +49,7 @@ morada varchar(50),
 codigo integer,
 primary key (morada, codigo),
 foreign key (morada, codigo) references Alugavel (morada, codigo));
-
+
 CREATE TABLE Posto (
 morada varchar(50),
 codigo integer,
