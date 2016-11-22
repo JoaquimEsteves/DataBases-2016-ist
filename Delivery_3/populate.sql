@@ -101,8 +101,8 @@ INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua d
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da igreja','1151', '2017-11-18', '11111', '1');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da quinta', '1152', '2017-11-19', '22222', '2');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da praca', '1153', '2016-11-19', '33333', '3');
-INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua do agua', '1154', '2003-11-19', '44444', '4');
-INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da comercio', '1155', '1991-11-19', '55555', '5');
+INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua do comercio', '1154', '2003-11-19', '44444', '4');
+INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da agua', '1155', '1991-11-19', '55555', '5');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da direita', '1156', '2017-11-19', '66666', '6');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da maca', '1157', '2017-11-19', '77777', '7');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua do telemovel', '1158', '2017-11-19', '88888', '8');
