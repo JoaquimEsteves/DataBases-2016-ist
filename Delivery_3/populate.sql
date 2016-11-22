@@ -69,10 +69,10 @@ INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('880', 'rua do telemovel','115
 INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('990', 'rua da avo','1159');
 
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja','1151');
-INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja','1151');
-INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja', '1151');
-INSERT INTO Espaco(morada, codigo) VALUES ('rua do igreja','1151');
-INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja','1151');
+INSERT INTO Espaco(morada, codigo) VALUES ('rua da quinta','1152');
+INSERT INTO Espaco(morada, codigo) VALUES ('rua da praca', '1153');
+INSERT INTO Espaco(morada, codigo) VALUES ('rua do comercio','1154');
+INSERT INTO Espaco(morada, codigo) VALUES ('rua da agua','1155');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da direita','1156');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da maca','1157');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua do telemovel','1158');
