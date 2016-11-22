@@ -58,15 +58,15 @@ INSERT INTO Arrenda(morada, codigo, nif) VALUES ('rua da maca','1157','77777');
 INSERT INTO Arrenda(morada, codigo, nif) VALUES ('rua do telemovel','1158','88888');
 INSERT INTO Arrenda(morada, codigo, nif) VALUES ('rua da avo','1159','99999');
 
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('1','rua da igreja','1151');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('2', 'rua da quinta','1152');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('3','rua da praca', '1153');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('4', 'rua do comercio','1154');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('5','rua da agua','1155');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('6', 'rua da direita','1156');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('7', 'rua da maca','1157');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('8', 'rua do telemovel','1158');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('9', 'rua da avo','1159');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('110','rua da igreja','1151');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('220', 'rua da quinta','1152');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('330','rua da praca', '1153');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('440', 'rua do comercio','1154');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('550','rua da agua','1155');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('660', 'rua da direita','1156');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('770', 'rua da maca','1157');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('880', 'rua do telemovel','1158');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('990', 'rua da avo','1159');
 
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja','1151');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da quinta','1152');
