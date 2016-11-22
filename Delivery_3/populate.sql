@@ -79,10 +79,10 @@ INSERT INTO Espaco(morada, codigo) VALUES ('rua do telemovel','1158');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da avo','1159');
 
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da igreja','1151','1151');
-INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da igreja','1151','1151');
-INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da igreja', '1151','1151');
-INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua do igreja','1151','1151');
-INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da igreja','1155','1155');
+INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da quinta','1152','1152');
+INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da praca', '1153','1153');
+INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua do comercio','1154','1154');
+INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da agua','1155','1155');
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da direita','1156','1156');
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da maca','1157','1157');
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua do telemovel','1158','1158');
