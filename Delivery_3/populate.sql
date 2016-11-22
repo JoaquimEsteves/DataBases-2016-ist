@@ -69,40 +69,40 @@ INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('880', 'rua do telemovel','115
 INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('990', 'rua da avo','1159');
 
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja','1151');
-INSERT INTO Espaco(morada, codigo) VALUES ('rua da quinta','1152');
-INSERT INTO Espaco(morada, codigo) VALUES ('rua da praca', '1153');
-INSERT INTO Espaco(morada, codigo) VALUES ('rua do comercio','1154');
-INSERT INTO Espaco(morada, codigo) VALUES ('rua da agua','1155');
+INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja','1151');
+INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja', '1151');
+INSERT INTO Espaco(morada, codigo) VALUES ('rua do igreja','1151');
+INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja','1151');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da direita','1156');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da maca','1157');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua do telemovel','1158');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da avo','1159');
 
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da igreja','1151','1151');
-INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da quinta','1152','1152');
-INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da praca', '1153','1153');
-INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua do comercio','1154','1154');
-INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da agua','1155','1155');
+INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da igreja','1151','1151');
+INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da igreja', '1151','1151');
+INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua do igreja','1151','1151');
+INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da igreja','1155','1155');
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da direita','1156','1156');
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da maca','1157','1157');
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua do telemovel','1158','1158');
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da avo','1159','1159');
 
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da igreja','1151', '2017-11-18', '2020-11-19','300');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da quinta', '1152', '2017-11-19', '2029-01-20','200');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da praca', '1153', '2016-11-19', '2066-11-20','231');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua do comercio', '1154', '2003-11-19', '2013-11-20','600');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da agua', '1155', '1991-11-19', '2040-11-20','223');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da igreja', '1151', '2017-11-19', '2029-01-20','200');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da igreja', '1151', '2016-11-19', '2066-11-20','231');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua do igreja', '1151', '2003-11-19', '2013-11-20','600');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da igreja', '1151', '1991-11-19', '2040-11-20','223');
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da direita', '1156', '2017-11-19', '2017-11-20','264');
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da maca', '1157', '2017-11-19', '2019-03-11','242');
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua do telemovel', '1158', '2017-11-19', '2017-11-20','1100');
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da avo', '1159', '2017-11-19', '2018-06-04','23');
 
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da igreja','1151', '2017-11-18', '11111', '1');
-INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da quinta', '1152', '2017-11-19', '22222', '2');
-INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da praca', '1153', '2016-11-19', '33333', '3');
-INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua do comercio', '1154', '2003-11-19', '44444', '4');
-INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da agua', '1155', '1991-11-19', '55555', '5');
+INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da igreja', '1151', '2017-11-19', '22222', '2');
+INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da igreja', '1151', '2016-11-19', '33333', '3');
+INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua do igreja', '1151', '2003-11-19', '44444', '4');
+INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da igreja', '1151', '1991-11-19', '55555', '5');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da direita', '1156', '2017-11-19', '66666', '6');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da maca', '1157', '2017-11-19', '77777', '7');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua do telemovel', '1158', '2017-11-19', '88888', '8');
