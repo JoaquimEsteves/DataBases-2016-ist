@@ -95,17 +95,28 @@ try{
 		$DBphone = -1;
 		echo"<p>Validating credentials of " . $input_username ."</p>\n";
 		// Get name and phone number of the given user
-		$sql = "SELECT * FROM User WHERE nif=$input_nif"; 
-		$result = $db->query($sql);
-		if (!$result) {
-			echo("<p> ERROR:[Could not execute this query]:($sql)<p>");
-			exit();
+		try {
+			$sql = "SELECT * FROM User WHERE nif=$input_nif"; 
+			$result = $db->query($sql);
+			if (!$result) {
+				echo("<p> ERROR:[Could not execute this query]:($sql)<p>");
+				exit();
+			}
+			foreach($result as $i){
+				$DBusrn = $i["nome"];
+				$DBphone = $i["telefone"];
+			}
+			if ($DBusrn != $input_username OR empty($DBusrn) OR $DBphone != $input_phone OR $DBphone == -1) {
+				echo "<p>Invalid credentials! Exit!</p>\n";
+				echo("<form action='login.html'>
+				<input type='submit' value='Try again' />
+				</form>");
+				$connection = null;
+				exit;
+			}
+			echo "<p>Valid Credentials! </p>\n";
 		}
-		foreach($result as $i){
-			$DBusrn = $i["nome"];
-			$DBphone = $i["telefone"];
-		}
-		if ($DBusrn != $input_username OR empty($DBusrn) OR $DBphone != $input_phone OR $DBphone == -1) {
+		catch(Exception $e) {
 			echo "<p>Invalid credentials! Exit!</p>\n";
 			echo("<form action='login.html'>
 			<input type='submit' value='Try again' />
@@ -113,7 +124,6 @@ try{
 			$connection = null;
 			exit;
 		}
-		echo "<p>Valid Credentials! </p>\n";
 	}
 	
 	
