@@ -108,7 +108,7 @@ try{
 		// Verify login credentials
 		$DBusrn="";
 		$DBphone = -1;
-		echo"<p>Validating credentials of " . $input_username"</p>\n";
+		echo"<p>Validating credentials of " . $input_username ."</p>\n";
 		// Get name and phone number of the given user
 		$sql = "SELECT * FROM User WHERE nif=" . $input_nif; 
 		$result = $connection->query($sql);
@@ -130,9 +130,10 @@ try{
 		}
 		echo "<p>Valid Credentials! </p>\n";
 	}
-	catch(PDOException $e) {
-		echo("<p>ERROR: {$e->getMessage() } </p>")
-	}
+}
+catch(PDOException $e) {
+	echo("<p>ERROR: {$e->getMessage() } </p>");
+}
 ?>
 <!-- Metodo POST que permite ao utilizador fazer log out -->
 <form action="login.html">
