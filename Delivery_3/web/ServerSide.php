@@ -83,8 +83,9 @@ try{
 		$DBphone = -1;
 		echo"<p>Validating credentials of " . $input_username ."</p>\n";
 		// Get name and phone number of the given user
-		$sql = "SELECT * FROM User WHERE nif=" . $input_nif; 
-		$result = $connection->query($sql);
+		$sql = "SELECT * FROM User WHERE nif=$input_nif";
+		$query =  $this->$connection->query($sql);
+		$result = $query->result_array();
 		if (!$result) {
 			echo("<p> ERROR:[Could not execute this query]:($sql)<p>");
 			exit();
