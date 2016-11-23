@@ -132,15 +132,16 @@ try{
 		
 		//Quando o utilizador faz login, as variaveis deste são passadas para as do php
 		case'login':
-		$username = $_POST["username"];
-		$nif = $_POST["nif"];
-		$phone_number = $_POST["phone_number"];
-		testLogin($username,$nif,$phone_number,$connection);
-		//Give the session the variables
-		$_SESSION['username'] = $username; 
-		$_SESSION['nif'] = $nif;
-		$_SESSION['phone_number'] = $phone_number; 
-		break; 
+			$username = $_POST["username"];
+			$nif = $_POST["nif"];
+			$phone_number = $_POST["phone_number"];
+			testLogin($username,$nif,$phone_number,$connection);
+			//Give the session the variables
+			$_SESSION['username'] = $username; 
+			$_SESSION['nif'] = $nif;
+			$_SESSION['phone_number'] = $phone_number; 
+			break; 
+		
 	}
 }
 catch(PDOException $e) {
