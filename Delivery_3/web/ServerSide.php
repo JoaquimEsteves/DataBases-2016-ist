@@ -65,7 +65,19 @@ $old_error_handler = set_error_handler("ErrorHandler");
 
 try{
 	session_start();
-
+	
+	//Connection to DB
+	$host="db.ist.utl.pt";
+	$user="ist177020"; // Replace if needed
+	$password="fuckyou"; //TODO: FIX THIS DON'T EVEN THINK ABOUT SENDING IT TO THE PROF LIKE THIS IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	$dbname = $user;
+	// $connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password); 
+	$connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	echo("<p>Welcome to InstantOffice</p>\n");
+	// array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+	echo("<p>Connected to MySQL database $dbname on $host as user $user</p>\n");
+	
 	function get_post_action($name)
 	{	
 		$params = func_get_args();
@@ -83,9 +95,8 @@ try{
 		$DBphone = -1;
 		echo"<p>Validating credentials of " . $input_username ."</p>\n";
 		// Get name and phone number of the given user
-		$sql = "SELECT * FROM User WHERE nif=$input_nif";
-		$query =  $this->$connection->query($sql);
-		$result = $query->result_array();
+		$sql = "SELECT * FROM User WHERE nif=$input_nif"; 
+		$result = $connection->query($sql);
 		if (!$result) {
 			echo("<p> ERROR:[Could not execute this query]:($sql)<p>");
 			exit();
@@ -105,17 +116,7 @@ try{
 		echo "<p>Valid Credentials! </p>\n";
 	}
 	
-	//Connection to DB
-	$host="db.ist.utl.pt";
-	$user="ist177020"; // Replace if needed
-	$password="fuckyou"; //TODO: FIX THIS DON'T EVEN THINK ABOUT SENDING IT TO THE PROF LIKE THIS IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	$dbname = $user;
-	// $connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password); 
-	$connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
-	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	echo("<p>Welcome to InstantOffice</p>\n");
-	// array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-	echo("<p>Connected to MySQL database $dbname on $host as user $user</p>\n");
+	
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
 	switch (get_post_action('login')) {
 		
