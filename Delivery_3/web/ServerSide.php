@@ -89,14 +89,14 @@ try{
 		}
 	}
 
-	function testLogin($input_username,$input_nif,$input_phone) {
+	function testLogin($input_username,$input_nif,$input_phone,$db) {
 		// Verify login credentials
 		$DBusrn="";
 		$DBphone = -1;
 		echo"<p>Validating credentials of " . $input_username ."</p>\n";
 		// Get name and phone number of the given user
 		$sql = "SELECT * FROM User WHERE nif=$input_nif"; 
-		$result = $connection->query($sql);
+		$result = $db->query($sql);
 		if (!$result) {
 			echo("<p> ERROR:[Could not execute this query]:($sql)<p>");
 			exit();
@@ -125,7 +125,7 @@ try{
 		$username = $_POST["username"];
 		$nif = $_POST["nif"];
 		$phone_number = $_POST["phone_number"];
-		testLogin($username,$nif,$phone_number);
+		testLogin($username,$nif,$phone_number,$connection);
 		//Give the session the variables
 		$_SESSION['username'] = $username; 
 		$_SESSION['nif'] = $nif;
