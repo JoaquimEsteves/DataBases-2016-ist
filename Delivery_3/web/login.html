@@ -1,0 +1,38 @@
+
+<!--Login POST method, login uses the "Utilizador" entity and it's attributes, "nome","nif","telefone"-->
+
+<form action="ServerSide.php" method="post">
+<h2>InstantOffice</h2>
+<p>Introduza o seu nome: <input type="text" name="username" /></p>
+<p>Introduza o seu nif: <input type="password" name="nif" /></p>
+<p>Introduza o seu telefone: <input type="password" name="phone_number" /></p>
+<p><input type="submit" value="login" name="login" /></p>
+</form>
+
+
+<!--
+
+
+$morada varchar(50),
+$codigo integer,
+$codigo_espaco integer,
+
+$queryA_1 = "INSERT INTO Edificio VALUES ($morada)";
+$queryA_2 = "INSERT INTO Espaco VALUES ($morada,$codigo)";
+$queryA_3 = "INSERT INTO Posto VALUES ($morada,$codigo,$codigo_espaco)";
+$queryA_2_rm = "DELETE FROM Edificio WHERE morada='$morada';
+$queryA_2_rm = "DELETE FROM Espaco WHERE morada=$'morada' AND codigo='$codigo';
+$queryA_3_rm = "DELETE FROM Posto WHERE morada=$'morada' AND codigo='$codigo';
+
+$queryB = "INSERT INTO Oferta VALUES($morada,$codigo,$data_inicio,$data_fim,$tarifa)";
+$queryB_rm = "DELETE FROM Oferta WHERE morada='$morada' AND codigo='$codigo' AND data_inicio='$data_inicio'
+
+
+
+a) Inserir e Remover Edifícios, Espaços e Postos de trabalho 
+b) Criar e Remover Ofertas 
+c) Criar reservas sobre Ofertas  //NO IDEA HOW
+d) Pagar reservas  //NO IDEA HOW
+e) Para um dado edifício mostrar o total realizado para cada espaço //wtf is total realizado para cada espaço
+
+-->
