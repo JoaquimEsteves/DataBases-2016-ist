@@ -1,24 +1,49 @@
-a)
-SELECT morada, codigo
-FROM Espacos NATURAL JOIN 
-WHERE 
+a)DONE!
+SELECT DISTINCT e.morada, e.codigo 
+FROM Espaco e NATURAL JOIN Posto 
+WHERE  e.morada NOT IN (SELECT a.morada FROM Aluga a);
 
-b)
-SELECT
-FROM
-WHERE
+b)DONE!
+SELECT  morada, count(*) AS media
+FROM  Aluga a NATURAL JOIN Edificio 
+GROUP BY morada 
+HAVING media >= (SELECT COUNT(*)/2 FROM Reserva);
 
-c)
-SELECT
-FROM 
-WHERE
+We have to add more reserves which has more than 50% (5 more) addresses
+
+c)//synstax error!
+SELECT u.nome
+FROM User u NATURAL JOIN Arrenda a
+WHERE EXISTS
+(SELECT COUNT(f1.id) FROM Arrenda NATURAL JOIN Fiscaliza f1 GROUP BY f1.id WHERE EXISTS
+(SELECT COUNT(f2.id) FROM Fiscal NATURAL JOIN Fiscaliza f2 GROUP BY f2.id)
+);
+
+
+We have to add Fiscal which change a the same alugavel
+
 
 d)
-SELECT
-FROM
-WHERE
+SELECT DISTINCT e.morada, MAX(o.tarifa)*365 AS maxpayed 
+FROM Paga p NATURAL JOIN Oferta o NATURAL JOIN Espaco e NATURAL JOIN Aluga 
+WHERE p.data LIKE '%2016%';
 
 e)
 SELECT
 FROM
 WHERE
+
+
+a) Quais os espaços com postos que nunca foram alugados?
+
+b) Quais edifícios com um número de reservas superior à média?
+
+c) Quais utilizadores cujos alugáveis foram fiscalizados sempre pelo mesmo fiscal?
+
+d) Qual o montante total realizado (pago) por cada espaço durante o ano de 2016?
+Assuma que a tarifa indicada na oferta é diária. Deve considerar os casos em que o
+espaço foi alugado totalmente ou por postos.
+
+e) Quais os espaços de trabalho cujos postos nele contidos foram todos alugados? (Por
+alugado entende-se um posto de trabalho que tenha pelo menos uma oferta aceite,
+independentemente das suas datas.)
