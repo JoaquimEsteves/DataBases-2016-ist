@@ -75,6 +75,7 @@ try{
 	// $connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password); 
 	$connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$logged_In = FALSE;
 	echo("<p>Welcome to InstantOffice</p>\n");
 	// array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 	echo("<p>Connected to MySQL database $dbname on $host as user $user</p>\n");
@@ -89,7 +90,8 @@ try{
 			$username = $_POST["username"];
 			$nif = $_POST["nif"];
 			$phone_number = $_POST["phone_number"];
-			testLogin($username,$nif,$phone_number,$connection);
+			//From aditional funcs
+			$logged_In = testLogin($username,$nif,$phone_number,$connection);
 			//Give the session the variables
 			$_SESSION['username'] = $username; 
 			$_SESSION['nif'] = $nif;
@@ -101,11 +103,21 @@ try{
 catch(PDOException $e) {
 	echo("<p>ERROR: {$e->getMessage() } </p>");
 }
-?>
+
+
+if($logged_In) {?>
 <!-- Metodo POST que permite ao utilizador fazer log out -->
 <form action="login.html">
 	<input type="submit" value="Logout" />
 </form>
+<form action="cool.html">
+	<input type="submit" value="TESTME" />
+</form>
+<?php
+}
+else { } 
+?>
+
 
 </body>
 </html>
