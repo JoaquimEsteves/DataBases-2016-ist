@@ -88,15 +88,15 @@ INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da maca','1157','1
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua do telemovel','1158','1158');
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da avo','1159','1159');
 
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da igreja','1151', '2017-11-18', '2020-11-19','300');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da quinta', '1152', '2017-11-19', '2029-01-20','200');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da praca', '1153', '2016-11-19', '2066-11-20','231');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua do comercio', '1154', '2003-11-19', '2013-11-20','600');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da agua', '1155', '1991-11-19', '2040-11-20','223');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da direita', '1156', '2017-11-19', '2017-11-20','264');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da maca', '1157', '2017-11-19', '2019-03-11','242');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua do telemovel', '1158', '2017-11-19', '2017-11-20','1100');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da avo', '1159', '2017-11-19', '2018-06-04','23');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da igreja','1151', '2017-11-18', '2020-11-19','10');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da quinta', '1152', '2017-11-19', '2029-01-20','8');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da praca', '1153', '2016-11-19', '2066-11-20','20');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua do comercio', '1154', '2003-11-19', '2013-11-20','13');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da agua', '1155', '1991-11-19', '2040-11-20','34');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da direita', '1156', '2017-11-19', '2017-11-20','15');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da maca', '1157', '2017-11-19', '2019-03-11','23');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua do telemovel', '1158', '2017-11-19', '2017-11-20','5');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da avo', '1159', '2017-11-19', '2018-06-04','8');
 
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da igreja','1151', '2017-11-18', '11111', '1');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da quinta', '1152', '2017-11-19', '22222', '2');
