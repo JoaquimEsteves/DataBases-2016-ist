@@ -1,7 +1,7 @@
 <html>
 <body>
 <?php 
-
+//DEBUG FEATURES
 // ----------------------------------------------------------------------------------------------------
 // - Display Errors
 // ----------------------------------------------------------------------------------------------------
@@ -64,6 +64,7 @@ $old_error_handler = set_error_handler("ErrorHandler");
 //ACTUAL PHP CODE BELLOW
 
 try{
+
 	session_start();
 	
 	//Connection to DB
@@ -77,56 +78,9 @@ try{
 	echo("<p>Welcome to InstantOffice</p>\n");
 	// array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 	echo("<p>Connected to MySQL database $dbname on $host as user $user</p>\n");
-	
-	function get_post_action($name)
-	{	
-		$params = func_get_args();
-
-		foreach ($params as $name) {
-			if (isset($_POST[$name])) {
-				return $name;
-			}
-		}
-	}
-
-	function testLogin($input_username,$input_nif,$input_phone,$db) {
-		// Verify login credentials
-		$DBusrn="";
-		$DBphone = -1;
-		echo"<p>Validating credentials of " . $input_username ."</p>\n";
-		// Get name and phone number of the given user
-		try {
-			$sql = "SELECT * FROM User WHERE nif=$input_nif"; 
-			$result = $db->query($sql);
-			if (!$result) {
-				echo("<p> ERROR:[Could not execute this query]:($sql)<p>");
-				exit();
-			}
-			foreach($result as $i){
-				$DBusrn = $i["nome"];
-				$DBphone = $i["telefone"];
-			}
-			if ($DBusrn != $input_username OR empty($DBusrn) OR $DBphone != $input_phone OR $DBphone == -1) {
-				echo "<p>Invalid credentials! Exit!</p>\n";
-				echo("<form action='login.html'>
-				<input type='submit' value='Try again' />
-				</form>");
-				$connection = null;
-				exit;
-			}
-			echo "<p>Valid Credentials! </p>\n";
-		}
-		catch(Exception $e) {
-			echo "<p>Invalid credentials! Exit!</p>\n";
-			echo("<form action='login.html'>
-			<input type='submit' value='Try again' />
-			</form>");
-			$connection = null;
-			exit;
-		}
-	}
-	
-	
+    //Include aditional functions here!
+    include 'aditionalFuncs.php';
+		
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
 	switch (get_post_action('login')) {
 		
