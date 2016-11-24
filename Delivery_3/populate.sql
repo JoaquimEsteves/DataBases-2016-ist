@@ -7,6 +7,13 @@ INSERT INTO Reserva (numero) VALUES (6);
 INSERT INTO Reserva (numero) VALUES (7);
 INSERT INTO Reserva (numero) VALUES (8);
 INSERT INTO Reserva (numero) VALUES (9);
+INSERT INTO Reserva (numero) VALUES (10);
+INSERT INTO Reserva (numero) VALUES (11);
+INSERT INTO Reserva (numero) VALUES (12);
+INSERT INTO Reserva (numero) VALUES (13);
+INSERT INTO Reserva (numero) VALUES (14);
+INSERT INTO Reserva (numero) VALUES (15);
+
 
 INSERT INTO User (nif, nome, telefone) VALUES ('11111','Joaquim','987765432');
 INSERT INTO User(nif, nome, telefone) VALUES ('22222', 'Raquel', '999777661');
@@ -16,7 +23,11 @@ INSERT INTO User(nif, nome, telefone) VALUES ('55555', 'Gustav', '999777664');
 INSERT INTO User(nif, nome, telefone) VALUES ('66666', 'David', '999777665');
 INSERT INTO User(nif, nome, telefone) VALUES ('77777', 'Maurice', '999777666');
 INSERT INTO User(nif, nome, telefone) VALUES ('88888', 'Jose', '999777667');
-INSERT INTO User(nif, nome, telefone) VALUES ('99999', 'Florian', '999777668');
+INSERT INTO User(nif, nome, telefone) VALUES ('12345', 'Steven', '999177668');
+INSERT INTO User(nif, nome, telefone) VALUES ('67890', 'Alexandra', '999277668');
+INSERT INTO User(nif, nome, telefone) VALUES ('12312', 'Theresa', '999377668');
+INSERT INTO User(nif, nome, telefone) VALUES ('23232', 'Yasmin', '999477668');
+INSERT INTO User(nif, nome, telefone) VALUES ('34343', 'Duarte', '999577668');
 
 INSERT INTO Fiscal(id, empresa) VALUES ('110','alpha');
 INSERT INTO Fiscal(id, empresa) VALUES ('220','beta');
