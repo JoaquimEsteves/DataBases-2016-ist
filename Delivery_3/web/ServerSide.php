@@ -83,7 +83,7 @@ try{
     include 'aditionalFuncs.php';
 		
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
-	switch (get_post_action('login')) {
+	switch (get_post_action('login','ListSpaces')) {
 		
 		//Quando o utilizador faz login, as variaveis deste são passadas para as do php
 		case'login':
@@ -97,12 +97,12 @@ try{
 			$_SESSION['nif'] = $nif;
 			$_SESSION['phone_number'] = $phone_number; 
 			break; 
-			
-        case 'ListSpaces':
+
+        case'ListSpaces':
         
             $sql = "SELECT * FROM Espaco;";
         
-            $result = $db->query($sql);
+            $result = $connection->query($sql);
         
             echo("<table border=\"0\" cellspacing=\"5\">\n");
             foreach($result as $row)
