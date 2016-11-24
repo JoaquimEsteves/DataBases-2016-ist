@@ -41,7 +41,6 @@ function testLogin($input_username,$input_nif,$input_phone,$db) {
         </script>
         
         <?php
-        return TRUE;
     }
     catch(Exception $e) {
         echo "<p>Invalid credentials! Exit!</p>\n";

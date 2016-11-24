@@ -23,7 +23,7 @@
 $morada varchar(50),
 $codigo integer,
 $codigo_espaco integer,
-
+SELECT * FROM Edificio;
 $queryA_1 = "INSERT INTO Edificio VALUES ($morada)";
 $queryA_2 = "INSERT INTO Espaco VALUES ($morada,$codigo)";
 $queryA_3 = "INSERT INTO Posto VALUES ($morada,$codigo,$codigo_espaco)";

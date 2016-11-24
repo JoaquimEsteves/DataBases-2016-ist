@@ -97,6 +97,25 @@ try{
 			$_SESSION['nif'] = $nif;
 			$_SESSION['phone_number'] = $phone_number; 
 			break; 
+			
+        case 'ListSpaces':
+        
+            $sql = "SELECT * FROM Espaco;";
+        
+            $result = $db->query($sql);
+        
+            echo("<table border=\"0\" cellspacing=\"5\">\n");
+            foreach($result as $row)
+            {
+                echo("<tr>\n");
+                echo("<td>{$row['morada']}</td>\n");
+                echo("<td>{$row['codigo']}</td>\n");
+                //echo("<td>{$row['balance']}</td>\n");
+                //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
+                echo("</tr>\n");
+            }
+            echo("</table>\n");
+            break;
 		
 	}
 }
@@ -109,9 +128,6 @@ if($logged_In) {?>
 <!-- Metodo POST que permite ao utilizador fazer log out -->
 <form action="login.html">
 	<input type="submit" value="Logout" />
-</form>
-<form action="cool.html">
-	<input type="submit" value="TESTME" />
 </form>
 <?php
 }
