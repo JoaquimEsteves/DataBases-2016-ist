@@ -98,7 +98,7 @@ try{
     include 'aditionalFuncs.php';
 		
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
-	switch (get_post_action('login','ListSpaces','ListBuildings')) {
+	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations')) {
 		
 		//Quando o utilizador faz login, as variaveis deste são passadas para as do php
 		case'login':
@@ -107,53 +107,22 @@ try{
 			$phone_number = $_POST["phone_number"];
 			//From aditional funcs
 			$_SESSION['logged_in'] = testLogin($username,$nif,$phone_number,$connection);
-			//Give the session the variables
-			$_SESSION['username'] = $username; 
-			$_SESSION['nif'] = $nif;
-			$_SESSION['phone_number'] = $phone_number; 
 			break; 
 
         case'ListSpaces':
-        
-            $sql = "SELECT * FROM Espaco;";
-        
-            $result = $connection->query($sql);
-        	echo("<div id=\'SpaceTable'>");
-            echo("<table id='SpaceTables' border=\"0\" cellspacing=\"5\">\n");
-            echo("<tr><td>morada</td><td>code</td></tr>\n");
-            foreach($result as $row)
-            {
-                echo("<tr>\n");
-                echo("<td>{$row['morada']}</td>\n");
-                echo("<td>{$row['codigo']}</td>\n");
-                //echo("<td>{$row['balance']}</td>\n");
-                //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
-                echo("</tr>\n");
-            }
-            echo("</table>\n");
-            echo("</div>\n");
-            //onclick="this.parentNode.style.display = 'none'"
-            echo("<button style=\"display:inline;\" id=\"hideS\" onclick=\"hide('SpaceTables');hide('hide');show('ListSpaces');\">Hide</button>");
+            listSpaces($connection);
             break;
 		case'ListBuildings':
-            $sql = "SELECT * FROM Edificio;";
-        
-            $result = $connection->query($sql);
-        	echo("<div>");
-            echo("<table id='BuildingTables'border=\"0\" cellspacing=\"5\">\n");
-            echo("<tr><td>morada</td></tr>\n");
-            foreach($result as $row)
-            {
-                echo("<tr>\n");
-                echo("<td>{$row['morada']}</td>\n");
-                //echo("<td>{$row['balance']}</td>\n");
-                //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
-                echo("</tr>\n");
-            }
-            echo("</table>\n");
-            echo("</div>\n");
-            //onclick="this.parentNode.style.display = 'none'"
-            echo("<button style=\"display:inline;\" id=\"hideB\" onclick=\"hide('BuildingTables');hide('hide');show('ListSpaces');\">Hide</button>");
+            listBuildings($connection);
+            break;
+        case 'ListPosts':
+            listPosts($connection);
+            break;
+        case 'ListOffers':
+            listOffers($connection);
+            break;
+        case 'ListReservations':
+            listReservations($connection);
             break;
 	}
 }
@@ -164,17 +133,33 @@ catch(PDOException $e) {
 
 if($_SESSION['logged_in']) {?>
 <!-- Metodo POST que permite ao utilizador fazer log out -->
+<div>
 <form action="login.html">
 	<input type="submit" value="Logout" style="position: fixed; bottom: 10;"/>
 </form>
-<form onSubmit="hide('ListSpaces');" id="ListSpaces" action="ServerSide.php" method="post" accept-charset="UTF-8">
-<div>
-    <p><input type="submit" value="ListSpaces" name="ListSpaces" style="display:flex;align-items:center;"/></p>
 </div>
-<form onSubmit="hide('ListBuildings');" id="ListBuildings" action="ServerSide.php" method="post" accept-charset="UTF-8">
-<div>
-    <p><input type="submit" value="ListBuildings" name="ListBuildings" style="display:flex;align-items:center;"/></p>
+<div id="ListSpaces">
+    <form onSubmit="hide('ListSpaces');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+    <p><input type="submit"  value="ListSpaces" name="ListSpaces"></p>
 </div>
+<div id="ListBuildings">
+    <form onSubmit="hide('ListBuildings');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+    <p><input type="submit"  value="ListBuildings" name="ListBuildings"></p>
+</div>
+<div id="ListPosts">
+    <form onSubmit="hide('ListPosts');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+    <p><input type="submit"  value="ListPosts" name="ListPosts"></p>
+</div>
+<div id="ListOffers">
+    <form onSubmit="hide('ListOffers');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+    <p><input type="submit"  value="ListOffers" name="ListOffers"></p>
+</div>
+<div id="ListReservations">
+    <form onSubmit="hide('ListReservations');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+    <p><input type="submit"  value="ListReservations" name="ListReservations"></p>
+</div>
+
+
 <?php
 }
 else { } 
