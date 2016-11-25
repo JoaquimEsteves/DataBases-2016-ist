@@ -1,4 +1,5 @@
 <?php 
+
 function get_post_action($name)
 {	
     $params = func_get_args();
@@ -13,7 +14,7 @@ function testLogin($input_username,$input_nif,$input_phone,$db) {
     // Verify login credentials
     $DBusrn="";
     $DBphone = -1;
-    echo"<p>Validating credentials of " . $input_username ."</p>\n";
+    //echo"<p>Validating credentials of " . $input_username ."</p>\n";
     // Get name and phone number of the given user
     try {
         $sql = "SELECT * FROM User WHERE nif=$input_nif"; 
@@ -35,12 +36,11 @@ function testLogin($input_username,$input_nif,$input_phone,$db) {
             //exit;
         }
         echo "<p>Valid Credentials! </p>\n";
-        ?>
-        <script type="text/javascript"> 
-            window.location.href = "cool.html";
-        </script>
-        
-        <?php
+        return TRUE;
+        //<script type="text/javascript"> 
+        //     window.location.href = "cool.html";
+        //</script>
+        // 
     }
     catch(Exception $e) {
         echo "<p>Invalid credentials! Exit!</p>\n";

@@ -1,5 +1,20 @@
 <html>
 <body>
+<script>
+//Because jQuery is garbage
+function hide(obj) {
+
+    var el = document.getElementById(obj);
+
+        el.style.display = 'none';
+
+}
+function show(obj) {
+    var el = document.getElementById(obj);
+
+    el.style.display = 'inline';
+}
+</script>
 <?php 
 //DEBUG FEATURES
 // ----------------------------------------------------------------------------------------------------
@@ -83,7 +98,7 @@ try{
     include 'aditionalFuncs.php';
 		
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
-	switch (get_post_action('login','ListSpaces')) {
+	switch (get_post_action('login','ListSpaces','ListBuildings')) {
 		
 		//Quando o utilizador faz login, as variaveis deste são passadas para as do php
 		case'login':
@@ -91,7 +106,7 @@ try{
 			$nif = $_POST["nif"];
 			$phone_number = $_POST["phone_number"];
 			//From aditional funcs
-			$logged_In = testLogin($username,$nif,$phone_number,$connection);
+			$_SESSION['logged_in'] = testLogin($username,$nif,$phone_number,$connection);
 			//Give the session the variables
 			$_SESSION['username'] = $username; 
 			$_SESSION['nif'] = $nif;
@@ -103,8 +118,9 @@ try{
             $sql = "SELECT * FROM Espaco;";
         
             $result = $connection->query($sql);
-        
-            echo("<table border=\"0\" cellspacing=\"5\">\n");
+        	echo("<div id=\'SpaceTable'>");
+            echo("<table id='SpaceTables' border=\"0\" cellspacing=\"5\">\n");
+            echo("<tr><td>morada</td><td>code</td></tr>\n");
             foreach($result as $row)
             {
                 echo("<tr>\n");
@@ -115,8 +131,30 @@ try{
                 echo("</tr>\n");
             }
             echo("</table>\n");
+            echo("</div>\n");
+            //onclick="this.parentNode.style.display = 'none'"
+            echo("<button style=\"display:inline;\" id=\"hideS\" onclick=\"hide('SpaceTables');hide('hide');show('ListSpaces');\">Hide</button>");
             break;
-		
+		case'ListBuildings':
+            $sql = "SELECT * FROM Edificio;";
+        
+            $result = $connection->query($sql);
+        	echo("<div>");
+            echo("<table id='BuildingTables'border=\"0\" cellspacing=\"5\">\n");
+            echo("<tr><td>morada</td></tr>\n");
+            foreach($result as $row)
+            {
+                echo("<tr>\n");
+                echo("<td>{$row['morada']}</td>\n");
+                //echo("<td>{$row['balance']}</td>\n");
+                //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
+                echo("</tr>\n");
+            }
+            echo("</table>\n");
+            echo("</div>\n");
+            //onclick="this.parentNode.style.display = 'none'"
+            echo("<button style=\"display:inline;\" id=\"hideB\" onclick=\"hide('BuildingTables');hide('hide');show('ListSpaces');\">Hide</button>");
+            break;
 	}
 }
 catch(PDOException $e) {
@@ -124,11 +162,19 @@ catch(PDOException $e) {
 }
 
 
-if($logged_In) {?>
+if($_SESSION['logged_in']) {?>
 <!-- Metodo POST que permite ao utilizador fazer log out -->
 <form action="login.html">
-	<input type="submit" value="Logout" />
+	<input type="submit" value="Logout" style="position: fixed; bottom: 10;"/>
 </form>
+<form onSubmit="hide('ListSpaces');" id="ListSpaces" action="ServerSide.php" method="post" accept-charset="UTF-8">
+<div>
+    <p><input type="submit" value="ListSpaces" name="ListSpaces" style="display:flex;align-items:center;"/></p>
+</div>
+<form onSubmit="hide('ListBuildings');" id="ListBuildings" action="ServerSide.php" method="post" accept-charset="UTF-8">
+<div>
+    <p><input type="submit" value="ListBuildings" name="ListBuildings" style="display:flex;align-items:center;"/></p>
+</div>
 <?php
 }
 else { } 
