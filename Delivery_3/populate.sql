@@ -13,7 +13,8 @@ INSERT INTO Reserva (numero) VALUES (12);
 INSERT INTO Reserva (numero) VALUES (13);
 INSERT INTO Reserva (numero) VALUES (14);
 INSERT INTO Reserva (numero) VALUES (15);
-
+INSERT INTO Reserva (numero) VALUES (16);
+INSERT INTO Reserva (numero) VALUES (17);
 
 INSERT INTO User (nif, nome, telefone) VALUES ('11111','Joaquim','987765432');
 INSERT INTO User(nif, nome, telefone) VALUES ('22222', 'Raquel', '999777661');
@@ -23,11 +24,14 @@ INSERT INTO User(nif, nome, telefone) VALUES ('55555', 'Gustav', '999777664');
 INSERT INTO User(nif, nome, telefone) VALUES ('66666', 'David', '999777665');
 INSERT INTO User(nif, nome, telefone) VALUES ('77777', 'Maurice', '999777666');
 INSERT INTO User(nif, nome, telefone) VALUES ('88888', 'Jose', '999777667');
+INSERT INTO User(nif, nome, telefone) VALUES ('99999', 'Steven', '999777668');
 INSERT INTO User(nif, nome, telefone) VALUES ('12345', 'Steven', '999177668');
 INSERT INTO User(nif, nome, telefone) VALUES ('67890', 'Alexandra', '999277668');
 INSERT INTO User(nif, nome, telefone) VALUES ('12312', 'Theresa', '999377668');
 INSERT INTO User(nif, nome, telefone) VALUES ('23232', 'Yasmin', '999477668');
 INSERT INTO User(nif, nome, telefone) VALUES ('34343', 'Duarte', '999577668');
+
+
 
 INSERT INTO Fiscal(id, empresa) VALUES ('110','alpha');
 INSERT INTO Fiscal(id, empresa) VALUES ('220','beta');
@@ -38,6 +42,7 @@ INSERT INTO Fiscal(id, empresa) VALUES ('660','eta');
 INSERT INTO Fiscal(id, empresa) VALUES ('770','theta');
 INSERT INTO Fiscal(id, empresa) VALUES ('880','lota');
 INSERT INTO Fiscal(id, empresa) VALUES ('990','kappa');
+
 
 INSERT INTO Edificio(morada) VALUES ('rua da igreja');
 INSERT INTO Edificio(morada) VALUES ('rua da quinta');
@@ -70,14 +75,15 @@ INSERT INTO Arrenda(morada, codigo, nif) VALUES ('rua do telemovel','1158','8888
 INSERT INTO Arrenda(morada, codigo, nif) VALUES ('rua da avo','1159','99999');
 
 INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('110','rua da igreja','1151');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('220', 'rua da quinta','1152');
-INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('330','rua da praca', '1153');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('110', 'rua da quinta','1152');
+INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('110','rua da praca', '1153');
 INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('440', 'rua do comercio','1154');
 INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('550','rua da agua','1155');
 INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('660', 'rua da direita','1156');
 INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('770', 'rua da maca','1157');
 INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('880', 'rua do telemovel','1158');
 INSERT INTO Fiscaliza(id, morada, codigo) VALUES ('990', 'rua da avo','1159');
+
 
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da igreja','1151');
 INSERT INTO Espaco(morada, codigo) VALUES ('rua da quinta','1152');
@@ -99,6 +105,7 @@ INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da maca','1157','1
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua do telemovel','1158','1158');
 INSERT INTO Posto(morada, codigo, codigo_espaco) VALUES ('rua da avo','1159','1159');
 
+
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da igreja','1151', '2017-11-18', '2020-11-19','10');
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da quinta', '1152', '2017-11-19', '2029-01-20','8');
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da praca', '1153', '2016-11-19', '2066-11-20','20');
@@ -107,7 +114,8 @@ INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua d
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da direita', '1156', '2017-11-19', '2017-11-20','15');
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da maca', '1157', '2017-11-19', '2019-03-11','23');
 INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua do telemovel', '1158', '2017-11-19', '2017-11-20','5');
-INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da avo', '1159', '2017-11-19', '2018-06-04','8');
+INSERT INTO Oferta(morada, codigo, data_inicio, data_fim, tarifa) VALUES ('rua da avo', '1159', '2016-11-19', '2018-06-04','8');
+
 
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da igreja','1151', '2017-11-18', '11111', '1');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da quinta', '1152', '2017-11-19', '22222', '2');
@@ -117,17 +125,19 @@ INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da agua
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da direita', '1156', '2017-11-19', '66666', '6');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da maca', '1157', '2017-11-19', '77777', '7');
 INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua do telemovel', '1158', '2017-11-19', '88888', '8');
-INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da avo', '1159', '2017-11-19', '99999', '9');
+INSERT INTO Aluga(morada, codigo, data_inicio, nif, numero) VALUES ('rua da avo', '1159', '2016-11-19', '99999', '9');
+
 
 INSERT INTO Paga(numero, data, metodo) VALUES ('1','2017-11-18','CASH');
-INSERT INTO Paga(numero, data, metodo) VALUES ('2','2017-11-19','MB');
+INSERT INTO Paga(numero, data, metodo) VALUES ('2','2016-11-19','MB');
 INSERT INTO Paga(numero, data, metodo) VALUES ('3','2016-11-19','MB');
 INSERT INTO Paga(numero, data, metodo) VALUES ('4','2003-11-19','CASH');
 INSERT INTO Paga(numero, data, metodo) VALUES ('5','1991-11-19','MB');
 INSERT INTO Paga(numero, data, metodo) VALUES ('6','2017-11-19','MB');
-INSERT INTO Paga(numero, data, metodo) VALUES ('7','2017-11-19','MB');
+INSERT INTO Paga(numero, data, metodo) VALUES ('7','2016-11-19','MB');
 INSERT INTO Paga(numero, data, metodo) VALUES ('8','2017-11-19','MB');
-INSERT INTO Paga(numero, data, metodo) VALUES ('9','2017-11-19','MB');
+INSERT INTO Paga(numero, data, metodo) VALUES ('9','2016-11-19','MB');
+
 
 INSERT INTO Estado(numero, timestamp, estado) VALUES ('1', '1993-01-11 13:33:32.000001', 'aceite');
 INSERT INTO Estado(numero, timestamp, estado) VALUES ('2', '2012-05-23 21:43:35.000001', 'pendente');
@@ -138,3 +148,4 @@ INSERT INTO Estado(numero, timestamp, estado) VALUES ('6', '2016-04-03 02:13:11.
 INSERT INTO Estado(numero, timestamp, estado) VALUES ('7', '2012-12-19 13:13:15.000001', 'aceite');
 INSERT INTO Estado(numero, timestamp, estado) VALUES ('8', '2003-06-02 14:16:00.000001', 'pendente');
 INSERT INTO Estado(numero, timestamp, estado) VALUES ('9', '2002-04-23 13:27:15.000001', 'aceite');
+
