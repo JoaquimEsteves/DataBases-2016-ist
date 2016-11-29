@@ -1,5 +1,8 @@
 <html>
 <body>
+<head>
+<meta charset="UTF-8"/>
+</head>
 <script>
 //Because jQuery is garbage
 function hide(obj) {
@@ -94,11 +97,51 @@ try{
 	echo("<p>Welcome to InstantOffice</p>\n");
 	// array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 	echo("<p>Connected to MySQL database $dbname on $host as user $user</p>\n");
+	
     //Include aditional functions here!
     include 'aditionalFuncs.php';
-		
+    
+    //forms
+    
+
+if($_SESSION['logged_in']) {?>
+<!-- Metodo POST que permite ao utilizador fazer log out -->
+<div>
+<form action="login.html">
+	<input type="submit" value="Logout" style="position: fixed; bottom: 10;"/>
+</form>
+</div>
+<div>
+    <div id="ListSpaces" style="display: inline-block;">
+        <form onSubmit="hide('ListSpaces');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p><input type="submit"  value="ListSpaces" name="ListSpaces"></p>
+    </div>
+    <div id="ListBuildings" style="display: inline-block;">
+        <form onSubmit="hide('ListBuildings');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p><input type="submit"  value="ListBuildings" name="ListBuildings"></p>
+    </div>
+    <div id="ListPosts" style="display: inline-block;">
+        <form onSubmit="hide('ListPosts');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p><input type="submit"  value="ListPosts" name="ListPosts"></p>
+    </div>
+    <div id="ListOffers" style="display: inline-block;">
+        <form onSubmit="hide('ListOffers');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p><input type="submit"  value="ListOffers" name="ListOffers"></p>
+    </div>
+    <!--<div id="ListReservations" style="display: inline-block;">
+        <form onSubmit="hide('ListReservations');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p><input type="submit"  value="ListReservations" name="ListReservations"></p>
+    </div>-->
+</div>
+
+
+<?php
+}
+    //end of forms
+    
+    
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
-	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations')) {
+	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations','deleteBuilding','deleteSpace','deletePost')) {
 		
 		//Quando o utilizador faz login, as variaveis deste são passadas para as do php
 		case'login':
@@ -124,47 +167,21 @@ try{
         case 'ListReservations':
             listReservations($connection);
             break;
+        case 'deleteBuilding':
+            deleteBuilding($connection,$_POST['addrToDelete']);
+            break;
+        case 'deleteSpace':
+            deleteSpace($connection , $_POST['addrToDelete'], $_POST['codeToDelete']) ;
+            break;
+        case 'deletePost':
+            deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete']);
+            break;
 	}
 }
 catch(PDOException $e) {
 	echo("<p>ERROR: {$e->getMessage() } </p>");
 }
-
-
-if($_SESSION['logged_in']) {?>
-<!-- Metodo POST que permite ao utilizador fazer log out -->
-<div>
-<form action="login.html">
-	<input type="submit" value="Logout" style="position: fixed; bottom: 10;"/>
-</form>
-</div>
-<div id="ListSpaces">
-    <form onSubmit="hide('ListSpaces');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
-    <p><input type="submit"  value="ListSpaces" name="ListSpaces"></p>
-</div>
-<div id="ListBuildings">
-    <form onSubmit="hide('ListBuildings');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
-    <p><input type="submit"  value="ListBuildings" name="ListBuildings"></p>
-</div>
-<div id="ListPosts">
-    <form onSubmit="hide('ListPosts');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
-    <p><input type="submit"  value="ListPosts" name="ListPosts"></p>
-</div>
-<div id="ListOffers">
-    <form onSubmit="hide('ListOffers');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
-    <p><input type="submit"  value="ListOffers" name="ListOffers"></p>
-</div>
-<div id="ListReservations">
-    <form onSubmit="hide('ListReservations');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
-    <p><input type="submit"  value="ListReservations" name="ListReservations"></p>
-</div>
-
-
-<?php
-}
-else { } 
 ?>
-
 
 </body>
 </html>

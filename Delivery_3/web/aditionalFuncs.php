@@ -91,7 +91,15 @@ function listSpaces($connection) {
     try{
         $sql = "SELECT * FROM Espaco;";
         $result = $connection->query($sql);
-        echo("<script>hide('ListSpaces');</script>");
+        ?>
+        <div id="postRemoval">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p>Introduza a morada do espaço a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza o código do espaço a remover: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
+        <p><input type="submit"  value="Delete Space" name="deleteSpace"></p>
+        </div>
+        <?php
+        //echo("<script>hide('ListSpaces');</script>");
         echo("<div id=\'SpaceTable'>");
         echo("<table id='QueryTables' border=\"0\" cellspacing=\"5\">\n");
         echo("<tr><td>--Address--</td><td>--Code--</td></tr>\n");
@@ -121,6 +129,13 @@ function listBuildings($connection) {
     try {
         $sql = "SELECT * FROM Edificio;";
         $result = $connection->query($sql);
+        ?>
+        <div id="buildingRemoval">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p>Introduza a morada do edificio a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
+        <p><input type="submit"  value="Delete Building" name="deleteBuilding"></p>
+        </div>
+        <?php
         echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
         echo("<tr><td>--Address--</td></tr>\n");
@@ -152,6 +167,14 @@ function listPosts($connection) {
     try{
         $sql = "SELECT * FROM Posto;";
         $result = $connection->query($sql);
+        ?>
+        <div id="postRemoval">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p>Introduza a morada do posto a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza o código do espaço a remover: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
+        <p><input type="submit"  value="Delete Post" name="deletePost"></p>
+        </div>
+        <?php
         echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
         echo("<tr><td>--Address--</td><td>--Code--</td><td>--Space Code--</td></tr>\n");
@@ -241,6 +264,41 @@ tarifa double,
 
 }
 
+function deleteBuilding($connection,$addr) {
+    try {
+        $sql = "DELETE FROM Edificio WHERE morada=$addr";//WRONG
+        $result = $connection->query($sql);
+        $connection->commit();
+        listBuildings($connection);
+    }
+    catch(PDOException $e) {
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+    }
+}
+
+function deletePost($connection,$addr,$code) {
+    try {
+        $sql = "DELETE FROM Edificio WHERE morada=$addr"; //WRONG
+        $result = $connection->query($sql);
+        $connection->commit();
+        listPosts($connection);
+    }
+    catch(PDOException $e) {
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+    }
+}
+
+function deleteSpace($connection,$addr,$code) {
+    try {
+        $sql = "DELETE FROM Edificio WHERE morada=$addr";//WRONG
+        $result = $connection->query($sql);
+        $connection->commit();
+        listSpaces($connection);
+    }
+    catch(PDOException $e) {
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+    }
+}
 
 ?>
 
