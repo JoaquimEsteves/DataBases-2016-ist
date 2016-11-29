@@ -61,7 +61,8 @@ data_inicio date,
 data_fim date,
 tarifa double,
 primary key (morada, codigo, data_inicio),
-foreign key (morada, codigo) references Alugavel (morada, codigo));
+foreign key (morada, codigo) references Alugavel (morada, codigo))
+ON DELETE CASCADE;
 
 CREATE TABLE Aluga (
 morada varchar(50),
