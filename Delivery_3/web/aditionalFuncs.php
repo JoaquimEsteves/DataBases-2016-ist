@@ -202,7 +202,7 @@ function listReservations($connection) {
 numero integer,
 */
     try {
-        $sql = "SELECT * FROM Reserva;";
+        $sql = "SELECT * FROM reserva;";
         $result = $connection->query($sql);
         echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
@@ -236,7 +236,7 @@ data_fim date,
 tarifa double,
 */
     try {
-        $sql = "SELECT * FROM Oferta;";
+        $sql = "SELECT * FROM oferta;";
         $result = $connection->query($sql);
         echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
