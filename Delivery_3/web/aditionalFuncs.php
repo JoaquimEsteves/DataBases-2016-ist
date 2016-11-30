@@ -366,7 +366,7 @@ function totalPayment($connection,$addr,$code) {
                 FROM paga p 
 	                NATURAL JOIN oferta o
 	                NATURAL JOIN espaco e 
-                    NATURAL JOIN aluga a
+                  	NATURAL JOIN aluga a
                 GROUP BY e.morada
                 WHERE morada = @addr;";
         $result = $connection->query($sql);
