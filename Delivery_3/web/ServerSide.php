@@ -105,7 +105,7 @@ try{
     //forms
     
 
-if($logged_In) {?>
+if($_SESSION['logged_in']) {?>
 <!-- Metodo POST que permite ao utilizador fazer log out -->
 <div>
 <form action="login.html">
