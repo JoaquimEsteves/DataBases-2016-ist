@@ -351,7 +351,7 @@ function insertBuilding($connection,$addr) {
         $sql = "INSERT INTO edificio (morada) VALUES ('$addr')";//DONE BY RUBEN
         $connection->query($sql);
         $connection->query("commit");
-        listSpaces($connection);
+        listBuildings($connection);
     }
     catch(PDOException $e) {
         echo("<p>ERROR: {$e->getMessage() } </p>");
@@ -364,7 +364,7 @@ function insertPost($connection,$addr,$code,$space_code) {
         $sql = "INSERT INTO posto (morada, codigo, codigo_espaco) VALUES ('$addr','$code','$space_code')";
         $connection->query($sql);
         $connection->query("commit");
-        listSpaces($connection);
+        listPosts($connection);
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
@@ -392,7 +392,7 @@ function insertOferta($connection,$addr,$code) {
         $sql = "INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES ()";
         $connection->query($sql);
         $connection->query("commit");
-        listSpaces($connection);
+        listOffers($connection);
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
@@ -406,7 +406,7 @@ function insertPayment($connection,$addr,$code) {
         $sql = "INSERT INTO paga (numero, data, metodo) VALUES ()";
         $connection->query($sql);
         $connection->query("commit");
-        listSpaces($connection);
+        listOffers($connection);
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
@@ -426,7 +426,7 @@ function totalPayment($connection,$addr,$code) {
                 WHERE morada = @addr;";
 		$connection->query($sql);
         $connection->query("commit");
-        listSpaces($connection);
+        listOffers($connection);
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
