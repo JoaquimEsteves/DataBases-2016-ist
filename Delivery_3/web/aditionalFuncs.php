@@ -347,9 +347,10 @@ function deleteSpace($connection,$addr,$code) {
 //RUBENS PART Excercies:a)b)c)d)E)
 function insertBuilding($connection,$addr) {
     try {
+		$connection->query("start transaction;");
         $sql = "INSERT INTO edificio (morada) VALUES ('$addr')";//DONE BY RUBEN
-        $result = $connection->query($sql);
-        $connection->commit();
+        $connection->query($sql);
+        $connection->query("commit");
         listSpaces($connection);
     }
     catch(PDOException $e) {
@@ -359,54 +360,63 @@ function insertBuilding($connection,$addr) {
 
 function insertPost($connection,$addr,$code,$space_code) {
     try {
+		$connection->query("start transaction;");
         $sql = "INSERT INTO posto (morada, codigo, codigo_espaco) VALUES ('$addr','$code','$space_code')";
-        $result = $connection->query($sql);
-        $connection->commit();
+        $connection->query($sql);
+        $connection->query("commit");
         listSpaces($connection);
     }
     catch(PDOException $e) {
+		$connection->query("rollback;");
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
 
 function insertSpace($connection,$addr,$code) {
     try {
+		$connection->query("start transaction;");
         $sql = "INSERT INTO espaco (morada, codigo) VALUES ('$addr','$code')";
-        $result = $connection->query($sql);
-        $connection->commit();
+        $connection->query($sql);
+        $connection->query("commit");
         listSpaces($connection);
     }
     catch(PDOException $e) {
+		$connection->query("rollback;");
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
 
 function insertOferta($connection,$addr,$code) {
     try {
+		$connection->query("start transaction;");
         $sql = "INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES ()";
-        $result = $connection->query($sql);
-        $connection->commit();
+        $connection->query($sql);
+        $connection->query("commit");
         listSpaces($connection);
     }
     catch(PDOException $e) {
+		$connection->query("rollback;");
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
 
 function insertPayment($connection,$addr,$code) {
     try {
+		$connection->query("start transaction;");
         $sql = "INSERT INTO paga (numero, data, metodo) VALUES ()";
-        $result = $connection->query($sql);
-        $connection->commit();
+        $connection->query($sql);
+        $connection->query("commit");
         listSpaces($connection);
     }
     catch(PDOException $e) {
+		$connection->query("rollback;");
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
 
 function totalPayment($connection,$addr,$code) {
     try {
+		$connection->query("start transaction;");
         $sql = "SELECT e.morada, SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)
                 FROM paga p 
 	                NATURAL JOIN oferta o
@@ -414,11 +424,12 @@ function totalPayment($connection,$addr,$code) {
                   	NATURAL JOIN aluga a
                 GROUP BY e.morada
                 WHERE morada = @addr;";
-        $result = $connection->query($sql);
-        $connection->commit();
+		$connection->query($sql);
+        $connection->query("commit");
         listSpaces($connection);
     }
     catch(PDOException $e) {
+		$connection->query("rollback;");
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
