@@ -48,14 +48,14 @@ foreign key (morada, codigo) references alugavel (morada, codigo),
 foreign key (nif) references user(nif));
 
 CREATE TABLE fiscaliza (
-id intger  NOT NULL,
+id integer  NOT NULL,
 morada varchar(255) NOT NULL,
 codigo varchar(255) NOT NULL,
 primary key (id, morada, codigo),
 foreign key (id) references fiscal (id),
 foreign key (morada, codigo) references arrenda (morada, codigo));
  
-CREATE TABLE Espaco (
+CREATE TABLE espaco (
 morada varchar(255) NOT NULL,
 codigo varchar(255) NOT NULL,
 primary key (morada, codigo),
@@ -76,8 +76,7 @@ data_inicio date NOT NULL,
 data_fim date NOT NULL,
 tarifa numeric(19,4) NOT NULL,
 primary key (morada, codigo, data_inicio),
-foreign key (morada, codigo) references alugavel(morada, codigo))
-ON DELETE CASCADE;
+foreign key (morada, codigo) references alugavel(morada, codigo));
 
 CREATE TABLE aluga (
 morada varchar(255) NOT NULL,
@@ -99,7 +98,7 @@ foreign key (numero) references reserva(numero));
 
 CREATE TABLE estado (
 numero varchar(255) NOT NULL UNIQUE,
-timestamp timestamp NOT NULL,
+time_stamp timestamp NOT NULL,
 estado varchar(255) NOT NULL,
 primary key (numero, time_stamp),
 foreign key (numero) references reserva(numero));
