@@ -12,93 +12,93 @@ drop table if exists edificio;
 drop table if exists fiscal;
 drop table if exists user;
 
-CREATE TABLE reserva (
-numero varchar(255) NOT NULL UNIQUE,
-primary key(numero));
 
-CREATE TABLE user (
-nif varchar(9) NOT NULL UNIQUE,
-nome varchar(80) NOT NULL,
-telefone varchar(26) NOT NULL,
-primary key(nif));
+create table user (
+    nif varchar(9) not null unique,
+    nome varchar(80) not null,
+    telefone varchar(26) not null,
+    primary key(nif));
 
+create table fiscal (
+    id int not null unique,
+    empresa varchar(255) not null,
+    primary key(id));
 
-CREATE TABLE fiscal (
-id integer NOT NULL UNIQUE,
-empresa varchar (255) NOT NULL,
-primary key (id));
+create table edificio (
+    morada varchar(255) not null unique,
+    primary key(morada));
 
-CREATE TABLE edificio (
-morada varchar(255) NOT NULL UNIQUE,
-primary key (morada));
+create table alugavel (
+    morada varchar(255) not null,
+    codigo varchar(255) not null,
+    foto varchar(255) not null,
+    primary key(morada, codigo),
+    foreign key(morada) references edificio(morada));
 
-CREATE TABLE alugavel(
-morada varchar(255) NOT NULL,
-codigo varchar(255) NOT NULL,
-foto varchar(255)  NOT NULL,
-primary key (morada, codigo),
-foreign key (morada) references edificio (morada));
+create table arrenda (
+    morada varchar(255) not null,
+    codigo varchar(255) not null,
+    nif varchar(9) not null,
+    primary key(morada, codigo),
+    foreign key(morada, codigo) references alugavel(morada, codigo),
+    foreign key(nif) references user(nif));
 
-CREATE TABLE arrenda (
-morada varchar(255) NOT NULL,
-codigo varchar(255) NOT NULL,
-nif varchar (9) NOT NULL,
-primary key (morada, codigo),
-foreign key (morada, codigo) references alugavel (morada, codigo),
-foreign key (nif) references user(nif));
+create table fiscaliza (
+    id int not null,
+    morada varchar(255) not null ,
+    codigo varchar(255) not null ,
+    primary key(id, morada, codigo),
+    foreign key(morada, codigo) references arrenda(morada, codigo),
+    foreign key(id) references fiscal(id));
 
-CREATE TABLE fiscaliza (
-id integer  NOT NULL,
-morada varchar(255) NOT NULL,
-codigo varchar(255) NOT NULL,
-primary key (id, morada, codigo),
-foreign key (id) references fiscal (id),
-foreign key (morada, codigo) references arrenda (morada, codigo));
- 
-CREATE TABLE espaco (
-morada varchar(255) NOT NULL,
-codigo varchar(255) NOT NULL,
-primary key (morada, codigo),
-foreign key (morada, codigo) references alugavel (morada, codigo));
+create table espaco (
+    morada varchar(255) not null,
+    codigo varchar(255) not null,
+    primary key(morada, codigo),
+    foreign key(morada, codigo) references alugavel(morada, codigo));
 
-CREATE TABLE posto (
-morada varchar(255) NOT NULL,
-codigo varchar(255) NOT NULL,
-codigo_espaco varchar(255) NOT NULL,
-primary key (morada, codigo),
-foreign key (morada, codigo) references alugavel(morada, codigo),
-foreign key (morada, codigo_espaco) references espaco(morada, codigo));
+create table posto (
+    morada varchar(255) not null,
+    codigo varchar(255) not null,
+    codigo_espaco varchar(255) not null,
+    primary key(morada, codigo),
+    foreign key(morada, codigo) references alugavel(morada, codigo),
+    foreign key(morada, codigo_espaco) references espaco(morada, codigo));
 
-CREATE TABLE oferta (
-morada varchar(255) NOT NULL,
-codigo varchar(255) NOT NULL,
-data_inicio date NOT NULL,
-data_fim date NOT NULL,
-tarifa numeric(19,4) NOT NULL,
-primary key (morada, codigo, data_inicio),
-foreign key (morada, codigo) references alugavel(morada, codigo));
+create table oferta (
+    morada varchar(255) not null,
+    codigo varchar(255) not null,
+    data_inicio date not null,
+    data_fim date not null,
+    tarifa numeric(19,4) not null,
+    primary key(morada, codigo, data_inicio),
+    foreign key(morada, codigo) references alugavel(morada, codigo));
 
-CREATE TABLE aluga (
-morada varchar(255) NOT NULL,
-codigo varchar(255) NOT NULL,
-data_inicio date NOT NULL,
-nif varchar(9) NOT NULL,
-numero varchar(255) NOT NULL,
-primary key (morada, codigo, data_inicio, nif, numero),
-foreign key (morada, codigo, data_inicio) references oferta(morada, codigo, data_inicio),
-foreign key (nif) references user (nif),
-foreign key (numero) references reserva(numero));
+create table reserva (
+    numero varchar(255) not null unique,
+    primary key(numero));
 
-CREATE TABLE paga (
-numero varchar(255) NOT NULL UNIQUE,
-data timestamp NOT NULL,
-metodo varchar (255),
-primary key (numero),
-foreign key (numero) references reserva(numero));
+create table aluga (
+    morada varchar(255) not null,
+    codigo varchar(255) not null,
+    data_inicio date not null,
+    nif varchar(9) not null,
+    numero varchar(255) not null,
+    primary key(morada, codigo, data_inicio, nif, numero),
+    foreign key(morada, codigo, data_inicio) references oferta(morada, codigo, data_inicio),
+    foreign key(nif) references user(nif),
+    foreign key(numero) references reserva(numero));
 
-CREATE TABLE estado (
-numero varchar(255) NOT NULL UNIQUE,
-time_stamp timestamp NOT NULL,
-estado varchar(255) NOT NULL,
-primary key (numero, time_stamp),
-foreign key (numero) references reserva(numero));
+create table paga (
+    numero varchar(255) not null unique,
+    data timestamp not null,
+    metodo varchar(255) not null,
+    primary key(numero),
+    foreign key(numero) references reserva(numero));
+
+create table estado (
+    numero varchar(255) not null,
+    time_stamp timestamp not null,
+    estado varchar(255) not null,
+    primary key(numero, time_stamp),
+    foreign key(numero) references reserva(numero));
