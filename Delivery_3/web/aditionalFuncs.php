@@ -83,6 +83,47 @@ function testLogin($input_username,$input_nif,$input_phone,$db) {
     }
 }
 
+function showLoginInformation($logged) {
+	if($logged) {?>
+			<!-- Metodo POST que permite ao utilizador fazer log out -->
+			<div>
+			<form action="login.html">
+				<input type="submit" value="Logout" style="position: fixed; bottom: 10;"/>
+			</form>
+			</div>
+			<div>
+				<div id="ListSpaces" style="display: inline-block;">
+					<form action="ServerSide.php" method="post" accept-charset="UTF-8">
+					<p><input type="submit"  value="ListSpaces" name="ListSpaces"></p>
+				</div>
+				<div id="ListBuildings" style="display: inline-block;">
+					<form action="ServerSide.php" method="post" accept-charset="UTF-8">
+					<p><input type="submit"  value="ListBuildings" name="ListBuildings"></p>
+				</div>
+				<div id="ListPosts" style="display: inline-block;
+					<form action="ServerSide.php" method="post" accept-charset="UTF-8">
+					<p><input type="submit"  value="ListPosts" name="ListPosts"></p>
+				</div>
+				<div id="ListOffers" style="display: inline-block;">
+					<form action="ServerSide.php" method="post" accept-charset="UTF-8">
+					<p><input type="submit"  value="ListOffers" name="ListOffers"></p>
+				</div>
+				<!--<div id="ListReservations" style="display: inline-block;">
+					<form onSubmit="hide('ListReservations');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+					<p><input type="submit"  value="ListReservations" name="ListReservations"></p>
+				</div>-->
+			</div>
+
+
+	<?php
+	}
+
+	else {
+		echo("<p>NOT LOGGED IN!</p>");
+	}
+	//end of forms
+}
+
 function listSpaces($connection) {
     /*
     morada varchar(50),

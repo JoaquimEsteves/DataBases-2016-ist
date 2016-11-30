@@ -111,7 +111,8 @@ try{
 	// $connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password); 
 	$connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$_SESSION['logged_in'] = FALSE;
+	//$_SESSION['logged_in'] = FALSE;
+
 	echo("<p>Welcome to InstantOffice</p>\n");
 	// array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 	echo("<p>Connected to MySQL database $dbname on $host as user $user</p>\n");
@@ -119,6 +120,8 @@ try{
     //Include aditional functions here!
     include 'aditionalFuncs.php';   
     
+	showLoginInformation($_SESSION['logged_in']);
+	
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
 	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations','deleteBuilding','deleteSpace','deletePost')) {
 		
@@ -131,48 +134,8 @@ try{
 			$_SESSION['logged_in'] = testLogin($username,$nif,$phone_number,$connection);
 			
 			//Show extra information if logged in!
-			    //forms
-    
-
-			if($_SESSION['logged_in']) {?>
-			<!-- Metodo POST que permite ao utilizador fazer log out -->
-			<div>
-			<form action="login.html">
-				<input type="submit" value="Logout" style="position: fixed; bottom: 10;"/>
-			</form>
-			</div>
-			<div>
-				<div id="ListSpaces" style="display: inline-block;">
-					<form action="ServerSide.php" method="post" accept-charset="UTF-8">
-					<p><input type="submit"  value="ListSpaces" name="ListSpaces"></p>
-				</div>
-				<div id="ListBuildings" style="display: inline-block;">
-					<form action="ServerSide.php" method="post" accept-charset="UTF-8">
-					<p><input type="submit"  value="ListBuildings" name="ListBuildings"></p>
-				</div>
-				<div id="ListPosts" style="display: inline-block;">
-					<form action="ServerSide.php" method="post" accept-charset="UTF-8">
-					<p><input type="submit"  value="ListPosts" name="ListPosts"></p>
-				</div>
-				<div id="ListOffers" style="display: inline-block;">
-					<form action="ServerSide.php" method="post" accept-charset="UTF-8">
-					<p><input type="submit"  value="ListOffers" name="ListOffers"></p>
-				</div>
-				<!--<div id="ListReservations" style="display: inline-block;">
-					<form onSubmit="hide('ListReservations');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
-					<p><input type="submit"  value="ListReservations" name="ListReservations"></p>
-				</div>-->
-			</div>
-
-
-			<?php
-			}
-
-			else {
-				echo("<p>NOT LOGGED IN!</p>");
-			}
-			//end of forms
-			
+			   //forms
+			showLoginInformation($_SESSION['logged_in']);
 			//end of extra information
 			
 			break; 
