@@ -170,8 +170,9 @@ function listPosts($connection) {
         ?>
         <div id="postRemoval">
         <form action="ServerSide.php" method="post" accept-charset="UTF-8">
-        <p>Introduza a morada do posto a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
-        <p>Introduza o código do espaço a remover: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza a morada do posto: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza o código do posto: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
+		<p>Introduza o código do espaço: <input type="text" name="codeSpaceToDelete" style="display:flex;align-items:center;"/></p>
         <p><input type="submit"  value="Delete Post" name="deletePost"></p>
         </div>
         <?php
@@ -266,7 +267,7 @@ tarifa double,
 
 function deleteBuilding($connection,$addr) {
     try {
-        $sql = "DELETE FROM edificio WHERE morada=$addr";//DONE BY RUBEN
+        $sql = "DELETE FROM edificio WHERE morada='$addr'";//DONE BY RUBEN
         $result = $connection->query($sql);
         $connection->commit();
         listBuildings($connection);
@@ -278,7 +279,7 @@ function deleteBuilding($connection,$addr) {
 
 function deletePost($connection,$addr,$code) {
     try {
-        $sql = "DELETE FROM posto WHERE morada=$addr"; //DONE BY RUBEN
+        $sql = "DELETE FROM posto WHERE morada='$addr'"; //DONE BY RUBEN
         $result = $connection->query($sql);
         $connection->commit();
         listPosts($connection);
@@ -290,7 +291,7 @@ function deletePost($connection,$addr,$code) {
 
 function deleteSpace($connection,$addr,$code) {
     try {
-        $sql = "DELETE FROM espaco WHERE morada=$addr";//DONE BY RUBEN
+        $sql = "DELETE FROM espaco WHERE morada='$addr'";//DONE BY RUBEN
         $result = $connection->query($sql);
         $connection->commit();
         listSpaces($connection);
@@ -302,7 +303,7 @@ function deleteSpace($connection,$addr,$code) {
 //RUBENS PART Excercies:a)b)c)d)E)
 function insertBuilding($connection,$addr,$code) {
     try {
-        $sql = "INSERT INTO edificio (morada) VALUES ($addr)";//DONE BY RUBEN
+        $sql = "INSERT INTO edificio (morada) VALUES ('$addr')";//DONE BY RUBEN
         $result = $connection->query($sql);
         $connection->commit();
         listSpaces($connection);
@@ -312,9 +313,9 @@ function insertBuilding($connection,$addr,$code) {
     }
 }
 
-function insertPost($connection,$addr,$code) {
+function insertPost($connection,$addr,$code,$space_code) {
     try {
-        $sql = "INSERT INTO posto (morada, codigo, codigo_espaco) VALUES ()";
+        $sql = "INSERT INTO posto (morada, codigo, codigo_espaco) VALUES ('$addr','$code','$space_code')";
         $result = $connection->query($sql);
         $connection->commit();
         listSpaces($connection);
@@ -326,7 +327,7 @@ function insertPost($connection,$addr,$code) {
 
 function insertSpace($connection,$addr,$code) {
     try {
-        $sql = "INSERT INTO espaco (morada, codigo) VALUES ($addr)";
+        $sql = "INSERT INTO espaco (morada, codigo) VALUES ('$addr','$code')";
         $result = $connection->query($sql);
         $connection->commit();
         listSpaces($connection);
