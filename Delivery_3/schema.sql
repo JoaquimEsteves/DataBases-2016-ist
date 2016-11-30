@@ -72,7 +72,7 @@ create table oferta (
     data_fim date not null,
     tarifa numeric(19,4) not null,
     primary key(morada, codigo, data_inicio),
-    foreign key(morada, codigo) references alugavel(morada, codigo));
+    foreign key(morada, codigo) references alugavel(morada, codigo) ON DELETE CASCADE);
 
 create table reserva (
     numero varchar(255) not null unique,
