@@ -33,7 +33,7 @@ create table alugavel (
     codigo varchar(255) not null,
     foto varchar(255) not null,
     primary key(morada, codigo),
-    foreign key(morada) references edificio(morada));
+    foreign key(morada) references edificio(morada)ON DELETE CASCADE);
 
 create table arrenda (
     morada varchar(255) not null,
@@ -85,7 +85,7 @@ create table aluga (
     nif varchar(9) not null,
     numero varchar(255) not null,
     primary key(morada, codigo, data_inicio, nif, numero),
-    foreign key(morada, codigo, data_inicio) references oferta(morada, codigo, data_inicio),
+    foreign key(morada, codigo, data_inicio) references oferta(morada, codigo, data_inicio) ON DELETE CASCADE,
     foreign key(nif) references user(nif),
     foreign key(numero) references reserva(numero));
 
