@@ -140,10 +140,10 @@ if($_SESSION['logged_in']) {?>
     //end of forms
     
     
-	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
+	//switch utiliza a funÃ§ao get_post_action com os names dos metodos post neste caso atualizar
 	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations','deleteBuilding','deleteSpace','deletePost')) {
 		
-		//Quando o utilizador faz login, as variaveis deste são passadas para as do php
+		//Quando o utilizador faz login, as variaveis deste sÃ£o passadas para as do php
 		case'login':
 			$username = $_POST["username"];
 			$nif = $_POST["nif"];
@@ -175,6 +175,10 @@ if($_SESSION['logged_in']) {?>
             break;
         case 'deletePost':
             deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete']);
+            break;
+	//RUBENS PART
+	case 'deleteOferta':
+            deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete']);
             break;
 	}
 }
