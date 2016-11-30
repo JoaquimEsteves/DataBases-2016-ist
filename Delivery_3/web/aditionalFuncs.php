@@ -266,7 +266,7 @@ tarifa double,
 
 function deleteBuilding($connection,$addr) {
     try {
-        $sql = "DELETE FROM Edificio WHERE morada=$addr";//WRONG
+        $sql = "DELETE FROM Edificio WHERE morada=$addr";//DONE BY RUBEN
         $result = $connection->query($sql);
         $connection->commit();
         listBuildings($connection);
@@ -278,7 +278,7 @@ function deleteBuilding($connection,$addr) {
 
 function deletePost($connection,$addr,$code) {
     try {
-        $sql = "DELETE FROM Edificio WHERE morada=$addr"; //WRONG
+        $sql = "DELETE FROM posto WHERE morada=$addr"; //DONE BY RUBEN
         $result = $connection->query($sql);
         $connection->commit();
         listPosts($connection);
@@ -290,7 +290,19 @@ function deletePost($connection,$addr,$code) {
 
 function deleteSpace($connection,$addr,$code) {
     try {
-        $sql = "DELETE FROM Edificio WHERE morada=$addr";//WRONG
+        $sql = "DELETE FROM espaco WHERE morada=$addr";//DONE BY RUBEN
+        $result = $connection->query($sql);
+        $connection->commit();
+        listSpaces($connection);
+    }
+    catch(PDOException $e) {
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+    }
+}
+//RUBENS PART
+function deleteOferta($connection,$addr,$code) {
+    try {
+        $sql = "DELETE FROM oferta WHERE =$addr";//DONE BY RUBEN
         $result = $connection->query($sql);
         $connection->commit();
         listSpaces($connection);
