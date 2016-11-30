@@ -144,6 +144,13 @@ try{
             break;
 	}
 	
+
+	
+}
+catch(PDOException $e) {
+	echo("<p>ERROR: {$e->getMessage() } </p>");
+}
+
 	//forms
 	if($_SESSION['logged_in']) {?>
 		<!-- Metodo POST que permite ao utilizador fazer log out -->
@@ -179,11 +186,7 @@ try{
 	<?php
 	}
 	//no more forms
-	
-}
-catch(PDOException $e) {
-	echo("<p>ERROR: {$e->getMessage() } </p>");
-}
+
 ?>
 
 </body>
