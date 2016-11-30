@@ -113,19 +113,19 @@ if($_SESSION['logged_in']) {?>
 </div>
 <div>
     <div id="ListSpaces" style="display: inline-block;">
-        <form onSubmit="hide('ListSpaces');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
         <p><input type="submit"  value="ListSpaces" name="ListSpaces"></p>
     </div>
     <div id="ListBuildings" style="display: inline-block;">
-        <form onSubmit="hide('ListBuildings');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
         <p><input type="submit"  value="ListBuildings" name="ListBuildings"></p>
     </div>
     <div id="ListPosts" style="display: inline-block;">
-        <form onSubmit="hide('ListPosts');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
         <p><input type="submit"  value="ListPosts" name="ListPosts"></p>
     </div>
     <div id="ListOffers" style="display: inline-block;">
-        <form onSubmit="hide('ListOffers');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
         <p><input type="submit"  value="ListOffers" name="ListOffers"></p>
     </div>
     <!--<div id="ListReservations" style="display: inline-block;">
