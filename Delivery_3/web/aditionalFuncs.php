@@ -83,8 +83,8 @@ function testLogin($input_username,$input_nif,$input_phone,$db) {
     }
 }
 
-function showLoginInformation($logged) {
-	if($logged) {?>
+function showLoginInformation() {
+	?>
 			<!-- Metodo POST que permite ao utilizador fazer log out -->
 			<div>
 			<form action="login.html">
@@ -116,12 +116,6 @@ function showLoginInformation($logged) {
 
 
 	<?php
-	}
-
-	else {
-		echo("<p>NOT LOGGED IN!</p>");
-	}
-	//end of forms
 }
 
 function listSpaces($connection) {

@@ -120,7 +120,7 @@ try{
     //Include aditional functions here!
     include 'aditionalFuncs.php';   
     
-	showLoginInformation($_SESSION['logged_in']);
+	showLoginInformation();
 	
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
 	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations','deleteBuilding','deleteSpace','deletePost')) {
@@ -132,10 +132,11 @@ try{
 			$phone_number = $_POST["phone_number"];
 			//From aditional funcs
 			$_SESSION['logged_in'] = testLogin($username,$nif,$phone_number,$connection);
-			
 			//Show extra information if logged in!
 			   //forms
-			showLoginInformation($_SESSION['logged_in']);
+			if(!$_SESSION['logged_in']) {
+				header('Location: loginFail.html');
+			}
 			//end of extra information
 			
 			break; 
