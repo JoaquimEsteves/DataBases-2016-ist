@@ -165,10 +165,18 @@ try{
         case 'deletePost':
             deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete']);
             break;
-	//RUBENS PART
-	case 'deleteOferta':
-            deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete']);
-            break;
+		case 'deleteOferta':
+			deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete']);
+			break;
+		case 'insertBuilding':
+			insertBuilding($connection,$_POST['addrToDelete']);
+			break;
+		case 'insertSpace':
+			insertSpace($connection , $_POST['addrToDelete'], $_POST['codeToDelete']);
+			break;
+		case 'insertPost':
+			insertPost($connection , $_POST['addrToDelete'], $_POST['codeToDelete'],$_POST['codeSpaceToDelete']);
+			break;
 	}
 }
 catch(PDOException $e) {

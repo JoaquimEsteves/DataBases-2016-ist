@@ -132,6 +132,7 @@ function listSpaces($connection) {
         <p>Introduza a morada do espaço a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
         <p>Introduza o código do espaço a remover: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
         <p><input type="submit"  value="Delete Space" name="deleteSpace"></p>
+		<p><input type="submit"  value="Insert Space" name="insertSpace"></p>
         </div>
         <?php
         //echo("<script>hide('ListSpaces');</script>");
@@ -169,6 +170,7 @@ function listBuildings($connection) {
         <form action="ServerSide.php" method="post" accept-charset="UTF-8">
         <p>Introduza a morada do edificio a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
         <p><input type="submit"  value="Delete Building" name="deleteBuilding"></p>
+		<p><input type="submit"  value="Insert Space" name="insertBuilding"></p>
         </div>
         <?php
         echo("<div>");
@@ -209,6 +211,7 @@ function listPosts($connection) {
         <p>Introduza o código do posto: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
 		<p>Introduza o código do espaço: <input type="text" name="codeSpaceToDelete" style="display:flex;align-items:center;"/></p>
         <p><input type="submit"  value="Delete Post" name="deletePost"></p>
+		<p><input type="submit"  value="Insert Post" name="insertPost"></p>
         </div>
         <?php
         echo("<div>");
@@ -342,7 +345,7 @@ function deleteSpace($connection,$addr,$code) {
     }
 }
 //RUBENS PART Excercies:a)b)c)d)E)
-function insertBuilding($connection,$addr,$code) {
+function insertBuilding($connection,$addr) {
     try {
         $sql = "INSERT INTO edificio (morada) VALUES ('$addr')";//DONE BY RUBEN
         $result = $connection->query($sql);
