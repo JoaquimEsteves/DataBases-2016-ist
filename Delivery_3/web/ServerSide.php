@@ -123,7 +123,8 @@ try{
 	showLoginInformation();
 	
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
-	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations','deleteBuilding','deleteSpace','deletePost')) {
+	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations','deleteBuilding','deleteSpace','deletePost',
+							'insertBuilding','insertSpace','insertPost')) {
 		
 		//Quando o utilizador faz login, as variaveis deste são passadas para as do php
 		case'login':
