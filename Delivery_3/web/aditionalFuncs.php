@@ -43,7 +43,7 @@ function testLogin($input_username,$input_nif,$input_phone,$db) {
     //echo"<p>Validating credentials of " . $input_username ."</p>\n";
     // Get name and phone number of the given user
     try {
-        $sql = "SELECT * FROM User WHERE nif=$input_nif"; 
+        $sql = "SELECT * FROM user WHERE nif=$input_nif"; 
         $result = $db->query($sql);
         if (!$result) {
             echo("<p> ERROR:[Could not execute this query]:($sql)<p>");
@@ -89,7 +89,7 @@ function listSpaces($connection) {
     codigo integer,
     */
     try{
-        $sql = "SELECT * FROM Espaco;";
+        $sql = "SELECT * FROM espaco;";
         $result = $connection->query($sql);
         ?>
         <div id="postRemoval">
@@ -127,7 +127,7 @@ function listBuildings($connection) {
     morada varchar(50),
     */
     try {
-        $sql = "SELECT * FROM Edificio;";
+        $sql = "SELECT * FROM edificio;";
         $result = $connection->query($sql);
         ?>
         <div id="buildingRemoval">
@@ -165,7 +165,7 @@ function listPosts($connection) {
     codigo_espaco integer,
     */
     try{
-        $sql = "SELECT * FROM Posto;";
+        $sql = "SELECT * FROM posto;";
         $result = $connection->query($sql);
         ?>
         <div id="postRemoval">
@@ -266,7 +266,7 @@ tarifa double,
 
 function deleteBuilding($connection,$addr) {
     try {
-        $sql = "DELETE FROM Edificio WHERE morada=$addr";//DONE BY RUBEN
+        $sql = "DELETE FROM edificio WHERE morada=$addr";//DONE BY RUBEN
         $result = $connection->query($sql);
         $connection->commit();
         listBuildings($connection);
@@ -299,10 +299,10 @@ function deleteSpace($connection,$addr,$code) {
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
-//RUBENS PART
-function deleteOferta($connection,$addr,$code) {
+//RUBENS PART Excercies:a)b)c)d)E)
+function insertBuilding($connection,$addr,$code) {
     try {
-        $sql = "DELETE FROM oferta WHERE =$addr";//DONE BY RUBEN
+        $sql = "INSERT INTO edificio (morada) VALUES ($addr)";//DONE BY RUBEN
         $result = $connection->query($sql);
         $connection->commit();
         listSpaces($connection);
@@ -311,6 +311,74 @@ function deleteOferta($connection,$addr,$code) {
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
+
+function insertPost($connection,$addr,$code) {
+    try {
+        $sql = "INSERT INTO posto (morada, codigo, codigo_espaco) VALUES ()";
+        $result = $connection->query($sql);
+        $connection->commit();
+        listSpaces($connection);
+    }
+    catch(PDOException $e) {
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+    }
+}
+
+function insertSpace($connection,$addr,$code) {
+    try {
+        $sql = "INSERT INTO espaco (morada, codigo) VALUES ($addr)";
+        $result = $connection->query($sql);
+        $connection->commit();
+        listSpaces($connection);
+    }
+    catch(PDOException $e) {
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+    }
+}
+
+function insertOferta($connection,$addr,$code) {
+    try {
+        $sql = "INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES ()";
+        $result = $connection->query($sql);
+        $connection->commit();
+        listSpaces($connection);
+    }
+    catch(PDOException $e) {
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+    }
+}
+
+function insertPayment($connection,$addr,$code) {
+    try {
+        $sql = "INSERT INTO paga (numero, data, metodo) VALUES ()";
+        $result = $connection->query($sql);
+        $connection->commit();
+        listSpaces($connection);
+    }
+    catch(PDOException $e) {
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+    }
+}
+
+function totalPayment($connection,$addr,$code) {
+    try {
+        $sql = "SELECT e.morada, SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)
+                FROM paga p 
+	                NATURAL JOIN oferta o
+	                NATURAL JOIN espaco e 
+                    NATURAL JOIN aluga a
+                GROUP BY e.morada
+                WHERE morada = @addr;";
+        $result = $connection->query($sql);
+        $connection->commit();
+        listSpaces($connection);
+    }
+    catch(PDOException $e) {
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+    }
+}
+
+//RUBENS PART END
 
 ?>
 
