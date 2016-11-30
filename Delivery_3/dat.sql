@@ -1,25 +1,25 @@
-DROP TABLE Estado;
+DROP TABLE estado;
 
-DROP TABLE Paga;
+DROP TABLE paga;
 
-DROP TABLE Aluga;
+DROP TABLE aluga;
 
-DROP TABLE Oferta;
+DROP TABLE oferta;
 
-DROP TABLE Posto;
+DROP TABLE posto;
 
-DROP TABLE Espaco;
+DROP TABLE espaco;
 
-DROP TABLE Fiscaliza;
+DROP TABLE fiscaliza;
 
-DROP TABLE Arrenda;
+DROP TABLE arrenda;
 
-DROP TABLE Alugavel;
+DROP TABLE alugavel;
 
-DROP TABLE Edificio;
+DROP TABLE edificio;
 
-DROP TABLE Fiscal;
+DROP TABLE fiscal;
 
-DROP TABLE User;
+DROP TABLE user;
 
-DROP TABLE Reserva;
+DROP TABLE reserva;
