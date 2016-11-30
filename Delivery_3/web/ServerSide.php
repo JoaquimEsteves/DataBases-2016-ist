@@ -111,7 +111,7 @@ try{
 	// $connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password); 
 	$connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$logged_In = FALSE;
+	$_SESSION['logged_in'] = FALSE;
 	echo("<p>Welcome to InstantOffice</p>\n");
 	// array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 	echo("<p>Connected to MySQL database $dbname on $host as user $user</p>\n");
