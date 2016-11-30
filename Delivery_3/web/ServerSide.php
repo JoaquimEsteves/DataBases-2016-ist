@@ -100,7 +100,6 @@ try{
 
 		// Finally, destroy the session.
 		session_destroy();
-		header('Location: timeout.html');
 	}
 	$_SESSION['EXPIRES'] = time() + 3600;
 	
