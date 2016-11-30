@@ -29,7 +29,7 @@ empresa varchar (255) NOT NULL,
 primary key (id));
 
 CREATE TABLE edificio (
-morada varchar(255) NOT NUL UNIQUE,
+morada varchar(255) NOT NULL UNIQUE,
 primary key (morada));
 
 CREATE TABLE alugavel(
@@ -45,7 +45,7 @@ codigo varchar(255) NOT NULL,
 nif varchar (9) NOT NULL,
 primary key (morada, codigo),
 foreign key (morada, codigo) references alugavel (morada, codigo),
-foreign key (nif) references User(nif));
+foreign key (nif) references user(nif));
 
 CREATE TABLE fiscaliza (
 id intger  NOT NULL,
@@ -61,13 +61,13 @@ codigo varchar(255) NOT NULL,
 primary key (morada, codigo),
 foreign key (morada, codigo) references alugavel (morada, codigo));
 
-CREATE TABLE Posto (
+CREATE TABLE posto (
 morada varchar(255) NOT NULL,
 codigo varchar(255) NOT NULL,
 codigo_espaco varchar(255) NOT NULL,
 primary key (morada, codigo),
-foreign key (morada, codigo) references Alugavel(morada, codigo),
-foreign key (morada, codigo_espaco) references Espaco(morada, codigo));
+foreign key (morada, codigo) references alugavel(morada, codigo),
+foreign key (morada, codigo_espaco) references espaco(morada, codigo));
 
 CREATE TABLE oferta (
 morada varchar(255) NOT NULL,
