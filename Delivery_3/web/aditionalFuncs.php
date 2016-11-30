@@ -267,36 +267,42 @@ tarifa double,
 
 function deleteBuilding($connection,$addr) {
     try {
+		$connection->query("start transaction;");
         $sql = "DELETE FROM edificio WHERE morada='$addr'";//DONE BY RUBEN
-        $result = $connection->query($sql);
-        $connection->commit();
+        $connection->query($sql);
+        $connection->query("commit");
         listBuildings($connection);
     }
     catch(PDOException $e) {
+		$connection->query("rollback;");
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
 
 function deletePost($connection,$addr,$code) {
     try {
+		$connection->query("start transaction;");
         $sql = "DELETE FROM posto WHERE morada='$addr'"; //DONE BY RUBEN
-        $result = $connection->query($sql);
-        $connection->commit();
+        $connection->query($sql);
+        $connection->query("commit");
         listPosts($connection);
     }
     catch(PDOException $e) {
+		$connection->query("rollback;");
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
 
 function deleteSpace($connection,$addr,$code) {
     try {
+		$connection->query("start transaction;");
         $sql = "DELETE FROM espaco WHERE morada='$addr'";//DONE BY RUBEN
-        $result = $connection->query($sql);
-        $connection->commit();
+        $connection->query($sql);
+        $connection->query("commit");
         listSpaces($connection);
     }
     catch(PDOException $e) {
+		$connection->query("rollback;");
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
