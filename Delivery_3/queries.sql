@@ -1,15 +1,15 @@
-//a)
-SELECT DISTINCT e.morada, e.codigo
-FROM espaco e NATURAL JOIN posto
-WHERE  e.morada NOT IN (SELECT a.morada FROM aluga a);
+--a)
+SELECT * 
+FROM posto o, espaco e 
+WHERE e.morada NOT IN (SELECT a.morada FROM aluga a) AND  o.morada NOT IN (SELECT a.morada FROM aluga a);
 
-//b)
+--b)
 SELECT  a.morada, COUNT(a.morada) AS Amount_of_reservations
 FROM  aluga a NATURAL JOIN edificio
 GROUP BY morada 
 HAVING Amount_of_reservations >= (SELECT COUNT(x.numero)/2 FROM reserva x);
 
-//c)
+--c)
 SELECT DISTINCT u.nome
 FROM user u NATURAL JOIN arrenda a
 WHERE EXISTS
@@ -22,10 +22,16 @@ WHERE EXISTS
            GROUP BY f2.id)
       );
 
-//d)
+--d)
 SELECT DISTINCT e.morada, o.codigo, SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio) AS maxpayed
-FROM paga p NATURAL JOIN 
-     oferta o NATURAL JOIN
-     espaco e NATURAL JOIN aluga
+FROM paga p 
+      NATURAL JOIN oferta o 
+      NATURAL JOIN espaco e 
+      NATURAL JOIN aluga
 WHERE YEAR(p.data) = 2016
 GROUP BY e.morada;
+
+--e)
+SELECT
+FROM 
+WHERE
