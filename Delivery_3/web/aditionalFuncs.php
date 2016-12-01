@@ -279,7 +279,7 @@ numero integer,
         echo("<button style=\"display:inline;\" id=\"hide\" onclick=\"hide('QueryTables');hide('hide');\">Hide</button>");
     }
     catch(PDOException $e) {
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        throw $e;
     }
 
 
@@ -316,7 +316,8 @@ tarifa double,
         echo("<button style=\"display:inline;\" id=\"hide\" onclick=\"hide('QueryTables');hide('hide');\">Hide</button>");
     }
     catch(PDOException $e) {
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        // $connection->query("rollback;");
+        throw $e;
     }
 
 }
@@ -332,7 +333,7 @@ function deleteBuilding($connection,$addr) {
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        throw $e;
     }
 }
 
@@ -348,7 +349,7 @@ function deletePost($connection,$addr,$code) {
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        throw $e;
     }
 }
 
@@ -364,7 +365,7 @@ function deleteSpace($connection,$addr,$code) {
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        throw $e;
     }
 }
 //RUBENS PART Excercies:a)b)c)d)E)
@@ -378,7 +379,8 @@ function insertBuilding($connection,$addr) {
         listBuildings($connection);
     }
     catch(PDOException $e) {
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+		$connection->query("rollback;");
+        throw $e;
     }
 }
 
@@ -395,7 +397,7 @@ function insertPost($connection,$addr,$code,$space_code) {
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        throw $e;
     }
 }
 
@@ -411,7 +413,7 @@ function insertSpace($connection,$addr,$code) {
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        throw $e;
     }
 }
 
@@ -428,7 +430,7 @@ function insertOferta($connection,$addr,$code) {
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        throw $e;
     }
 }
 
@@ -445,7 +447,7 @@ function insertPayment($connection,$addr,$code) {
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        throw $e;
     }
 }
 
@@ -464,14 +466,13 @@ function totalPayment($connection,$addr) {
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
-        echo("<p>ERROR: {$e->getMessage() } </p>");
+        throw $e;
 		return;
     }
-	// catch(Exception $e) {
-		// $connection->query("rollback;");
-        // echo("<p>ERROR: {$e->getMessage() } </p>");
-		// return;
-	// }
+	catch(Exception $e) {
+		$connection->query("rollback;");
+		throw $e;
+	}
 }
 
 //RUBENS PART END
