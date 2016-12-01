@@ -102,6 +102,7 @@ try{
 		session_destroy();
 	}
 	$_SESSION['EXPIRES'] = time() + 3600;
+	$_SESSION['errors'] = array();
 	//Connection to DB
 	$host="db.ist.utl.pt";
 	$user="ist177020"; // Replace if needed
@@ -163,30 +164,40 @@ try{
             deleteSpace($connection , $_POST['addrToDelete'], $_POST['codeToDelete']) ;
             break;
         case 'deletePost':
-            deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete']);
+            deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['codeToCodeSpace']);
             break;
-		case 'deleteOferta':
-			deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete']);
-			break;
-		case 'insertBuilding':
-			insertBuilding($connection,$_POST['addrToDelete']);
-			break;
-		case 'insertSpace':
-			insertSpace($connection , $_POST['addrToDelete'], $_POST['codeToDelete']);
-			break;
-		case 'insertPost':
-			insertPost($connection , $_POST['addrToDelete'], $_POST['codeToDelete'],$_POST['codeSpaceToDelete']);
-			break;
-	}
+	case 'deleteOferta':
+		deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
+		break;
+	case 'insertBuilding':
+		insertBuilding($connection,$_POST['addrToInsert']);
+		break;
+	case 'insertSpace':
+		insertSpace($connection , $_POST['addrToInsert'], $_POST['codeToInsert']);
+		break;
+	case 'insertPost':
+		insertPost($connection , $_POST['addrToInsert'], $_POST['codeToInsert'],$_POST['codeSpaceToInsert']);
+		break;
+	case 'insertOferta':
+		insertOferta($connection,$_POST['addrToInsert'],$_POST['codeToInsert'],$_POST['startToInsert'],$_POST['endToInsert'],$_POST['priceToInsert']);
+		break;
+	case 'insertPayment':
+		insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodeToInsert']);
+		break;
+	
 }
-catch(PDOException $e) {
-	// $_SESSION['error'] = $e->getMessage();
-	echo("<p>ERROR: {$e->getMessage() } </p>");
-	// header('Location: error_login.php');
-    // exit;
-}
-catch(Exception $e) {
-	echo("<p>ERROR: {$e->getMessage() } </p>");
+catch(Exception $e ) {
+	if ($e instanceof PDOException) {
+       $_SESSION['errors'] = $e->getMessage();
+		header('Location: error_login.php');
+		exit;
+    } else {
+        $_SESSION['errors'] = "GENERAL ERROR";
+		header('Location: error_login.php');
+		exit;
+        throw $e;
+    }
+	
 }
 ?>
 
