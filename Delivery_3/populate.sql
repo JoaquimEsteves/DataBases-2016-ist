@@ -18,9 +18,9 @@ insert into reserva ('2016-27');
 insert into reserva ('2016-28');
 insert into reserva ('2016-29');
 
-insert into aluga values ('NOVA', 'CN', '2016-01-01', '103246782', '2016-20');
-insert into aluga values ('NOVA', 'CN', '2016-02-16', '103246782', '2016-21');
-insert into aluga values ('NOVA', 'CN', '2016-03-02', '103246782', '2016-22');
+insert into aluga values ('NOVA', 'CN', '2016-01-01', '987654321', '2016-20');
+insert into aluga values ('NOVA', 'CN', '2016-02-16', '987654321', '2016-21');
+insert into aluga values ('NOVA', 'CN', '2016-03-02', '987654321', '2016-22');
 -- debug end
 
 
