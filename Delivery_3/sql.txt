@@ -1,40 +1,60 @@
 a)DONE!
-SELECT DISTINCT e.morada, e.codigo 
-FROM Espaco e NATURAL JOIN Posto 
-WHERE  e.morada NOT IN (SELECT a.morada FROM Aluga a);
+SELECT DISTINCT e.morada, e.codigo
+FROM espaco e NATURAL JOIN posto
+WHERE  e.morada NOT IN (SELECT a.morada FROM aluga a);
+
+
+SELECT * 
+FROM posto o, espaco e 
+WHERE e.morada NOT IN (SELECT a.morada FROM aluga a) 
+AND  o.morada NOT IN (SELECT a.morada FROM aluga a);
 
 b)DONE!
 SELECT  a.morada, COUNT(a.morada) AS Amount_of_reservations
-FROM  Aluga a NATURAL JOIN Edificio
+FROM  aluga a NATURAL JOIN edificio
 GROUP BY morada 
-HAVING Amount_of_reservations >= (SELECT COUNT(x.numero)/2 FROM Reserva x);
+HAVING Amount_of_reservations >= (SELECT COUNT(x.numero)/2 FROM reserva x);
 
 //We have to add more reserves which has more than 50% (5 more) addresses
 
+
 c)DONE! but it couldn’t work…
-SELECT u.nome
-FROM User u NATURAL JOIN Arrenda a
+SELECT DISTINCT u.nome
+FROM user u NATURAL JOIN arrenda a NATURAL JOIN fdscaliza
 WHERE EXISTS
-(SELECT COUNT(f1.id) FROM Arrenda NATURAL JOIN Fiscaliza f1 
+(SELECT COUNT(f1.id) FROM arrenda NATURAL JOIN fiscaliza f1
 GROUP BY f1.id 
 HAVING f1.id IN
-(SELECT COUNT(f2.id) FROM Fiscaliza f2 GROUP BY f2.id));
+(SELECT COUNT(f2.id) FROM fiscaliza f2 GROUP BY f2.id));
+
+SELECT DISTINCT * 
+FROM user u
+	NATURAL JOIN arrenda a
+WHERE nif IN (SELECT * FROM fiscal NATURAL JOIN fiscaliza)
 
 
-//We have to add Fiscal which change a the same alugavel
+SELECT * FROM user u NATURAL JOIN arrenda a NATURAL JOIN fiscaliza NATURAL JOIN fiscal
+WHERE u.user = ALL (SELECT * FROM fiscal);
 
+;!!!! NR 1 with jorge
+
+
+	
 
 d)I THINK ITS DONE!
-SELECT DISTINCT e.morada, SUM(o.tarifa)*DATEDIFF(day,o.data_fim, o.data_inico) AS maxpayed
-FROM Paga p NATURAL JOIN Oferta o NATURAL JOIN Espaco e NATURAL JOIN Aluga 
+SELECT DISTINCT e.morada, o.codigo, SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio) AS maxpayed
+FROM paga p NATURAL JOIN oferta o NATURAL JOIN espaco e NATURAL JOIN aluga
 WHERE YEAR(p.data) = 2016
-GROUP BY o.tarifa;
+GROUP BY e.morada;
+
 
 e)
-SELECT
-FROM
-WHERE
+SELECT e.morada
+FROM espaco NATURAL JOIN post NATURAL JOIN algua
+WHERE 
 
+SELECT * FROM estado NATURAL JOIN aluga NATURAL JOIN oferta WHERE estate.estado = ‘aceite’;
+ 
 
 a) Quais os espaços com postos que nunca foram alugados?
 
