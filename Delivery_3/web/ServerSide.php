@@ -189,7 +189,7 @@ try{
 }
 catch(Exception $e ) {
 	if ($e instanceof PDOException) {
-		$_SESSION['errors'] = $e->getMessage();
+		// $_SESSION['errors'] = $e->getMessage();
 		echo("<p>ERROR: {$e->getMessage() } </p>");
     } else {
         $_SESSION['errors'] = "GENERAL ERROR";
