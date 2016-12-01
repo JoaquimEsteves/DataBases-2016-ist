@@ -11,7 +11,7 @@ CREATE TRIGGER ins_dataOferta BEFORE INSERT ON oferta
                             where morada = NEW.morada AND codigo = NEW.codigo AND data_inicio = NEW.data_inicio))
         THEN
               set @error_message = 'Ja existe uma oferta associada a este edificio com esta data';
-              CALL error_message;
+              CALL error;
         END IF;
 END //
 
@@ -24,7 +24,7 @@ CREATE TRIGGER ins_dataPagamento BEFORE INSERT ON paga
                      WHERE numero = NEW.numero) > NEW.data
                 THEN
                         SET @error_message = 'A data do pagamento tem de ser superior ao timestamp do ultimo estado';
-                        CALL error_message;
+                        CALL error;
                 END IF;
 
 END //
