@@ -5,7 +5,7 @@ CREATE TRIGGER ins_dataOferta BEFORE INSERT ON oferta
 	BEGIN
 		DECLARE error_message varchar(255);
 
-		IF NEW.data_inicio IN (select o.data_inicio from oferta o where morada = NEW.morada and codigo = NEW.codigo)
+		IF NEW.data_inicio IN (SELECT data_inicio FROM oferta WHERE morada = NEW.morada AND codigo = NEW.codigo)
 		THEN
 			SET error_message = 'Ja existe uma oferta associada a este edificio com esta data';
 			CALL error_message;
