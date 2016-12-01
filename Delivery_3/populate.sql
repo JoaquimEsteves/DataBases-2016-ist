@@ -7,13 +7,13 @@ insert into oferta values ('NOVA', 'CN', '2016-03-02', '2016-04-01', 200.00 );
 
 insert into user values ('987654321', 'Jose Correia', '992323323');
 
-insert into reserva ('2016-20');
-insert into reserva ('2016-21');
-insert into reserva ('2016-22');
+insert into reserva ('2016-14');
+insert into reserva ('2016-15');
+insert into reserva ('2016-16');
 
-insert into aluga values ('NOVA', 'CN', '2016-01-01', '987654321', '2016-20');
-insert into aluga values ('NOVA', 'CN', '2016-02-16', '987654321', '2016-21');
-insert into aluga values ('NOVA', 'CN', '2016-03-02', '987654321', '2016-22');
+insert into aluga values ('NOVA', 'CN', '2016-01-01', '987654321', '2016-14');
+insert into aluga values ('NOVA', 'CN', '2016-02-16', '987654321', '2016-15');
+insert into aluga values ('NOVA', 'CN', '2016-03-02', '987654321', '2016-16');
 -- debug end
 
 
