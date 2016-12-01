@@ -108,10 +108,10 @@ function showLoginInformation() {
 					<form action="ServerSide.php" method="post" accept-charset="UTF-8">
 					<p><input type="submit"  value="ListOffers" name="ListOffers"></p>
 				</div>
-				<!--<div id="ListReservations" style="display: inline-block;">
+				<div id="ListReservations" style="display: inline-block;">
 					<form onSubmit="hide('ListReservations');"  action="ServerSide.php" method="post" accept-charset="UTF-8">
 					<p><input type="submit"  value="ListReservations" name="ListReservations"></p>
-				</div>-->
+				</div>
 			</div>
 
 
@@ -241,15 +241,19 @@ function listReservations($connection) {
 numero integer,
 */
     try {
-        $sql = "SELECT * FROM reserva;";
+        $sql = "SELECT * FROM aluga;";
         $result = $connection->query($sql);
         echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
-        echo("<tr><td>--Reservation Number--</td></tr>\n");
+        echo("<tr><td>--Address--</td><td>--Code--</td><td>--Start Date--</td><td>--NIF--</td><td>--Reservation Number--</td></tr>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
-            echo("<td>{$row['numero']}</td>\n");
+            echo("<td>{$row['morada']}</td>\n");
+			echo("<td>{$row['codigo']}</td>\n");
+			echo("<td>{$row['data_inicio']}</td>\n");
+			echo("<td>{$row['nif']}</td>\n");
+			echo("<td>{$row['numero']}</td>\n");
             //echo("<td>{$row['balance']}</td>\n");
             //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
             echo("</tr>\n");
