@@ -78,32 +78,37 @@ CREATE PROCEDURE insertOffer(IN new_morada varchar(255), IN new_codigo varchar(2
                          THEN
                                 INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo);
                                 INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) 
-                                        VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);      
+                                        VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);
+                ELSE
+                         CALL error;
                 END IF;
 END //
                          
 CREATE PROCEDURE insertPost(IN new_morada varchar(255), IN new_codigo varchar(255), IN new_codigo_espaco varchar(255))
         BEGIN
                 IF (EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel
-                            where new_morada = morada and new_codigo = codigo))
+                            where new_morada = morada and new_codigo_espaco = codigo))
                        THEN
-                                INSERT INTO posto (morada, codigo, codigo_espaco) 
+                                INSERT INTO posto (morada, codigo, codigo_espaco)
                                         VALUES (new_morada, new_codigo, new_codigo_espaco);
                         
                 ELSE IF (NOT EXISTS (SELECT morada FROM edificio where new_morada = morada))
                         THEN
                                 INSERT INTO edificio (morada) VALUES (new_morada);
-                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo);
-                                INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa)
-                                        VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);
+                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo_espaco);
+                                INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
+                                INSERT INTO posto (morada, codigo, codigo_espaco)
+                                        VALUES (new_morada, new_codigo, new_codigo_espaco);
                 
                 ELSE IF (EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel
-                                 where new_morada = morada and new_codigo <> codigo)
+                                 where new_morada = morada and new_codigo_espaco <> codigo)
                          THEN
-                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo);
-                                INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) 
-                                        VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);    
+                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo_espaco);
+                                INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
+                                INSERT INTO posto (morada, codigo, codigo_espaco)
+                                        VALUES (new_morada, new_codigo, new_codigo_espaco);
+                ELSE
+                         CALL error;
                 END IF;
-END //
-                         
+END //                        
 DELIMITER ;
