@@ -1,7 +1,7 @@
 -- debug
 insert into edificio values ('NOVA');
 insert into alugavel values ('NOVA', 'CN', 'Lorempixel.com/400/200/');
-insert into oferta values ('NOVA', 'CN', '2016-01-01', '2016-02-31', 170.00 );
+insert into oferta values ('NOVA', 'CN', '2016-01-01', '2016-02-15', 170.00 );
 
 insert into reserva ('2016-20');
 insert into reserva ('2016-21');
