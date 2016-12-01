@@ -1,3 +1,19 @@
+-- debug
+insert into edificio values ('NOVA');
+insert into alugavel values ('NOVA', 'CN', 'Lorempixel.com/400/200/');
+insert into oferta values ('NOVA', 'CN', '2016-01-01', '2016-02-31', 170.00 );
+
+insert into reserva ('2016-20');
+insert into reserva ('2016-21');
+insert into reserva ('2016-22');
+insert into reserva ('2016-23');
+insert into reserva ('2016-24');
+insert into reserva ('2016-25');
+insert into reserva ('2016-26');
+insert into reserva ('2016-27');
+insert into reserva ('2016-28');
+insert into reserva ('2016-29');
+
 insert into edificio values ('IST');
 insert into edificio values ('FEUP');
 insert into edificio values ('Catolica');
