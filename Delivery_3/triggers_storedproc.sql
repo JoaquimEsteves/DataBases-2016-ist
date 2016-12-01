@@ -38,7 +38,7 @@ DELIMITER ;
 --DELIMITER //
 --CREATE PROCEDURE insertBuilding(IN @morada varchar(255))
 --BEGIN
-   	--INSERT INTO Edificio (morada) VALUES (@morada);
+   	--INSERT INTO edificio (morada) VALUES (@morada);
 --END //
  
 --DELIMITER ;
