@@ -465,7 +465,13 @@ function totalPayment($connection,$addr) {
     catch(PDOException $e) {
 		$connection->query("rollback;");
         echo("<p>ERROR: {$e->getMessage() } </p>");
+		return;
     }
+	// catch(Exception $e) {
+		// $connection->query("rollback;");
+        // echo("<p>ERROR: {$e->getMessage() } </p>");
+		// return;
+	// }
 }
 
 //RUBENS PART END

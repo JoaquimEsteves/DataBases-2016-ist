@@ -180,9 +180,10 @@ try{
 	}
 }
 catch(PDOException $e) {
-	$_SESSION['error'] = $e->getMessage();
-	header('Location: error_login.php');
-    exit;
+	// $_SESSION['error'] = $e->getMessage();
+	echo("<p>ERROR: {$e->getMessage() } </p>");
+	// header('Location: error_login.php');
+    // exit;
 }
 catch(Exception $e) {
 	$_SESSION['error'] = "BAD STRING";
