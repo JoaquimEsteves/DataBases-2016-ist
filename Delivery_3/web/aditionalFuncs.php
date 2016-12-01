@@ -176,11 +176,13 @@ function listBuildings($connection) {
         echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
         echo("<tr><td>--Address--</td><td>--Total Payment--</td></tr>\n");
+		$payment = 0;
         foreach($result as $row)
         {
             echo("<tr>\n");
             echo("<td>{$row['morada']}</td>\n");
-			echo("<td>{totalPayment($row['morada'])}</td>\n");
+			$payment = totalPayment($row['morada']);
+			echo("<td>{$payment}</td>\n");
             //echo("<td>{$row['balance']}</td>\n");
             //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
             echo("</tr>\n");
