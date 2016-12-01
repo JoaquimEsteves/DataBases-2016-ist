@@ -66,7 +66,7 @@ CREATE PROCEDURE insertOffer(IN new_morada varchar(255), IN new_codigo varchar(2
                                 INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) 
                                         VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);
                         
-                ELSE IF (NOT EXISTS (SELECT morada FROM edificio NATURAL JOIN alugavel where new_morada = morada))
+                ELSE IF (NOT EXISTS (SELECT morada FROM edificio where new_morada = morada))
                         THEN
                                 INSERT INTO edificio (morada) VALUES (new_morada);
                                 INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo);
