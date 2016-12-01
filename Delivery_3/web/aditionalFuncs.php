@@ -181,7 +181,7 @@ function listBuildings($connection) {
         {
             echo("<tr>\n");
             echo("<td>{$row['morada']}</td>\n");
-			$payment = totalPayment($row['morada']);
+			$payment = totalPayment($connection,$row['morada']);
 			echo("<td>{$payment}</td>\n");
             //echo("<td>{$row['balance']}</td>\n");
             //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
