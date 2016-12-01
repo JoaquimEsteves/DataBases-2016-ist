@@ -186,9 +186,7 @@ catch(PDOException $e) {
     // exit;
 }
 catch(Exception $e) {
-	$_SESSION['error'] = "BAD STRING";
-	header('Location: error_login.php');
-    exit;
+	echo("<p>ERROR: {$e->getMessage() } </p>");
 }
 ?>
 

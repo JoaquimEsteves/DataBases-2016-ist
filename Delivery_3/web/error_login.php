@@ -5,30 +5,6 @@
 <meta charset="UTF-8"/>
 </head>
 
-<?php
-// Very top of your page
-session_start();
-// Let's check if there is any error stored in the session.
-// In the case no errors found, it is better to redirect to another page...
-// ...why anybody would end in this page if no errors were thrown?
-// if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
-    // header('Location: login.html');
-    // exit;
-// }
-// If we reach this point it means there's at least an error
-// foreach ($_SESSION['errors'] as $errorCode => $errorMessage) {
-    // Here we can display the errors...
-	// echo("<p>ERROR: {$e->getMessage() } </p>");
-	$errorMessage = $_SESSION['error'];
-    echo ("<p>Error : ". $errorMessage . "</p>");
-// }
-// At the end you should to remove errors from the session
-// $_SESSION['errors'] = array();
-// or
-unset($_SESSION['error']);
-?>
-
-
 <form action="ServerSide.php" method="post" accept-charset="UTF-8">
 <h2>General Error Failure!</h2>
 <p>Log in again please!</p>
