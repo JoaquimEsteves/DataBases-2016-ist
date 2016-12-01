@@ -28,7 +28,7 @@ unset($_SESSION['errors']);
 
 
 <form action="ServerSide.php" method="post" accept-charset="UTF-8">
-<h2>Your Sesssion timed out!</h2>
+<h2>General Error Failure!</h2>
 <p>Log in again please!</p>
 <div>
 <p>Name: <input type="text" name="username" style="display:flex;align-items:center;"/></p>

@@ -186,7 +186,7 @@ catch(PDOException $e) {
     exit;
 }
 catch(Exception $e) {
-	$_SESSION['errors']['BADSTRING'] = $e->getMessage();
+	$_SESSION['errors']['BADSTRING'] = (string)$e->getMessage();
 	header('Location: error_login.php');
     exit;
 }
