@@ -16,12 +16,12 @@ if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
     exit;
 }
 // If we reach this point it means there's at least an error
-foreach ($_SESSION['errors'] as $errorCode => $errorMessage) {
+// foreach ($_SESSION['errors'] as $errorCode => $errorMessage) {
     // Here we can display the errors...
-    echo '<p>Error ', $errorCode, ': ', $errorMessage, '</p>', PHP_EOL;
-}
+    echo ('<p>Error : ', $errorMessage, '</p>');
+// }
 // At the end you should to remove errors from the session
-$_SESSION['errors'] = array();
+// $_SESSION['errors'] = array();
 // or
 unset($_SESSION['errors']);
 ?>
