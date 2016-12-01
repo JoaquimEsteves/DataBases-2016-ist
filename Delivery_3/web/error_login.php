@@ -18,7 +18,9 @@ if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
 // If we reach this point it means there's at least an error
 // foreach ($_SESSION['errors'] as $errorCode => $errorMessage) {
     // Here we can display the errors...
-    echo ('<p>Error : ', $errorMessage, '</p>');
+	// echo("<p>ERROR: {$e->getMessage() } </p>");
+	$errorMessage = $_SESSION['errors'];
+    echo ("<p>Error : {$errorMessage}</p>");
 // }
 // At the end you should to remove errors from the session
 // $_SESSION['errors'] = array();
