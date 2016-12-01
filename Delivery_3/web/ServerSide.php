@@ -181,12 +181,12 @@ try{
 	}
 }
 catch(PDOException $e) {
-	$_SESSION['errors'] = (string)$e->getMessage();
+	$_SESSION['errors'] = $e->getMessage();
 	header('Location: error_login.php');
     exit;
 }
 catch(Exception $e) {
-	$_SESSION['errors'] = (string)$e->getMessage();
+	$_SESSION['errors'] = $e->getMessage();
 	header('Location: error_login.php');
     exit;
 }
