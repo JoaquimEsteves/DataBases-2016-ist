@@ -1,5 +1,5 @@
+a)
 DELIMITER //
-
 CREATE TRIGGER ins_dataOferta BEFORE INSERT ON Oferta
 	FOR EACH ROW
 	BEGIN
@@ -15,13 +15,16 @@ CREATE TRIGGER ins_dataOferta BEFORE INSERT ON Oferta
 	ENDIF;
 
 END //
+DELIMITER ;
 
+b)
+DELIMITER //
 CREATE TRIGGER ins_dataPagamento BEFORE INSERT ON Paga
 	FOR EACH ROW
 	BEGIN
 		DECLARE ERROR_MESSAGE varchar(255);
 		DECLARE biggest_timestamp timestamp;
-		(select MAX(timestamp) into biggest_timestamp from Estado where numero = NEW.numero)
+		(select MAX(timestamp) into biggest_timestamp from Estado natural join Paga where numero = NEW.numero)
 		
 		IF biggest_timestamp > NEW.data
 		THEN	
