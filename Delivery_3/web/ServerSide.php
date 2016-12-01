@@ -102,7 +102,6 @@ try{
 		session_destroy();
 	}
 	$_SESSION['EXPIRES'] = time() + 3600;
-	$_SESSION['errors'] = array();
 	//Connection to DB
 	$host="db.ist.utl.pt";
 	$user="ist177020"; // Replace if needed
