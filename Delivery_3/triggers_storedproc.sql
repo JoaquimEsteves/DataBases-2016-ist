@@ -10,7 +10,7 @@ CREATE TRIGGER ins_dataOferta BEFORE INSERT ON oferta
 			SET error_message = 'Ja existe uma oferta associada a este edificio com esta data';
 			CALL error_message;
 		ELSE
-			INSERT INTO Oferta (morada, codigo, data_inicio, data_fim, tarifa)
+			INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa)
 			VALUES (NEW.morada, NEW.codigo, NEW.data_inicio, NEW.data_fim, NEW.tarifa);	
 		ENDIF;
 	END //
