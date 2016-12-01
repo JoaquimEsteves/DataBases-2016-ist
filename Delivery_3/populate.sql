@@ -1,9 +1,13 @@
 -- debug
 insert into edificio values ('NOVA');
+
 insert into alugavel values ('NOVA', 'CN', 'Lorempixel.com/400/200/');
+insert into alugavel values ('IST', 'Lab10', 'Lorempixel.com/400/200/');
+
 insert into oferta values ('NOVA', 'CN', '2016-01-01', '2016-02-15', 170.00 );
-insert into oferta values ('NOVA', 'CN', '2016-02-16', '2016-03-01', 75.00 );
-insert into oferta values ('NOVA', 'CN', '2016-03-02', '2016-04-01', 200.00 );
+insert into oferta values ('IST', 'Lab10', '2016-01-01', '2016-02-15', 170.00 );
+insert into oferta values ('IST', 'Lab10', '2016-02-16', '2016-03-01', 75.00 );
+insert into oferta values ('IST', 'Lab10', '2016-03-02', '2016-04-01', 200.00 );
 
 insert into user values ('987654321', 'Jose Correia', '992323323');
 
@@ -11,9 +15,9 @@ insert into reserva values ('2016-20');
 insert into reserva values ('2016-21');
 insert into reserva values ('2016-22');
 
-insert into aluga values ('NOVA', 'CN', '2016-01-01', '987654321', '2016-20');
-insert into aluga values ('NOVA', 'CN', '2016-02-16', '987654321', '2016-21');
-insert into aluga values ('NOVA', 'CN', '2016-03-02', '987654321', '2016-22');
+insert into aluga values ('IST', 'Lab10', '2016-01-01', '987654321', '2016-20');
+insert into aluga values ('IST', 'Lab10', '2016-02-16', '987654321', '2016-21');
+insert into aluga values ('IST', 'Lab10', '2016-03-02', '987654321', '2016-22');
 -- debug end
 
 
