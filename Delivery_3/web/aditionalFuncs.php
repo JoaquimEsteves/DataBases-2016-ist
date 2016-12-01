@@ -424,13 +424,12 @@ function insertPayment($connection,$addr,$code) {
 function totalPayment($connection,$addr) {
     try {
 		$connection->query("start transaction;");
-        $sql = "SELECT SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)
-                FROM paga p 
-	                NATURAL JOIN oferta o
-	                NATURAL JOIN espaco e 
-                  	NATURAL JOIN aluga a
-                GROUP BY e.morada
-                WHERE morada = '$addr';";
+        $sql = "SELECT SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio) 
+				FROM paga p  
+				NATURAL JOIN oferta o 
+				NATURAL JOIN espaco e  
+				NATURAL JOIN aluga a 
+				WHERE morada = '$addr' GROUP BY e.morada;";
 		$result = $connection->query($sql);
         $connection->query("commit");
         return $result;
