@@ -166,36 +166,33 @@ try{
         case 'deletePost':
             deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['codeToCodeSpace']);
             break;
-	case 'deleteOferta':
-		deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
-		break;
-	case 'insertBuilding':
-		insertBuilding($connection,$_POST['addrToInsert']);
-		break;
-	case 'insertSpace':
-		insertSpace($connection , $_POST['addrToInsert'], $_POST['codeToInsert']);
-		break;
-	case 'insertPost':
-		insertPost($connection , $_POST['addrToInsert'], $_POST['codeToInsert'],$_POST['codeSpaceToInsert']);
-		break;
-	case 'insertOferta':
-		insertOferta($connection,$_POST['addrToInsert'],$_POST['codeToInsert'],$_POST['startToInsert'],$_POST['endToInsert'],$_POST['priceToInsert']);
-		break;
-	case 'insertPayment':
-		insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodeToInsert']);
-		break;
+		case 'deleteOferta':
+			deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
+			break;
+		case 'insertBuilding':
+			insertBuilding($connection,$_POST['addrToInsert']);
+			break;
+		case 'insertSpace':
+			insertSpace($connection , $_POST['addrToInsert'], $_POST['codeToInsert']);
+			break;
+		case 'insertPost':
+			insertPost($connection , $_POST['addrToInsert'], $_POST['codeToInsert'],$_POST['codeSpaceToInsert']);
+			break;
+		case 'insertOferta':
+			insertOferta($connection,$_POST['addrToInsert'],$_POST['codeToInsert'],$_POST['startToInsert'],$_POST['endToInsert'],$_POST['priceToInsert']);
+			break;
+		case 'insertPayment':
+			insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodeToInsert']);
+			break;
 	
 }
 catch(Exception $e ) {
 	if ($e instanceof PDOException) {
-       $_SESSION['errors'] = $e->getMessage();
-		header('Location: error_login.php');
-		exit;
+		$_SESSION['errors'] = $e->getMessage();
+		echo("<p>ERROR: {$e->getMessage() } </p>");
     } else {
         $_SESSION['errors'] = "GENERAL ERROR";
 		header('Location: error_login.php');
-		exit;
-        throw $e;
     }
 	
 }
