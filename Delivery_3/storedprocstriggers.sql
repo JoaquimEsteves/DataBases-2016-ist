@@ -1,4 +1,4 @@
-ROP TRIGGER IF EXISTS ins_dataOferta;
+DROP TRIGGER IF EXISTS ins_dataOferta;
 DROP TRIGGER IF EXISTS ins_dataPagamento;
 DROP PROCEDURE insertBuilding;
 
