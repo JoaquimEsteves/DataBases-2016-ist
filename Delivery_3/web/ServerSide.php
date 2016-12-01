@@ -180,15 +180,18 @@ try{
 			break;
 	}
 }
-catch(PDOException $e) {
-	$_SESSION['errors'] = $e->getMessage();
-	header('Location: error_login.php');
-    exit;
-}
-catch(Exception $e) {
-	$_SESSION['errors'] = $e->getMessage();
-	header('Location: error_login.php');
-    exit;
+catch(Exception $e ) {
+	if ($e instanceof PDOException) {
+       $_SESSION['errors'] = $e->getMessage();
+		header('Location: error_login.php');
+		exit;
+    } else {
+        $_SESSION['errors'] = "GENERAL ERROR";
+		header('Location: error_login.php');
+		exit;
+        throw $e;
+    }
+	
 }
 ?>
 
