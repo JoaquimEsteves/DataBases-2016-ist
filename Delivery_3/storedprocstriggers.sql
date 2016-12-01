@@ -1,6 +1,6 @@
 DROP TRIGGER IF EXISTS ins_dataOferta;
 DROP TRIGGER IF EXISTS ins_dataPagamento;
---a)
+
 DELIMITER //
 CREATE TRIGGER ins_dataOferta BEFORE INSERT ON oferta
 	FOR EACH ROW
@@ -16,7 +16,6 @@ CREATE TRIGGER ins_dataOferta BEFORE INSERT ON oferta
         END IF;
 END //
 
---b)
 CREATE TRIGGER ins_dataPagamento BEFORE INSERT ON paga
 	FOR EACH ROW
 	BEGIN
@@ -33,12 +32,10 @@ CREATE TRIGGER ins_dataPagamento BEFORE INSERT ON paga
 		END IF;
 
 END //
-DELIMITER ;	
--- STORED PROCEDURE / INSERT BUILDINGS -- DONE BY RAQUEL
---DELIMITER //
---CREATE PROCEDURE insertBuilding(IN @morada varchar(255))
---BEGIN
-   	--INSERT INTO edificio (morada) VALUES (@morada);
---END //
+
+CREATE PROCEDURE insertBuilding(IN @morada varchar(255))
+	BEGIN
+   		INSERT INTO edificio (morada) VALUES (@morada);
+END //
  
---DELIMITER ;
+DELIMITER ;
