@@ -30,7 +30,7 @@ CREATE TRIGGER ins_dataPagamento BEFORE INSERT ON paga
 			CALL error_message;
 		ELSE
 			INSERT INTO paga (numero, data, metodo) VALUES (NEW.numero, NEW.data, NEW.metodo);
-		ENDIF;
+		END IF;
 
 END //
 DELIMITER ;	
