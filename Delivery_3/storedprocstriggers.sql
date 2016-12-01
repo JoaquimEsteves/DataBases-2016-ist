@@ -20,8 +20,8 @@ CREATE TRIGGER ins_dataPagamento BEFORE INSERT ON paga
         BEGIN
                 DECLARE error_message varchar(255);
 
-                IF (SELECT MAX(timestamp) FROM estado NATURAL JOIN paga
-                     WHERE numero = NEW.numero) > NEW.data
+                IF NEW.data < (SELECT MAX(time_stamp) FROM estado NATURAL JOIN paga
+                     WHERE numero = NEW.numero)
                 THEN
                         SET @error_message = 'A data do pagamento tem de ser superior ao timestamp do ultimo estado';
                         CALL error;
