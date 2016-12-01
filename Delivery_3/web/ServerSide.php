@@ -102,7 +102,7 @@ try{
 		session_destroy();
 	}
 	$_SESSION['EXPIRES'] = time() + 3600;
-	
+	$_SESSION['errors'] = array();
 	//Connection to DB
 	$host="db.ist.utl.pt";
 	$user="ist177020"; // Replace if needed
@@ -181,7 +181,9 @@ try{
 	}
 }
 catch(PDOException $e) {
-	echo("<p>ERROR: {$e->getMessage() } </p>");
+	$_SESSION['errors'][(string)$e->getCode()] = $e->getMessage();
+	header('Location: error_login.php');
+    exit;
 }
 ?>
 
