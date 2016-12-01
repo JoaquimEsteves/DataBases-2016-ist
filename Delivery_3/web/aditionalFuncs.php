@@ -36,6 +36,14 @@ function get_post_action($name)
         }
     }
 }
+
+function testValidString($input_string) {
+	if (ctype_space($input_string) || $input_string == '' || $input_string == NULL) {
+		$error = 'String is empty!';
+		throw new Exception($error);
+	}
+}
+
 function testLogin($input_username,$input_nif,$input_phone,$db) {
     // Verify login credentials
     $DBusrn="";
@@ -315,6 +323,7 @@ tarifa double,
 
 function deleteBuilding($connection,$addr) {
     try {
+		testValidString($addr);
 		$connection->query("start transaction;");
         $sql = "DELETE FROM edificio WHERE morada='$addr'";//DONE BY RUBEN
         $connection->query($sql);
@@ -329,6 +338,8 @@ function deleteBuilding($connection,$addr) {
 
 function deletePost($connection,$addr,$code) {
     try {
+		testValidString($addr);
+		testValidString($code);
 		$connection->query("start transaction;");
         $sql = "DELETE FROM posto WHERE morada='$addr'"; //DONE BY RUBEN
         $connection->query($sql);
@@ -343,6 +354,8 @@ function deletePost($connection,$addr,$code) {
 
 function deleteSpace($connection,$addr,$code) {
     try {
+		testValidString($addr);
+		testValidString($code);
 		$connection->query("start transaction;");
         $sql = "DELETE FROM espaco WHERE morada='$addr'";//DONE BY RUBEN
         $connection->query($sql);
@@ -357,6 +370,7 @@ function deleteSpace($connection,$addr,$code) {
 //RUBENS PART Excercies:a)b)c)d)E)
 function insertBuilding($connection,$addr) {
     try {
+		testValidString($addr);
 		$connection->query("start transaction;");
         $sql = "INSERT INTO edificio (morada) VALUES ('$addr')";//DONE BY RUBEN
         $connection->query($sql);
@@ -370,6 +384,9 @@ function insertBuilding($connection,$addr) {
 
 function insertPost($connection,$addr,$code,$space_code) {
     try {
+		testValidString($addr);
+		testValidString($code);
+		testValidString($space_code);
 		$connection->query("start transaction;");
         $sql = "INSERT INTO posto (morada, codigo, codigo_espaco) VALUES ('$addr','$code','$space_code')";
         $connection->query($sql);
@@ -384,6 +401,8 @@ function insertPost($connection,$addr,$code,$space_code) {
 
 function insertSpace($connection,$addr,$code) {
     try {
+		testValidString($addr);
+		testValidString($code);
 		$connection->query("start transaction;");
         $sql = "INSERT INTO espaco (morada, codigo) VALUES ('$addr','$code')";
         $connection->query($sql);
@@ -397,7 +416,10 @@ function insertSpace($connection,$addr,$code) {
 }
 
 function insertOferta($connection,$addr,$code) {
+	//NOT DONE
     try {
+		testValidString($addr);
+		testValidString($code);
 		$connection->query("start transaction;");
         $sql = "INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES ()";
         $connection->query($sql);
@@ -411,7 +433,10 @@ function insertOferta($connection,$addr,$code) {
 }
 
 function insertPayment($connection,$addr,$code) {
+	//NOT DONE
     try {
+		testValidString($addr);
+		testValidString($code);
 		$connection->query("start transaction;");
         $sql = "INSERT INTO paga (numero, data, metodo) VALUES ()";
         $connection->query($sql);
