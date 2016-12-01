@@ -185,6 +185,7 @@ try{
 			insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodeToInsert']);
 			break;
 	
+	}
 }
 catch(Exception $e ) {
 	if ($e instanceof PDOException) {
