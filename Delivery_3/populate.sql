@@ -1,5 +1,6 @@
 -- debug
 insert into edificio values ('NOVA');
+insert into edificio values ('IST');
 
 insert into alugavel values ('NOVA', 'CN', 'Lorempixel.com/400/200/');
 insert into alugavel values ('IST', 'Lab10', 'Lorempixel.com/400/200/');
@@ -22,7 +23,7 @@ insert into aluga values ('IST', 'Lab10', '2016-03-02', '987654321', '2016-22');
 
 
 
-insert into edificio values ('IST');
+
 insert into edificio values ('FEUP');
 insert into edificio values ('Catolica');
 insert into edificio values ('ISEL');
