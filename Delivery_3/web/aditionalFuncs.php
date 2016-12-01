@@ -182,8 +182,11 @@ function listBuildings($connection) {
             echo("<tr>\n");
             echo("<td>{$row['morada']}</td>\n");
 			$payment = totalPayment($connection,$row['morada']);
-			echo("<td>{$payment['SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)']}</td>\n");
-            //echo("<td>{$row['balance']}</td>\n");
+			foreach($payment as $p)
+			{
+			echo("<td>{$p['SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)']}</td>\n");
+            }
+			//echo("<td>{$row['balance']}</td>\n");
             //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
             echo("</tr>\n");
         }
