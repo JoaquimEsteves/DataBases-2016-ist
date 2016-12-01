@@ -88,7 +88,7 @@ function showLoginInformation() {
 			<!-- Metodo POST que permite ao utilizador fazer log out -->
 			<div>
 			<form action="login.html">
-				<input type="submit" value="Logout" style="position: fixed; bottom: 10;"/>
+				<input type="submit" value="Logout" style="position: fixed; bottom: 10; right:10"/>
 			</form>
 			</div>
 			<div>
