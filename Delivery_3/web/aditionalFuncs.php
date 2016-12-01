@@ -175,11 +175,12 @@ function listBuildings($connection) {
         <?php
         echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
-        echo("<tr><td>--Address--</td></tr>\n");
+        echo("<tr><td>--Address--</td><td>--Total Payment--</td></tr>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
             echo("<td>{$row['morada']}</td>\n");
+			echo("<td>{totalPayment($row['morada'])}</td>\n");
             //echo("<td>{$row['balance']}</td>\n");
             //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
             echo("</tr>\n");
@@ -418,7 +419,7 @@ function insertPayment($connection,$addr,$code) {
     }
 }
 
-function totalPayment($connection,$addr,$code) {
+function totalPayment($connection,$addr) {
     try {
 		$connection->query("start transaction;");
         $sql = "SELECT e.morada, SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)
@@ -427,7 +428,7 @@ function totalPayment($connection,$addr,$code) {
 	                NATURAL JOIN espaco e 
                   	NATURAL JOIN aluga a
                 GROUP BY e.morada
-                WHERE morada = @addr;";
+                WHERE morada = '$addr';";
 		$connection->query($sql);
         $connection->query("commit");
         listOffers($connection);
