@@ -424,7 +424,7 @@ function insertPayment($connection,$addr,$code) {
 function totalPayment($connection,$addr) {
     try {
 		$connection->query("start transaction;");
-        $sql = "SELECT e.morada, SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)
+        $sql = "SELECT SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)
                 FROM paga p 
 	                NATURAL JOIN oferta o
 	                NATURAL JOIN espaco e 
