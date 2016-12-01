@@ -1,4 +1,4 @@
-a)
+--a)
 DELIMITER //
 CREATE TRIGGER ins_dataOferta BEFORE INSERT ON oferta
 	FOR EACH ROW
@@ -16,7 +16,8 @@ CREATE TRIGGER ins_dataOferta BEFORE INSERT ON oferta
 	END //
 DELIMITER ;
 
-b)
+
+--b)
 DELIMITER //
 CREATE TRIGGER ins_dataPagamento BEFORE INSERT ON paga
 	FOR EACH ROW
