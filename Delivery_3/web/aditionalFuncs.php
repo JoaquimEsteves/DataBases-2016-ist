@@ -431,9 +431,9 @@ function totalPayment($connection,$addr) {
                   	NATURAL JOIN aluga a
                 GROUP BY e.morada
                 WHERE morada = '$addr';";
-		$connection->query($sql);
+		$result = $connection->query($sql);
         $connection->query("commit");
-        listOffers($connection);
+        return $result;
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
