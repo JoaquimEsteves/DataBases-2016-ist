@@ -44,21 +44,21 @@ CREATE PROCEDURE insertSpace(IN new_morada varchar(255), IN new_codigo varchar(2
                 ELSE IF (NOT EXISTS (SELECT morada FROM edificio where new_morada = morada))
                         THEN
                                 INSERT INTO edificio (morada) VALUES (new_morada);
-                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo);
+                                INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
                                 INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo);
                 
                 ELSE IF (EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel
                                  where new_morada = morada and new_codigo <> codigo)
                          THEN
-                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo);
+                                INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
                                 INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo);
                 ELSE
                          CALL error;
                 END IF;
 END //
 
-CREATE PROCEDURE insertOffer(IN new_morada varchar(255), IN new_codigo varchar(255), IN new_data_inicio datetime, 
-                                     IN new_data_fim datatime, IN new_tarifa integer)
+CREATE PROCEDURE insertOffer(IN new_morada varchar(255), IN new_codigo varchar(255), IN new_data_inicio date, 
+                                     IN new_data_fim date, IN new_tarifa integer)
         BEGIN
                 IF (EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel
                             where new_morada = morada and new_codigo = codigo))
@@ -69,14 +69,14 @@ CREATE PROCEDURE insertOffer(IN new_morada varchar(255), IN new_codigo varchar(2
                 ELSE IF (NOT EXISTS (SELECT morada FROM edificio where new_morada = morada))
                         THEN
                                 INSERT INTO edificio (morada) VALUES (new_morada);
-                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo);
+                                INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
                                 INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) 
                                         VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);
                 
                 ELSE IF (EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel
                                  where new_morada = morada and new_codigo <> codigo)
                          THEN
-                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo);
+                                INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
                                 INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) 
                                         VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);
                 ELSE
@@ -95,7 +95,7 @@ CREATE PROCEDURE insertPost(IN new_morada varchar(255), IN new_codigo varchar(25
                 ELSE IF (NOT EXISTS (SELECT morada FROM edificio where new_morada = morada))
                         THEN
                                 INSERT INTO edificio (morada) VALUES (new_morada);
-                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo_espaco);
+                               INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
                                 INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
                                 INSERT INTO posto (morada, codigo, codigo_espaco)
                                         VALUES (new_morada, new_codigo, new_codigo_espaco);
@@ -103,7 +103,7 @@ CREATE PROCEDURE insertPost(IN new_morada varchar(255), IN new_codigo varchar(25
                 ELSE IF (EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel
                                  where new_morada = morada and new_codigo_espaco <> codigo)
                          THEN
-                                INSERT INTO alugavel (morada, codigo) VALUES (new_morada, new_codigo_espaco);
+                                INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
                                 INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
                                 INSERT INTO posto (morada, codigo, codigo_espaco)
                                         VALUES (new_morada, new_codigo, new_codigo_espaco);
