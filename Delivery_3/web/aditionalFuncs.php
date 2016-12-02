@@ -321,59 +321,27 @@ tarifa double,
     }
 
 }
-
-function deleteBuilding($connection,$addr) {
-    try {
-		testValidString($addr);
-		$connection->query("start transaction;");
-        $sql = "DELETE FROM edificio WHERE morada='$addr'";//DONE BY RUBEN
-        $connection->query($sql);
-        $connection->query("commit");
-        listBuildings($connection);
-    }
-    catch(PDOException $e) {
-		$connection->query("rollback;");
-        throw $e;
-    }
-}
-
-function deletePost($connection,$addr,$code) {
-    try {
-		testValidString($addr);
-		testValidString($code);
-		$connection->query("start transaction;");
-        $sql = "DELETE FROM posto WHERE morada='$addr'"; //DONE BY RUBEN
-        $connection->query($sql);
-        $connection->query("commit");
-        listPosts($connection);
-    }
-    catch(PDOException $e) {
-		$connection->query("rollback;");
-        throw $e;
-    }
-}
-
-function deleteSpace($connection,$addr,$code) {
-    try {
-		testValidString($addr);
-		testValidString($code);
-		$connection->query("start transaction;");
-        $sql = "DELETE FROM espaco WHERE morada='$addr'";//DONE BY RUBEN
-        $connection->query($sql);
-        $connection->query("commit");
-        listSpaces($connection);
-    }
-    catch(PDOException $e) {
-		$connection->query("rollback;");
-        throw $e;
-    }
-}
-//RUBENS PART Excercies:a)b)c)d)E)
+//PHP a) edificio
 function insertBuilding($connection,$addr) {
     try {
 		testValidString($addr);
 		$connection->query("start transaction;");
-        $sql = "INSERT INTO edificio (morada) VALUES ('$addr')";//DONE BY RUBEN
+        $sql = "INSERT INTO edificio (morada) VALUES ('$addr')";
+        $connection->query($sql);
+        $connection->query("commit");
+        listBuildings($connection);
+    }
+    catch(PDOException $e) {
+		$connection->query("rollback;");
+        throw $e;
+    }
+}
+//PHP a) edifico
+function deleteBuilding($connection,$addr) {
+    try {
+		testValidString($addr);
+		$connection->query("start transaction;");
+        $sql = "DELETE FROM edificio WHERE morada='$addr'";
         $connection->query($sql);
         $connection->query("commit");
         listBuildings($connection);
@@ -384,6 +352,7 @@ function insertBuilding($connection,$addr) {
     }
 }
 
+//PHP a) posto
 function insertPost($connection,$addr,$code,$space_code) {
     try {
 		testValidString($addr);
@@ -401,6 +370,23 @@ function insertPost($connection,$addr,$code,$space_code) {
     }
 }
 
+//PHP a) posto
+function deletePost($connection,$addr,$code,$space_code) {
+    try {
+		testValidString($addr);
+		testValidString($code);
+		$connection->query("start transaction;");
+        $sql = "DELETE FROM posto WHERE morada='$addr' AND codigo ='$code'";
+        $connection->query($sql);
+        $connection->query("commit");
+        listPosts($connection);
+    }
+    catch(PDOException $e) {
+		$connection->query("rollback;");
+        throw $e;
+    }
+}
+//PHP a) espaco
 function insertSpace($connection,$addr,$code) {
     try {
 		testValidString($addr);
@@ -416,14 +402,34 @@ function insertSpace($connection,$addr,$code) {
         throw $e;
     }
 }
-
-function insertOferta($connection,$addr,$code) {
-	//NOT DONE
+//PHP a) espaco
+function deleteSpace($connection,$addr,$code,$space_code) {
     try {
 		testValidString($addr);
 		testValidString($code);
+	   	 testValidString($space_code);
 		$connection->query("start transaction;");
-        $sql = "INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES ()";
+        $sql = "DELETE FROM espaco WHERE morada='$addr' AND codigo ='$code' AND codigo_espaco='$space_code'";
+        $connection->query($sql);
+        $connection->query("commit");
+        listSpaces($connection);
+    }
+    catch(PDOException $e) {
+		$connection->query("rollback;");
+        throw $e;
+    }
+}
+
+//PHP c)
+function insertOffer($connection,$addr,$code,$start,$end,$price) {
+    try {
+		testValidString($addr);
+		testValidString($code);
+	    	testValidString($start);
+	    	testValidString($end);
+	   	testValidString($price);
+		$connection->query("start transaction;");
+        $sql = "INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES ('$addr','$code','$start','$end','$price')";
         $connection->query($sql);
         $connection->query("commit");
         listOffers($connection);
@@ -434,13 +440,15 @@ function insertOferta($connection,$addr,$code) {
     }
 }
 
-function insertPayment($connection,$addr,$code) {
-	//NOT DONE
+function deleteOffer($connection,$addr,$code,$start,$end,$price) {
     try {
 		testValidString($addr);
 		testValidString($code);
+	    	testValidString($start);
+	    	testValidString($end);
+	   	testValidString($price);
 		$connection->query("start transaction;");
-        $sql = "INSERT INTO paga (numero, data, metodo) VALUES ()";
+        $sql = "DELETE FROM oferta WHERE morada='$addr' AND codigo='$code'AND data_inicio='$start' AND data_fim='$end' ANd tarifa='$price)";
         $connection->query($sql);
         $connection->query("commit");
         listOffers($connection);
@@ -450,7 +458,25 @@ function insertPayment($connection,$addr,$code) {
         throw $e;
     }
 }
-
+//PHP d)
+function insertPayment($connection,$numero,$date,$method) {
+    try {
+		testValidString($numero);
+		testValidString($date);
+	    	testValidString($method);
+		$connection->query("start transaction;");
+        $sql = "INSERT INTO paga VALUES (‘$numero’, ‘$date’,’$method’)";
+	$sql = "INSERT INTO estado VALUES (‘$numer’, ‘$date’,’Paga')";
+        $connection->query($sql);
+        $connection->query("commit");
+        listOffers($connection);
+    }
+    catch(PDOException $e) {
+		$connection->query("rollback;");
+        throw $e;
+    }
+}
+//PHP e)
 function totalPayment($connection,$addr) {
     try {
 		$connection->query("start transaction;");
@@ -473,9 +499,8 @@ function totalPayment($connection,$addr) {
 		$connection->query("rollback;");
 		throw $e;
 	}
+	
 }
-
-//RUBENS PART END
 
 ?>
 
