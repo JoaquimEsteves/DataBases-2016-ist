@@ -11,6 +11,7 @@ insert into oferta values ('IST', 'Lab10', '2016-02-16', '2016-03-01', 75.00 );
 insert into oferta values ('IST', 'Lab10', '2016-03-02', '2016-04-01', 200.00 );
 
 insert into user values ('987654321', 'Jose Correia', '992323323');
+insert into user values ('123456789', 'Rui Kappa', '999888777');
 
 insert into reserva values ('2016-20');
 insert into reserva values ('2016-21');
