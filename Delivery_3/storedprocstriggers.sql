@@ -30,7 +30,6 @@ CREATE TRIGGER ins_dataPagamento BEFORE INSERT ON paga
                         SET @error_message = 'A data do pagamento tem de ser superior ao timestamp do ultimo estado';
                         CALL error;
                 END IF;
-
 END; $$
 
 
@@ -111,10 +110,7 @@ CREATE PROCEDURE insertPost(IN new_morada varchar(255), IN new_codigo varchar(25
             INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo_espaco,'no image');
             INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo,'no image');
             INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
-            INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
-            
-            
-        
+            INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);       
         ELSE
                 CALL error;
         END IF;
