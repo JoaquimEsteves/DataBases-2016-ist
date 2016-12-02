@@ -71,7 +71,7 @@ CREATE PROCEDURE insertOffer(IN new_morada varchar(255), IN new_codigo varchar(2
             INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
             INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);
           
-        ELSEIF EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel WHERE morada =new_morada AND scodigo <> new_codigo)
+        ELSEIF EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel WHERE morada =new_morada AND codigo <> new_codigo)
         THEN
             INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
             INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);
