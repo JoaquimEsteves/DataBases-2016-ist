@@ -166,24 +166,24 @@ try{
         case 'deletePost':
             deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['codeToCodeSpace']);
             break;
-	case 'deleteOferta':
-		deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
-		break;
-	case 'insertBuilding':
-			insertBuilding($connection,$_POST['addrToInsert']);
-			break;
-		case 'insertSpace':
-			insertSpace($connection , $_POST['addrToInsert'], $_POST['codeToInsert']);
-			break;
-		case 'insertPost':
-			insertPost($connection , $_POST['addrToInsert'], $_POST['codeToInsert'],$_POST['codeSpaceToInsert']);
-			break;
-		case 'insertOffer':
-			insertOferta($connection,$_POST['addrToInsert'],$_POST['codeToInsert'],$_POST['startToInsert'],$_POST['endToInsert'],$_POST['priceToInsert']);
-			break;
-		case 'insertPayment':
-			insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert']);
-			break;
+        case 'deleteOferta':
+            deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
+            break;
+        case 'insertBuilding':
+                insertBuilding($connection,$_POST['addrToDelete']);
+                break;
+        case 'insertSpace':
+            insertSpace($connection , $_POST['addrToDelete'], $_POST['codeToDelete']);
+            break;
+        case 'insertPost':
+            insertPost($connection , $_POST['addrToDelete'], $_POST['codeToDelete'],$_POST['codeSpaceToDelete']);
+            break;
+        case 'insertOffer':
+            insertOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
+            break;
+        case 'insertPayment':
+            insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert']);
+            break;
 	
 	}
 }
@@ -192,8 +192,9 @@ catch(Exception $e ) {
 		// $_SESSION['errors'] = $e->getMessage();
 		echo("<p>ERROR: {$e->getMessage() } </p>");
     } else {
-        $_SESSION['errors'] = "GENERAL ERROR";
-		header('Location: error_login.php');
+        echo("<p>ERROR: {$e->getMessage() } </p>");
+        //$_SESSION['errors'] = "GENERAL ERROR";
+		//header('Location: error_login.php');
     }
 	
 }

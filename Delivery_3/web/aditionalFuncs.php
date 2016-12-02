@@ -139,8 +139,10 @@ function listSpaces($connection) {
         <form action="ServerSide.php" method="post" accept-charset="UTF-8">
         <p>Introduza a morada do espaço a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
         <p>Introduza o código do espaço a remover: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
-        <p><input type="submit"  value="Delete Space" name="deleteSpace" style="display:inline;"></p>
-		<p><input type="submit"  value="Insert Space" name="insertSpace" style="display:inline;"></p>
+        <p>
+        <input type="submit"  value="Delete Space" name="deleteSpace" style="display:inline;">
+        <input type="submit"  value="Insert Space" name="insertSpace" style="display:inline;">
+        </p>
         </div>
         <?php
         //echo("<script>hide('ListSpaces');</script>");
@@ -177,8 +179,10 @@ function listBuildings($connection) {
         <div id="buildingRemoval">
         <form action="ServerSide.php" method="post" accept-charset="UTF-8">
         <p>Introduza a morada do edificio a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
-        <p><input type="submit"  value="Delete Building" name="deleteBuilding" style="display:inline;"></p>
-		<p><input type="submit"  value="Insert Space" name="insertBuilding" style="display:inline;"></p>
+        <p>
+            <input type="submit"  value="Delete Building" name="deleteBuilding" style="display:inline;">
+            <input type="submit"  value="Insert Building" name="insertBuilding" style="display:inline;">
+        </p>
         </div>
         <?php
         echo("<div>");
@@ -224,8 +228,10 @@ function listPosts($connection) {
         <p>Introduza a morada do posto: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
         <p>Introduza o código do posto: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
 		<p>Introduza o código do espaço: <input type="text" name="codeSpaceToDelete" style="display:flex;align-items:center;"/></p>
-        <p><input type="submit"  value="Delete Post" name="deletePost" style="display:inline;"></p>
-		<p><input type="submit"  value="Insert Post" name="insertPost" style="display:inline;"></p>
+        <p>
+        <input type="submit"  value="Delete Post" name="deletePost" style="display:inline;">
+        <input type="submit"  value="Insert Post" name="insertPost" style="display:inline;">
+        </p>
         </div>
         <?php
         echo("<div>");
@@ -250,6 +256,8 @@ function listPosts($connection) {
         echo("<p>ERROR: {$e->getMessage() } </p>");
     }
 }
+
+
 function listReservations($connection) {
 /*
 numero integer,
@@ -326,7 +334,8 @@ function insertBuilding($connection,$addr) {
     try {
 		testValidString($addr);
 		$connection->query("start transaction;");
-        $sql = "INSERT INTO edificio (morada) VALUES ('$addr')";
+        //$sql = "INSERT INTO edificio (morada) VALUES ('$addr')";
+        $sql = "CALL insertBuilding('$addr')"; 
         $connection->query($sql);
         $connection->query("commit");
         listBuildings($connection);
@@ -359,6 +368,7 @@ function insertPost($connection,$addr,$code,$space_code) {
 		testValidString($code);
 		testValidString($space_code);
 		$connection->query("start transaction;");
+        $sql = "CALL insertPost('$addr','$code','$space_code')"; 
         $sql = "INSERT INTO posto (morada, codigo, codigo_espaco) VALUES ('$addr','$code','$space_code')";
         $connection->query($sql);
         $connection->query("commit");
@@ -392,7 +402,7 @@ function insertSpace($connection,$addr,$code) {
 		testValidString($addr);
 		testValidString($code);
 		$connection->query("start transaction;");
-	$sql = 'CALL insertSpace($addr,$code)';    
+        $sql = "CALL insertSpace('$addr','$code')";    
         //$sql = "INSERT INTO espaco (morada, codigo) VALUES ('$addr','$code')";
         $connection->query($sql);
         $connection->query("commit");
