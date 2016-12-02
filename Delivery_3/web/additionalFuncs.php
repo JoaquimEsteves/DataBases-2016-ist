@@ -199,8 +199,8 @@ function listBuildings($connection) {
 			$payment = totalPayment($connection,$row['morada']);
 			foreach($payment as $p)
 			{
-			$print = $p['SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)'];
-			echo("<td>$print</td>\n");
+                $print = $p['MAXPAID'];
+                echo("<td>$print</td>\n");
             }
 			//echo("<td>{$row['balance']}</td>\n");
             //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
@@ -533,7 +533,7 @@ function insertPayment($connection,$numero,$method) {
 function totalPayment($connection,$addr) {
     try {
 		$connection->query("start transaction;");
-        $sql = "SELECT SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio) 
+        $sql = "SELECT SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio) as MAXPAID
 				FROM paga p  
 				NATURAL JOIN oferta o 
 				NATURAL JOIN espaco e  
@@ -557,8 +557,15 @@ function totalPayment($connection,$addr) {
 
 function seeNonReservedOffers($connection) {
     try {
+    
+    /* morada varchar(255) not null,
+    codigo varchar(255) not null,
+    data_inicio date not null,
+    data_fim date not null,
+    tarifa numeric(19,4) not null,*/
+    
 		$connection->query("start transaction;");
-        $sql = "SELECT * FROM oferta o WHERE o.morada NOT IN(SELECT morada FROM aluga);";
+        $sql = "SELECT * FROM oferta o WHERE o.morada NOT IN(SELECT morada FROM aluga)";
         $result = $connection->query($sql);
         $connection->query("commit");
         echo("<script>hide('QueryTables');</script>");
