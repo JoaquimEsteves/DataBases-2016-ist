@@ -10,17 +10,15 @@ GROUP BY morada
 HAVING Amount_of_reservations >= (SELECT COUNT(x.numero)/2 FROM reserva x);
 
 --c)
-SELECT DISTINCT u.nome
-FROM user u NATURAL JOIN arrenda a
-WHERE EXISTS
-      (SELECT COUNT(f1.id) 
-       FROM arrenda NATURAL JOIN fiscaliza f1 
-       GROUP BY f1.id 
-       HAVING f1.id IN
-          (SELECT COUNT(f2.id) 
-           FROM fiscaliza f2 
-           GROUP BY f2.id)
-      );
+SELECT A.nif,COUNT(A.id) as count FROM 
+      (SELECT DISTINCT id,nif 
+       FROM user u 
+            NATURAL JOIN arrenda a 
+            NATURAL JOIN fiscaliza
+            NATURAL JOIN fiscal)
+      AS A 
+      GROUP BY nif 
+      HAVING count=1;
 
 --d)
 SELECT DISTINCT e.morada, o.codigo, SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio) AS maxpayed
@@ -32,6 +30,8 @@ WHERE YEAR(p.data) = 2016
 GROUP BY e.morada;
 
 --e)
-SELECT
-FROM 
-WHERE
+SELECT * 
+FROM espaco x 
+WHERE x.morada NOT IN
+	 (SELECT a.morada FROM aluga a WHERE a.numero NOT IN
+		(SELECT e.numero FROM estado e WHERE e.estado NOT IN('Aceite')));
