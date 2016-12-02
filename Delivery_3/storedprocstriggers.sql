@@ -11,6 +11,8 @@ CREATE TRIGGER ins_dataOferta BEFORE INSERT ON oferta
         BEGIN
                 DECLARE error_message varchar(255);
                 IF (EXISTS (select data_inicio from oferta
+                            where morada = NEW.morada AND codigo = NEW.codigo AND data_inicio = NEW.data_inicio)) OR
+                            (EXISTS (select data_inicio from oferta
                             where morada = NEW.morada AND codigo = NEW.codigo AND data_inicio = NEW.data_inicio))
         THEN
               set @error_message = 'Ja existe uma oferta associada a este edificio com esta data';
@@ -106,9 +108,12 @@ CREATE PROCEDURE insertPost(IN new_morada varchar(255), IN new_codigo varchar(25
         THEN
             INSERT INTO edificio (morada) VALUES (new_morada);
             INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo_espaco,'no image');
+            INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo,'no image');
             INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
             INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
             
+            
+        
         ELSE
                 CALL error;
         END IF;
