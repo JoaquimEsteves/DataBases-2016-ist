@@ -75,7 +75,6 @@ CREATE PROCEDURE insertOffer(IN new_morada varchar(255), IN new_codigo varchar(2
         THEN
             INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
             INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES (new_morada, new_codigo, new_data_inicio, new_data_fim, new_tarifa);
-          
         ELSE
                 CALL error;
         END IF;
@@ -87,19 +86,26 @@ CREATE PROCEDURE insertPost(IN new_morada varchar(255), IN new_codigo varchar(25
                         EXISTS (SELECT codigo FROM alugavel where new_codigo_espaco = codigo) AND
                         EXISTS (SELECT morada, codigo FROM espaco where new_codigo_espaco = codigo AND new_morada = morada)
         THEN
-            INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
-            
-        ELSEIF NOT EXISTS (SELECT morada FROM edificio where new_morada = morada)
+             INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
+                  
+        ELSEIF EXISTS (SELECT morada FROM edificio where new_morada = morada) AND
+                        EXISTS (SELECT codigo FROM alugavel where new_codigo_espaco = codigo) AND
+                        NOT EXISTS (SELECT morada, codigo FROM espaco where new_codigo_espaco = codigo AND new_morada = morada)
         THEN
-            INSERT INTO edificio (morada) VALUES (new_morada);
-            INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo_espaco,'no image');
             INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
             INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
-            
+        
         ELSEIF EXISTS (SELECT morada FROM edificio where new_morada = morada) AND 
                        NOT EXISTS (SELECT codigo FROM alugavel where new_codigo_espaco = codigo)
         THEN
             INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo_espaco, 'no image');
+            INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
+            INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
+        
+        ELSEIF NOT EXISTS (SELECT morada FROM edificio where new_morada = morada)
+        THEN
+            INSERT INTO edificio (morada) VALUES (new_morada);
+            INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo_espaco,'no image');
             INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
             INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
             
