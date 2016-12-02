@@ -319,6 +319,7 @@ tarifa double,
         <input type="submit"  value="Delete Offer" name="deleteOffer" style="display:inline;">
         <input type="submit"  value="Insert Offer" name="insertOffer" style="display:inline;">
         <input type="submit"  value="List Unreserved Offers" name="seeNonReservedOffers" style="display:inline;">
+        <input type="submit"  value="List non-paid Offers" name="seeNonPaidOffers" style="display:inline;">
         </p>
         </div>
         <?php
@@ -613,7 +614,7 @@ function seeNonReservedOffers($connection) {
 function seeNonPaidOffers($connection) {
     try {
 		$connection->query("start transaction;");
-        $sql = "SELECT * FROM oferta o WHERE o.morada NOT IN(SELECT morada FROM aluga);";
+        $sql = "SELECT * FROM estado o WHERE o.numero NOT IN(SELECT numero FROM estado NATURAL JOIN paga);";
         $result = $connection->query($sql);
         $connection->query("commit");
         echo("<script>hide('QueryTables');</script>");
@@ -635,18 +636,14 @@ function seeNonPaidOffers($connection) {
         </p>
         </div>
         <?php
-        
-        echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
-        echo("<tr><td>--Address--</td><td>--Code--</td><td>--Start-Date--</td><td>--Final-Date--</td><td>Tariff</td></tr>\n");
+        echo("<tr><td>--Number--</td><td>--TimeStamp--</td><td>--State--</td></tr>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
-            echo("<td>{$row['morada']}</td>\n");
-            echo("<td>{$row['codigo']}</td>\n");
-            echo("<td>{$row['data_inicio']}</td>\n");
-            echo("<td>{$row['data_fim']}</td>\n");
-            echo("<td>{$row['tarifa']}</td>\n");
+            echo("<td>{$row['numero']}</td>\n");
+            echo("<td>{$row['time_stamp']}</td>\n");
+            echo("<td>{$row['estado']}</td>\n");
             //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
             echo("</tr>\n");
         }
