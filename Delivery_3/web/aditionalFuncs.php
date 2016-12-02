@@ -303,6 +303,23 @@ tarifa double,
     try {
         $sql = "SELECT * FROM oferta;";
         $result = $connection->query($sql);
+        
+        ?>
+        <div id="offerListing">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p>Introduza a morada da oferta: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza o código da oferta: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
+		<p>Introduza a data de inicio da oferta: <input type="text" name="startToDelete" style="display:flex;align-items:center;"/></p>
+		<p>Introduza a data de fim da oferta: <input type="text" name="endToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza a tarifa da oferta: <input type="text" name="priceToDelete" style="display:flex;align-items:center;"/></p>
+        <p>
+        <input type="submit"  value="Delete Offer" name="deleteOffer" style="display:inline;">
+        <input type="submit"  value="Insert Offer" name="insertOffer" style="display:inline;">
+        <input type="submit"  value="List Unreserved Offers" name="seeNonReservedOffers" style="display:inline;">
+        </p>
+        </div>
+        <?php
+        
         echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
         echo("<tr><td>--Address--</td><td>--Code--</td><td>--Start-Date--</td><td>--Final-Date--</td><td>Tariff</td></tr>\n");
@@ -478,7 +495,7 @@ function insertPayment($connection,$numero,$date,$method) {
 	    	testValidString($method);
 		$connection->query("start transaction;");
         $sql = "INSERT INTO paga VALUES (‘$numero’, ‘$date’,’$method’)";
-	$sql = "INSERT INTO estado VALUES (‘$numer’, ‘$date’,’Paga')";
+        $sql = "INSERT INTO estado VALUES (‘$numer’, ‘$date’,’Paga')";
         $connection->query($sql);
         $connection->query("commit");
         listOffers($connection);
@@ -512,6 +529,41 @@ function totalPayment($connection,$addr) {
 		throw $e;
 	}
 	
+}
+
+function seeNonReservedOffers($connection) {
+    try {
+		$connection->query("start transaction;");
+        $sql = "SELECT * FROM oferta o WHERE o.morada NOT IN(SELECT morada FROM aluga);";
+        $result = $connection->query($sql);
+        $connection->query("commit");
+        echo("<script>hide('QueryTables');</script>");
+        echo("<div>");
+        echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
+        echo("<tr><td>--Address--</td><td>--Code--</td><td>--Start-Date--</td><td>--Final-Date--</td><td>Tariff</td></tr>\n");
+        foreach($result as $row)
+        {
+            echo("<tr>\n");
+            echo("<td>{$row['morada']}</td>\n");
+            echo("<td>{$row['codigo']}</td>\n");
+            echo("<td>{$row['data_inicio']}</td>\n");
+            echo("<td>{$row['data_fim']}</td>\n");
+            echo("<td>{$row['tarifa']}</td>\n");
+            //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
+            echo("</tr>\n");
+        }
+        echo("</table>\n");
+        echo("</div>\n");
+        //onclick="this.parentNode.style.display = 'none'"
+        
+        echo("<button style=\"display:inline;\" id=\"hide\" onclick=\"hide('QueryTables');hide('hide');\">Hide</button>");
+        
+    }
+    catch(PDOException $e) {
+		$connection->query("rollback;");
+        throw $e;
+    }
+
 }
 
 ?>
