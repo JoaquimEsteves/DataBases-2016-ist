@@ -140,8 +140,8 @@ function listSpaces($connection) {
         ?>
         <div id="postRemoval">
         <form action="ServerSide.php" method="post" accept-charset="UTF-8">
-        <p>Introduza a morada do espaço a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
-        <p>Introduza o código do espaço a remover: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza a morada do espaço: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza o código do espaço: <input type="text" name="codeToDelete" style="display:flex;align-items:center;"/></p>
         <p>
         <input type="submit"  value="Delete Space" name="deleteSpace" style="display:inline;">
         <input type="submit"  value="Insert Space" name="insertSpace" style="display:inline;">

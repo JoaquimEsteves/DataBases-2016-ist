@@ -168,7 +168,7 @@ try{
             deleteSpace($connection , $_POST['addrToDelete'], $_POST['codeToDelete']) ;
             break;
         case 'deletePost':
-            deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['codeToCodeSpace']);
+            deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['codeSpaceToDelete']);
             break;
         case 'deleteOffer':
             deleteOffer($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
