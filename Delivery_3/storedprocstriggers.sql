@@ -83,20 +83,23 @@ END; $$
                       
 CREATE PROCEDURE insertPost(IN new_morada varchar(255), IN new_codigo varchar(255), IN new_codigo_espaco varchar(255))
     BEGIN
-        IF (EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel where new_morada = morada and new_codigo_espaco = codigo))
+        IF (EXISTS (SELECT morada FROM edificio where new_morada = morada)) AND
+                        (EXISTS (SELECT codigo FROM alugavel where new_codigo_espaco = codigo)) AND
+                        (EXISTS (SELECT morada, codigo FROM espaco where new_codigo_espaco_espaco = codigo AND new_morada = morada))
         THEN
             INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
             
-        ELSEIF NOT EXISTS (SELECT morada FROM edificio where new_morada = morada)
+        ELSEIF (NOT EXISTS (SELECT morada FROM edificio where new_morada = morada))
         THEN
             INSERT INTO edificio (morada) VALUES (new_morada);
-            INSERT INTO alugavel (morada, codigo,foto) VALUES (new_morada, new_codigo,'no image');
+            INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo_espaco,'no image');
             INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
             INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
             
-        ELSEIF EXISTS (SELECT morada, codigo FROM edificio NATURAL JOIN alugavel where new_morada = morada and new_codigo_espaco <> codigo)
+        ELSEIF (EXISTS (SELECT morada FROM edificio where new_morada = morada)) AND 
+                       (NOT EXISTS (SELECT codigo FROM alugavel where new_codigo_espaco = codigo)
         THEN
-            INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo, 'no image');
+            INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo_espaco, 'no image');
             INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
             INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
             
