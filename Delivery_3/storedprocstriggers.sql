@@ -85,7 +85,7 @@ CREATE PROCEDURE insertPost(IN new_morada varchar(255), IN new_codigo varchar(25
     BEGIN
         IF EXISTS (SELECT morada FROM edificio where new_morada = morada) AND
                         EXISTS (SELECT codigo FROM alugavel where new_codigo_espaco = codigo) AND
-                        EXISTS (SELECT morada, codigo FROM espaco where new_codigo_espaco_espaco = codigo AND new_morada = morada)
+                        EXISTS (SELECT morada, codigo FROM espaco where new_codigo_espaco = codigo AND new_morada = morada)
         THEN
             INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
             
