@@ -134,6 +134,7 @@ try{
 			$username = $_POST["username"];
 			$nif = $_POST["nif"];
 			$phone_number = $_POST["phone_number"];
+			$_SESSION['nif'] = $nif;
 			//From aditional funcs
 			$_SESSION['logged_in'] = testLogin($username,$nif,$phone_number,$connection);
 			//Show extra information if logged in!
@@ -185,7 +186,8 @@ try{
             insertOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
             break;
         case 'insertPayment':
-            insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert']);
+        //unction insertPayment($connection,$numero,$date,$method,$nif,$addr,$code) {
+            insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert'],$_SESSION['nif'],$_POST['addrToInsert'],$_POST['codeToInsert']);
             break;
         case 'seeNonReservedOffers':
             seeNonReservedOffers($connection);

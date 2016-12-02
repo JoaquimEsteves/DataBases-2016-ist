@@ -386,7 +386,7 @@ function insertPost($connection,$addr,$code,$space_code) {
 		testValidString($space_code);
 		$connection->query("start transaction;");
         $sql = "CALL insertPost('$addr','$code','$space_code')"; 
-        $sql = "INSERT INTO posto (morada, codigo, codigo_espaco) VALUES ('$addr','$code','$space_code')";
+        //$sql = "INSERT INTO posto (morada, codigo, codigo_espaco) VALUES ('$addr','$code','$space_code')";
         $connection->query($sql);
         $connection->query("commit");
         listPosts($connection);
@@ -403,7 +403,7 @@ function deletePost($connection,$addr,$code,$space_code) {
 		testValidString($addr);
 		testValidString($code);
 		$connection->query("start transaction;");
-        $sql = "DELETE FROM posto WHERE morada='$addr' AND codigo ='$code'";
+        $sql = "DELETE FROM posto WHERE morada='$addr' AND codigo ='$code';";
         $connection->query($sql);
         $connection->query("commit");
         listPosts($connection);
@@ -420,7 +420,6 @@ function insertSpace($connection,$addr,$code) {
 		testValidString($code);
 		$connection->query("start transaction;");
         $sql = "CALL insertSpace('$addr','$code')";    
-        //$sql = "INSERT INTO espaco (morada, codigo) VALUES ('$addr','$code')";
         $connection->query($sql);
         $connection->query("commit");
         listSpaces($connection);
@@ -431,13 +430,12 @@ function insertSpace($connection,$addr,$code) {
     }
 }
 //PHP a) espaco
-function deleteSpace($connection,$addr,$code,$space_code) {
+function deleteSpace($connection,$addr,$code) {
     try {
 		testValidString($addr);
 		testValidString($code);
-	   	 testValidString($space_code);
 		$connection->query("start transaction;");
-        $sql = "DELETE FROM espaco WHERE morada='$addr' AND codigo ='$code' AND codigo_espaco='$space_code'";
+        $sql = "DELETE FROM espaco WHERE morada='$addr' AND codigo ='$code'";
         $connection->query($sql);
         $connection->query("commit");
         listSpaces($connection);
@@ -488,17 +486,21 @@ function deleteOffer($connection,$addr,$code,$start,$end,$price) {
     }
 }
 //PHP d)
-function insertPayment($connection,$numero,$date,$method) {
+function insertPayment($connection,$numero,$date,$method,$nif,$addr,$code) {
     try {
 		testValidString($numero);
 		testValidString($date);
-	    	testValidString($method);
+        testValidString($method);
+        testValidString($addr);
+        testValidString($code);
 		$connection->query("start transaction;");
-        $sql = "INSERT INTO paga VALUES (‘$numero’, ‘$date’,’$method’)";
-        $sql = "INSERT INTO estado VALUES (‘$numer’, ‘$date’,’Paga')";
+		$timestamp = date('Y-m-d G:i:s');
+		$sql = "DELIMITER // INSERT INTO aluga VALUES ('$addr','$code','$date','$nif','$numero'); INSERT INTO paga VALUES (‘$numero’, ‘$timestamp’,’$method’); INSERT INTO estado VALUES (‘$numero’, ‘$date’,’Paga'); // DELIMITER;";
+       // $sql2 = "INSERT INTO paga VALUES (‘$numero’, ‘$date’,’$method’);";
+        //$sql3 = "INSERT INTO estado VALUES (‘$numero’, ‘$date’,’Paga');";
         $connection->query($sql);
         $connection->query("commit");
-        listOffers($connection);
+        seeNonReservedOffers($connection);
     }
     catch(PDOException $e) {
 		$connection->query("rollback;");
@@ -538,6 +540,24 @@ function seeNonReservedOffers($connection) {
         $result = $connection->query($sql);
         $connection->query("commit");
         echo("<script>hide('QueryTables');</script>");
+        //insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert'],$_SESSION['nif'],$_POST['addrToInsert'],$_POST['codeToInsert']);
+        ?>
+        <div id="ReservedPay">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p>Introduza a morada da oferta: <input type="text" name="addrToInsert" style="display:flex;align-items:center;"/></p>
+        <p>Introduza o código da oferta: <input type="text" name="codeToInsert" style="display:flex;align-items:center;"/></p>
+		<p>Introduza a data de inicio da oferta: <input type="text" name="dateToInsert" style="display:flex;align-items:center;"/></p>
+		<p>Introduza o metodo de pagamento: <input type="text" name="methodToInsert" style="display:flex;align-items:center;"/></p>
+		<p>Introduza o numero da reserva: <input type="text" name="numberToInsert" style="display:flex;align-items:center;"/></p>
+		
+		<!--<p>Introduza a data de fim da oferta: <input type="text" name="endToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza a tarifa da oferta: <input type="text" name="priceToDelete" style="display:flex;align-items:center;"/></p>-->
+        <p>
+        <input type="submit"  value="PAY" name="insertPayment" style="display:inline;">
+        </p>
+        </div>
+        <?php
+        
         echo("<div>");
         echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
         echo("<tr><td>--Address--</td><td>--Code--</td><td>--Start-Date--</td><td>--Final-Date--</td><td>Tariff</td></tr>\n");
