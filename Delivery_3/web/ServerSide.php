@@ -105,8 +105,11 @@ try{
 	$_SESSION['errors'] = array();
 	//Connection to DB
 	$host="db.ist.utl.pt";
-	$user="ist177020"; // Replace if needed
-	$password="fuckyou"; //TODO: FIX THIS DON'T EVEN THINK ABOUT SENDING IT TO THE PROF LIKE THIS IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//REPLACE IF NEEDED!
+	//IMPORTANT
+	$user="ist177020"; 
+	$password="example";
+	//END OF SENSITIVE DATA
 	$dbname = $user;
 	// $connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password); 
 	$connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
