@@ -25,7 +25,7 @@ register_shutdown_function('ShutdownHandler');
 $old_error_handler = set_error_handler("ErrorHandler");
 
 //ACTUAL PHP CODE BELLOW
-session_start();
+//session_start();
 function get_post_action($name)
 {	
     $params = func_get_args();
@@ -489,22 +489,34 @@ function deleteOffer($connection,$addr,$code,$start,$end,$price) {
     }
 }
 //PHP d)
-function insertPayment($connection,$numero,$date,$method,$addr,$code,$nif) {
+
+function createReservation($connection,$numero,$date,$addr,$code,$nif) {
     try {
-		testValidString($numero);
-		testValidString($date);
-        testValidString($method);
-        testValidString($addr);
-        testValidString($code);
-		$connection->query("start transaction;");
+        $connection->query("start transaction;");
 		$timestamp = date('Y-m-d G:i:s');
 		$sql = "INSERT INTO reserva VALUES ('$numero');";
-		//$nif = $_SESSION['nif'];
 		$sql1 = "INSERT INTO aluga VALUES ('$addr','$code','$date','$nif','$numero');";
-        $sql2 = "INSERT INTO paga VALUES ('$numero', '$timestamp','$method');";
-        $sql3 = "INSERT INTO estado VALUES ('$numero', '$timestamp','Paga');";
+		$sql2 = "INSERT INTO estado VALUES ('$numero', '$timestamp','Aceite');";
         $connection->exec($sql);
         $connection->exec($sql1);
+        $connection->exec($sql2);
+        $connection->query("commit");
+        seeNonReservedOffers($connection);
+    }
+    catch(PDOException $e) {
+		$connection->query("rollback;");
+        throw $e;
+    }
+}
+
+function insertPayment($connection,$numero,$method) {
+    try {
+		testValidString($numero);
+        testValidString($method);
+		$connection->query("start transaction;");
+		$timestamp = date('Y-m-d G:i:s');
+        $sql2 = "INSERT INTO paga VALUES ('$numero', '$timestamp','$method');";
+        $sql3 = "INSERT INTO estado VALUES ('$numero', '$timestamp','Paga');";
         $connection->exec($sql2);
         $connection->exec($sql3);
         $connection->query("commit");
@@ -548,19 +560,76 @@ function seeNonReservedOffers($connection) {
         $result = $connection->query($sql);
         $connection->query("commit");
         echo("<script>hide('QueryTables');</script>");
-        echo("<p>HERE'S THE FUCKING NIF "$_SESSION['nif']"</p>");
+        //echo("<p>HERE'S THE FUCKING NIF "$_SESSION['nif']"</p>");
         //insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert'],$_SESSION['nif'],$_POST['addrToInsert'],$_POST['codeToInsert']);
         ?>
-        <div id="ReservedPay">
+        <div id="nonReserved">
         <form action="ServerSide.php" method="post" accept-charset="UTF-8">
         <p>Introduza a morada da oferta: <input type="text" name="addrToInsert" style="display:flex;align-items:center;"/></p>
         <p>Introduza o código da oferta: <input type="text" name="codeToInsert" style="display:flex;align-items:center;"/></p>
 		<p>Introduza a data de inicio da oferta: <input type="text" name="dateToInsert" style="display:flex;align-items:center;"/></p>
-		<p>Introduza o metodo de pagamento: <input type="text" name="methodToInsert" style="display:flex;align-items:center;"/></p>
+		<p>Introduza o seu nif: <input type="text" name="nifToInsert" style="display:flex;align-items:center;"/></p>
 		<p>Introduza o numero da reserva: <input type="text" name="numberToInsert" style="display:flex;align-items:center;"/></p>
 		
 		<!--<p>Introduza a data de fim da oferta: <input type="text" name="endToDelete" style="display:flex;align-items:center;"/></p>
-        <p>Introduza a tarifa da oferta: <input type="text" name="priceToDelete" style="display:flex;align-items:center;"/></p>-->
+        <p>Introduza a tarifa da oferta: <input type="text" name="priceToDelete" style="display:flex;align-items:center;"/></p>
+        
+        function createReservation($connection,$numero,$date,$addr,$code,$nif) {
+        -->
+        <p>
+        <input type="submit"  value="create reservation" name="createReservation" style="display:inline;">
+        </p>
+        </div>
+        <?php
+        
+        echo("<div>");
+        echo("<table id='QueryTables'border=\"0\" cellspacing=\"5\">\n");
+        echo("<tr><td>--Address--</td><td>--Code--</td><td>--Start-Date--</td><td>--Final-Date--</td><td>Tariff</td></tr>\n");
+        foreach($result as $row)
+        {
+            echo("<tr>\n");
+            echo("<td>{$row['morada']}</td>\n");
+            echo("<td>{$row['codigo']}</td>\n");
+            echo("<td>{$row['data_inicio']}</td>\n");
+            echo("<td>{$row['data_fim']}</td>\n");
+            echo("<td>{$row['tarifa']}</td>\n");
+            //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
+            echo("</tr>\n");
+        }
+        echo("</table>\n");
+        echo("</div>\n");
+        //onclick="this.parentNode.style.display = 'none'"
+        
+        echo("<button style=\"display:inline;\" id=\"hide\" onclick=\"hide('QueryTables');hide('hide');\">Hide</button>");
+        
+    }
+    catch(PDOException $e) {
+		$connection->query("rollback;");
+        throw $e;
+    }
+
+}
+
+function seeNonPaidOffers($connection) {
+    try {
+		$connection->query("start transaction;");
+        $sql = "SELECT * FROM oferta o WHERE o.morada NOT IN(SELECT morada FROM aluga);";
+        $result = $connection->query($sql);
+        $connection->query("commit");
+        echo("<script>hide('QueryTables');</script>");
+        //echo("<p>HERE'S THE FUCKING NIF "$_SESSION['nif']"</p>");
+        //insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert'],$_SESSION['nif'],$_POST['addrToInsert'],$_POST['codeToInsert']);
+        ?>
+        <div id="ReservedPay">
+        <form action="ServerSide.php" method="post" accept-charset="UTF-8">
+        <p>Introduza o numero da oferta a pagar: <input type="text" name="numberToInsert" style="display:flex;align-items:center;"/></p>
+        <p>Introduza o metodo de pagamento: <input type="text" name="methodToInsert" style="display:flex;align-items:center;"/></p>
+		
+		<!--<p>Introduza a data de fim da oferta: <input type="text" name="endToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza a tarifa da oferta: <input type="text" name="priceToDelete" style="display:flex;align-items:center;"/></p>
+        
+        function insertPayment($connection,$numero,$method) {
+        -->
         <p>
         <input type="submit"  value="PAY" name="insertPayment" style="display:inline;">
         </p>
