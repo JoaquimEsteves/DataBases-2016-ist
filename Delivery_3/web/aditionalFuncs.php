@@ -460,8 +460,8 @@ function insertOffer($connection,$addr,$code,$start,$end,$price) {
 	   	testValidString($price);
 		$connection->query("start transaction;");
         //$sql = "INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES ('$addr','$code','$start','$end','$price')";
-        $sql = 'CALL insertOffer($addr,$code,$start,$end,$price)';
-	$connection->query($sql);
+        $sql = "CALL insertOffer('$addr','$code','$start','$end',$price)";
+        $connection->query($sql);
         $connection->query("commit");
         listOffers($connection);
     }
@@ -479,7 +479,7 @@ function deleteOffer($connection,$addr,$code,$start,$end,$price) {
 	    	testValidString($end);
 	   	testValidString($price);
 		$connection->query("start transaction;");
-        $sql = "DELETE FROM oferta WHERE morada='$addr' AND codigo='$code'AND data_inicio='$start' AND data_fim='$end' ANd tarifa='$price)";
+        $sql = "DELETE FROM oferta WHERE morada='$addr' AND codigo='$code'AND data_inicio='$start' AND data_fim='$end' AND tarifa=$price";
         $connection->query($sql);
         $connection->query("commit");
         listOffers($connection);

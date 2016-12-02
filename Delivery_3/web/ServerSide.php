@@ -127,7 +127,7 @@ try{
 	
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
 	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations','deleteBuilding','deleteSpace','deletePost',
-							'insertBuilding','insertSpace','insertPost','seeNonReservedOffers','insertPayment','createReservation','seeNonPaidOffers')) {
+							'insertBuilding','insertSpace','insertPost','insertOffer','deleteOffer','seeNonReservedOffers','insertPayment','createReservation','seeNonPaidOffers')) {
 		
 		//Quando o utilizador faz login, as variaveis deste são passadas para as do php
 		case'login':
@@ -170,12 +170,12 @@ try{
         case 'deletePost':
             deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['codeToCodeSpace']);
             break;
-        case 'deleteOferta':
-            deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
+        case 'deleteOffer':
+            deleteOffer($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
             break;
         case 'insertBuilding':
-                insertBuilding($connection,$_POST['addrToDelete']);
-                break;
+            insertBuilding($connection,$_POST['addrToDelete']);
+            break;
         case 'insertSpace':
             insertSpace($connection , $_POST['addrToDelete'], $_POST['codeToDelete']);
             break;
@@ -183,7 +183,7 @@ try{
             insertPost($connection , $_POST['addrToDelete'], $_POST['codeToDelete'],$_POST['codeSpaceToDelete']);
             break;
         case 'insertOffer':
-            insertOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
+            insertOffer($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
             break;
         case 'insertPayment':
         //insertPayment($connection,$numero,$method)
