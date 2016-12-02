@@ -166,10 +166,10 @@ try{
         case 'deletePost':
             deletePost($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['codeToCodeSpace']);
             break;
-		case 'deleteOferta':
-			deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
-			break;
-		case 'insertBuilding':
+	case 'deleteOferta':
+		deleteOferta($connection,$_POST['addrToDelete'],$_POST['codeToDelete'],$_POST['startToDelete'],$_POST['endToDelete'],$_POST['priceToDelete']);
+		break;
+	case 'insertBuilding':
 			insertBuilding($connection,$_POST['addrToInsert']);
 			break;
 		case 'insertSpace':
@@ -178,11 +178,11 @@ try{
 		case 'insertPost':
 			insertPost($connection , $_POST['addrToInsert'], $_POST['codeToInsert'],$_POST['codeSpaceToInsert']);
 			break;
-		case 'insertOferta':
+		case 'insertOffer':
 			insertOferta($connection,$_POST['addrToInsert'],$_POST['codeToInsert'],$_POST['startToInsert'],$_POST['endToInsert'],$_POST['priceToInsert']);
 			break;
 		case 'insertPayment':
-			insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodeToInsert']);
+			insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert']);
 			break;
 	
 	}
