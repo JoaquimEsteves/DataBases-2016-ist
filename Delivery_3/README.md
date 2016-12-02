@@ -1,4 +1,4 @@
-# DataBases-2016-ist
+# DataBases-2016-ist 3º Delivery
 This work was done for the Data Bases subject at IST.
 # Contributors
 
@@ -8,6 +8,7 @@ Raquel Pereira    - ist176171
 
 Rúben Correia     - ist427411 (also 85909)
 
+
 Delivery - 3 guide:
 1) Edit ServerSide.php with the relevant database
 2) run schema.sql, populate.sql and storedprocstriggers.sql
@@ -15,4 +16,4 @@ Delivery - 3 guide:
     -> For testing porpuses you can easily access them from login.html, an example login is stored as a commentary.
 
 Alternatively:
-    Go to http://web.ist.utl.pt/ist177020/login.html
+    Go to http://web.ist.utl.pt/ist177020/login.html 
