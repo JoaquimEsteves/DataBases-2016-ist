@@ -392,7 +392,8 @@ function insertSpace($connection,$addr,$code) {
 		testValidString($addr);
 		testValidString($code);
 		$connection->query("start transaction;");
-        $sql = "INSERT INTO espaco (morada, codigo) VALUES ('$addr','$code')";
+	$sql = 'CALL insertSpace($addr,$code)';    
+        //$sql = "INSERT INTO espaco (morada, codigo) VALUES ('$addr','$code')";
         $connection->query($sql);
         $connection->query("commit");
         listSpaces($connection);
@@ -429,8 +430,9 @@ function insertOffer($connection,$addr,$code,$start,$end,$price) {
 	    	testValidString($end);
 	   	testValidString($price);
 		$connection->query("start transaction;");
-        $sql = "INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES ('$addr','$code','$start','$end','$price')";
-        $connection->query($sql);
+        //$sql = "INSERT INTO oferta (morada, codigo, data_inicio, data_fim, tarifa) VALUES ('$addr','$code','$start','$end','$price')";
+        $sql = 'CALL insertOffer($addr,$code,$start,$end,$price)';
+	$connection->query($sql);
         $connection->query("commit");
         listOffers($connection);
     }
