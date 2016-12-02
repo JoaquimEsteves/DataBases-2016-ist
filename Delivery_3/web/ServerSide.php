@@ -127,14 +127,14 @@ try{
 	
 	//switch utiliza a funçao get_post_action com os names dos metodos post neste caso atualizar
 	switch (get_post_action('login','ListSpaces','ListBuildings','ListPosts','ListOffers','ListReservations','deleteBuilding','deleteSpace','deletePost',
-							'insertBuilding','insertSpace','insertPost','seeNonReservedOffers')) {
+							'insertBuilding','insertSpace','insertPost','seeNonReservedOffers','insertPayment')) {
 		
 		//Quando o utilizador faz login, as variaveis deste são passadas para as do php
 		case'login':
 			$username = $_POST["username"];
 			$nif = $_POST["nif"];
 			$phone_number = $_POST["phone_number"];
-			$_SESSION['nif'] = $nif;
+			$_SESSION['nif'] = $_POST["nif"];
 			//From aditional funcs
 			$_SESSION['logged_in'] = testLogin($username,$nif,$phone_number,$connection);
 			//Show extra information if logged in!
@@ -187,7 +187,7 @@ try{
             break;
         case 'insertPayment':
         //unction insertPayment($connection,$numero,$date,$method,$nif,$addr,$code) {
-            insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert'],$_SESSION['nif'],$_POST['addrToInsert'],$_POST['codeToInsert']);
+            insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert'],$_POST['addrToInsert'],$_POST['codeToInsert'],$_SESSION['nif']);
             break;
         case 'seeNonReservedOffers':
             seeNonReservedOffers($connection);

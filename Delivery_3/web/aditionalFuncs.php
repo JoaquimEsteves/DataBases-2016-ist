@@ -25,7 +25,7 @@ register_shutdown_function('ShutdownHandler');
 $old_error_handler = set_error_handler("ErrorHandler");
 
 //ACTUAL PHP CODE BELLOW
-
+session_start();
 function get_post_action($name)
 {	
     $params = func_get_args();
@@ -43,6 +43,8 @@ function testValidString($input_string) {
 		throw new Exception($error);
 	}
 }
+
+$global_nif = 0;
 
 function testLogin($input_username,$input_nif,$input_phone,$db) {
     // Verify login credentials
@@ -73,6 +75,7 @@ function testLogin($input_username,$input_nif,$input_phone,$db) {
         //Give the session the variables
         $_SESSION['username'] = $input_username; 
         $_SESSION['nif'] = $input_nif;
+        $global_nif = $input_nif;
         $_SESSION['phone_number'] = $input_phone; 
         return TRUE;
         //<script type="text/javascript"> 
@@ -486,7 +489,7 @@ function deleteOffer($connection,$addr,$code,$start,$end,$price) {
     }
 }
 //PHP d)
-function insertPayment($connection,$numero,$date,$method,$nif,$addr,$code) {
+function insertPayment($connection,$numero,$date,$method,$addr,$code,$nif) {
     try {
 		testValidString($numero);
 		testValidString($date);
@@ -495,10 +498,15 @@ function insertPayment($connection,$numero,$date,$method,$nif,$addr,$code) {
         testValidString($code);
 		$connection->query("start transaction;");
 		$timestamp = date('Y-m-d G:i:s');
-		$sql = "DELIMITER // INSERT INTO aluga VALUES ('$addr','$code','$date','$nif','$numero'); INSERT INTO paga VALUES (‘$numero’, ‘$timestamp’,’$method’); INSERT INTO estado VALUES (‘$numero’, ‘$date’,’Paga'); // DELIMITER;";
-       // $sql2 = "INSERT INTO paga VALUES (‘$numero’, ‘$date’,’$method’);";
-        //$sql3 = "INSERT INTO estado VALUES (‘$numero’, ‘$date’,’Paga');";
-        $connection->query($sql);
+		$sql = "INSERT INTO reserva VALUES ('$numero');";
+		//$nif = $_SESSION['nif'];
+		$sql1 = "INSERT INTO aluga VALUES ('$addr','$code','$date','$nif','$numero');";
+        $sql2 = "INSERT INTO paga VALUES ('$numero', '$timestamp','$method');";
+        $sql3 = "INSERT INTO estado VALUES ('$numero', '$timestamp','Paga');";
+        $connection->exec($sql);
+        $connection->exec($sql1);
+        $connection->exec($sql2);
+        $connection->exec($sql3);
         $connection->query("commit");
         seeNonReservedOffers($connection);
     }
@@ -540,6 +548,7 @@ function seeNonReservedOffers($connection) {
         $result = $connection->query($sql);
         $connection->query("commit");
         echo("<script>hide('QueryTables');</script>");
+        echo("<p>HERE'S THE FUCKING NIF "$_SESSION['nif']"</p>");
         //insertPayment($connection,$_POST['numberToInsert'],$_POST['dateToInsert'],$_POST['methodToInsert'],$_SESSION['nif'],$_POST['addrToInsert'],$_POST['codeToInsert']);
         ?>
         <div id="ReservedPay">
