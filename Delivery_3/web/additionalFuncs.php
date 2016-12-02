@@ -181,7 +181,7 @@ function listBuildings($connection) {
         ?>
         <div id="buildingRemoval">
         <form action="ServerSide.php" method="post" accept-charset="UTF-8">
-        <p>Introduza a morada do edificio a remover: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
+        <p>Introduza a morada do edificio: <input type="text" name="addrToDelete" style="display:flex;align-items:center;"/></p>
         <p>
             <input type="submit"  value="Delete Building" name="deleteBuilding" style="display:inline;">
             <input type="submit"  value="Insert Building" name="insertBuilding" style="display:inline;">
@@ -199,7 +199,8 @@ function listBuildings($connection) {
 			$payment = totalPayment($connection,$row['morada']);
 			foreach($payment as $p)
 			{
-			echo("<td>{$p['SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)']}</td>\n");
+			$print = $p['SUM(o.tarifa)*DATEDIFF(o.data_fim, o.data_inicio)'];
+			echo("<td>$print</td>\n");
             }
 			//echo("<td>{$row['balance']}</td>\n");
             //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
