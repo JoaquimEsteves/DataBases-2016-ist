@@ -101,6 +101,7 @@ CREATE PROCEDURE insertPost(IN new_morada varchar(255), IN new_codigo varchar(25
                        NOT EXISTS (SELECT codigo FROM alugavel where new_codigo_espaco = codigo)
         THEN
             INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo_espaco, 'no image');
+            INSERT INTO alugavel (morada, codigo, foto) VALUES (new_morada, new_codigo,'no image');
             INSERT INTO espaco (morada, codigo) VALUES (new_morada, new_codigo_espaco);
             INSERT INTO posto (morada, codigo, codigo_espaco) VALUES (new_morada, new_codigo, new_codigo_espaco);
         
