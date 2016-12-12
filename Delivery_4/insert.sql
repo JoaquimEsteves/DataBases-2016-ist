@@ -38,18 +38,18 @@ INSERT INTO local_dimension VALUES ('21','ISEL','DEG','DEFAULT');
 INSERT INTO local_dimension VALUES ('22','ISEL','DEQ','DEFAULT');
 
 
-INSERT INTO reserva VALUES ('2016-01','113056729','1','1111','1343','aceite','250,00','duration???');
-INSERT INTO reserva VALUES ('2016-02','113056729','2','34','1343','paga','123,00','duration???');
-INSERT INTO reserva VALUES ('2016-03','103246782','3','1020','1343','aceite','1000,00','duration???');
-INSERT INTO reserva VALUES ('2016-04','113056729','4','400','2341','aceite','250,00','duration???');
-INSERT INTO reserva VALUES ('2016-05','120456781','5','1400','1343','paga','300,00','duration???');
+INSERT INTO reserva VALUES ('2016-01','113056729','1','1111','453','aceite','250,00','duration???');
+INSERT INTO reserva VALUES ('2016-02','113056729','2','34','765','paga','123,00','duration???');
+INSERT INTO reserva VALUES ('2016-03','103246782','3','1020','123','aceite','1000,00','duration???');
+INSERT INTO reserva VALUES ('2016-04','113056729','4','400','234','aceite','250,00','duration???');
+INSERT INTO reserva VALUES ('2016-05','120456781','5','1400','134','paga','300,00','duration???');
 INSERT INTO reserva VALUES ('2016-06','120456781','6','123','423','aceite','250,00','duration???');
-INSERT INTO reserva VALUES ('2016-07','113056729','7','1321','1343','aceite','250,00','duration???');
-INSERT INTO reserva VALUES ('2016-08','193336793','8','101','3421','aceite','250,00','duration???');
-INSERT INTO reserva VALUES ('2016-09','113056729','9','34','1343','aceite','100,00','duration???');
-INSERT INTO reserva VALUES ('2016-10','113056729','10','10','2141','aceite','230,50','duration???');
-INSERT INTO reserva VALUES ('2016-11','113056729','11','1','5433','aceite','250,00','duration???');
-INSERT INTO reserva VALUES ('2016-12','123456719','12','34','3123','paga','333,00','duration???');
-INSERT INTO reserva VALUES ('2016-13','143856248','13','343','2313','paga','666,00','duration???');
+INSERT INTO reserva VALUES ('2016-07','113056729','7','1321','143','aceite','250,00','duration???');
+INSERT INTO reserva VALUES ('2016-08','193336793','8','101','421','aceite','250,00','duration???');
+INSERT INTO reserva VALUES ('2016-09','113056729','9','34','133','aceite','100,00','duration???');
+INSERT INTO reserva VALUES ('2016-10','113056729','10','10','741','aceite','230,50','duration???');
+INSERT INTO reserva VALUES ('2016-11','113056729','11','1','800','aceite','250,00','duration???');
+INSERT INTO reserva VALUES ('2016-12','123456719','12','34','324','paga','333,00','duration???');
+INSERT INTO reserva VALUES ('2016-13','143856248','13','343','829','paga','666,00','duration???');
 
 -- data_dimension & tempo_dimension are created by a procedure
