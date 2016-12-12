@@ -15,7 +15,7 @@ CREATE TABLE local_dimension (
         local_id integer NOT NULL UNIQUE,
         posto varchar(255) NOT NULL,
         espaco varchar(255) NOT NULL,
-        edificio varchar(255) NOT NULL UNIQUE,
+        edificio varchar(255) NOT NULL,
         primary key (local_id));
 
 CREATE TABLE tempo_dimension (
@@ -41,10 +41,10 @@ CREATE TABLE reserva (
         data_id integer NOT NULL,
         estado varchar(255) NOT NULL,
         montante numeric(19,4) NOT NULL,
-        duracao integer,
+        duracao integer NOT NULL,
         primary key(numero, nif, local_id, tempo_id, data_id),
-        foreign key (nif) references user_dimension(nif)ON DELETE CASCADE,
-        foreign key (local_id) references local_dimension(local_id)ON DELETE CASCADE,
-        foreign key (tempo_id) references tempo_dimension(tempo_id)ON DELETE CASCADE,
-        foreign key (data_id) references data_dimension(data_id)ON DELETE CASCADE);
+        foreign key (nif) references user_dimension(nif) ON DELETE CASCADE,
+        foreign key (local_id) references local_dimension(local_id) ON DELETE CASCADE,
+        foreign key (tempo_id) references tempo_dimension(tempo_id) ON DELETE CASCADE,
+        foreign key (data_id) references data_dimension(data_id) ON DELETE CASCADE);
 
