@@ -1,8 +1,7 @@
-DELIMITER $$
-
 DROP PROCEDURE IF EXISTS insert_tempo;
 DROP PROCEDURE IF EXISTS insert_data;
 
+DELIMITER $$
 CREATE PROCEDURE insert_tempo()
     BEGIN
         SET @id = 0;
@@ -88,4 +87,4 @@ CREATE PROCEDURE insert_data()
         END WHILE;
 END; $$
     
-DELIMITER;
+DELIMITER ;
