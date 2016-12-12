@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS data_dimension;
 CREATE TABLE user_dimension (
         nif varchar(9) NOT NULL UNIQUE,
         nome varchar(80) NOT NULL,
-        telefone varchar(26) DEFAULT 'NO PHONE NUMBER',
+        telefone varchar(26) NOT NULL,
         primary key(nif));
 
 CREATE TABLE local_dimension (
@@ -39,7 +39,7 @@ CREATE TABLE reserva (
         local_id integer NOT NULL,
         tempo_id integer NOT NULL,
         data_id integer NOT NULL,
-        estado varchar(255) DEFAULT 'aceite',
+        estado varchar(255) NOT NULL,
         montante numeric(19,4) NOT NULL,
         duracao integer NOT NULL,
         primary key(numero, nif, local_id, tempo_id, data_id),
