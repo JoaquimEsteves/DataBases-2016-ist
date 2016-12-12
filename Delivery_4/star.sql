@@ -13,9 +13,9 @@ CREATE TABLE user_dimension (
 
 CREATE TABLE local_dimension (
         local_id integer NOT NULL UNIQUE,
+        edificio varchar(255) NOT NULL ,
         posto varchar(255) DEFAULT 'NO POSTO AVAILABLE',
         espaco varchar(255) DEFAULT 'NO ESPACO AVAILABLE',
-        edificio varchar(255) NOT NULL ,
         primary key (local_id));
 
 CREATE TABLE tempo_dimension (
