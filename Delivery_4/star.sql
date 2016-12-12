@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS tempo_dimension;
 DROP TABLE IF EXISTS data_dimension;
 
 
-
 CREATE TABLE user_dimension (
         nif varchar(9) NOT NULL UNIQUE,
         nome varchar(80) NOT NULL,
@@ -36,10 +35,10 @@ CREATE TABLE data_dimension (
 
 CREATE TABLE reserva (
         numero varchar(255) NOT NULL UNIQUE,
-        nif varchar(9) NOT NULL UNIQUE,
-        local_id integer NOT NULL UNIQUE,
-        tempo_id integer NOT NULL UNIQUE,
-        data_id integer NOT NULL UNIQUE,
+        nif varchar(9) NOT NULL,
+        local_id integer NOT NULL,
+        tempo_id integer NOT NULL,
+        data_id integer NOT NULL,
         estado varchar(255) NOT NULL,
         montante numeric(19,4) NOT NULL,
         duracao integer,
