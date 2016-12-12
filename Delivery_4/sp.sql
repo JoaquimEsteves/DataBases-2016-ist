@@ -3,6 +3,7 @@ DROP PROCEDURE IF EXISTS insert_data;
 
 
 DELIMITER $$
+
 CREATE PROCEDURE insert_tempo()
     BEGIN
         SET @id = 0;
@@ -20,9 +21,9 @@ CREATE PROCEDURE insert_tempo()
             END WHILE;
             SET @hora = @hora+1;
         END WHILE;
-    END; $$
+END; $$
 
-    CREATE PROCEDURE insert_data()
+CREATE PROCEDURE insert_data()
     BEGIN
         SET @id = 0;
         SET @dia = 1;
@@ -75,7 +76,7 @@ CREATE PROCEDURE insert_tempo()
                     ELSEIF @mes = 12 THEN
                         INSERT INTO data_dimension(data_id, dia, semana, mes, semestre, ano) 
                             VALUES(@id, @dia, @semana, 'Dezembro', @semestre, @ano);
-                   END IF;
+                    END IF;
                    SET @dia = @dia +1;
                    SET @id = @id+1;
                 END WHILE;
@@ -86,5 +87,6 @@ CREATE PROCEDURE insert_tempo()
             END WHILE;
             SET @ano = @ano+1;
         END WHILE;
-    END; $$
+END; $$
+    
 DELIMITER;
