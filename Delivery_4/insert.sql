@@ -1,14 +1,15 @@
-INSERT INTO user VALUES ('123456719', 'Jorge Poeta', '992323123');
-INSERT INTO user VALUES ('113056729', 'António Martins', '992333123');
-INSERT INTO user VALUES ('133956139', 'David Manuel', '992323124');
-INSERT INTO user VALUES ('143856248', 'Nuno Sousa', '992323125');
-INSERT INTO user VALUES ('153756357', 'Armando Sousa', '992323126');
-INSERT INTO user VALUES ('163656466', 'Gonçalo Santos', '992323127');
-INSERT INTO user VALUES ('173516575', 'Alberto Silva', '992323128');
-INSERT INTO user VALUES ('183426684', 'Rubim Guerreiro', '992323129');
-INSERT INTO user VALUES ('193336793', 'Anacleto Vieira', '993323123');
-INSERT INTO user VALUES ('103246782', 'Luis Raposo', '995323123');
-INSERT INTO user VALUES ('120456781', 'Rui Vitória', '997323123');
+INSERT INTO user_dimension VALUES ('123456719', 'Jorge Poeta', '992323123');
+INSERT INTO user_dimension VALUES ('113056729', 'António Martins', '992333123');
+INSERT INTO user_dimension VALUES ('133956139', 'David Manuel', '992323124');
+INSERT INTO user_dimension VALUES ('143856248', 'Nuno Sousa', '992323125');
+INSERT INTO user_dimension VALUES ('153756357', 'Armando Sousa', '992323126');
+INSERT INTO user_dimension VALUES ('163656466', 'Gonçalo Santos', '992323127');
+INSERT INTO user_dimension VALUES ('173516575', 'Alberto Silva', '992323128');
+INSERT INTO user_dimension VALUES ('183426684', 'Rubim Guerreiro', '992323129');
+INSERT INTO user_dimension VALUES ('193336793', 'Anacleto Vieira', '993323123');
+INSERT INTO user_dimension VALUES ('103246782', 'Luis Raposo', '995323123');
+INSERT INTO user_dimension VALUES ('120456781', 'Rui Vitória', '997323123');
+
 
 INSERT INTO local_dimension VALUES ('1','IST','Central','DEFAULT');
 INSERT INTO local_dimension VALUES ('2','IST','DEI','Lab1');
@@ -37,7 +38,6 @@ INSERT INTO local_dimension VALUES ('21','ISEL','DEG','DEFAULT');
 INSERT INTO local_dimension VALUES ('22','ISEL','DEQ','DEFAULT');
 
 
-
 INSERT INTO reserva VALUES ('2016-01','113056729','1','1111','1343','aceite','250,00','duration???');
 INSERT INTO reserva VALUES ('2016-02','113056729','2','34','1343','paga','123,00','duration???');
 INSERT INTO reserva VALUES ('2016-03','103246782','3','1020','1343','aceite','1000,00','duration???');
@@ -52,3 +52,4 @@ INSERT INTO reserva VALUES ('2016-11','113056729','11','1','5433','aceite','250,
 INSERT INTO reserva VALUES ('2016-12','123456719','12','34','3123','paga','333,00','duration???');
 INSERT INTO reserva VALUES ('2016-13','143856248','13','343','2313','paga','666,00','duration???');
 
+-- data_dimension & tempo_dimension are created by a procedure
