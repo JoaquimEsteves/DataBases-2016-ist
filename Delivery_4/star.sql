@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS reserva;
+DROP TABLE IF EXISTS reservation_fact;
 DROP TABLE IF EXISTS user_dimension;
 DROP TABLE IF EXISTS local_dimension;
-DROP TABLE IF EXISTS tempo_dimension;
-DROP TABLE IF EXISTS data_dimension;
+DROP TABLE IF EXISTS time_dimension;
+DROP TABLE IF EXISTS date_dimension;
 
 
 CREATE TABLE user_dimension (
@@ -47,4 +47,3 @@ CREATE TABLE reservation_fact (
         foreign key (local_id) references local_dimension(local_id) ON DELETE CASCADE,
         foreign key (tempo_id) references time_dimension(tempo_id) ON DELETE CASCADE,
         foreign key (data_id) references date_dimension(data_id) ON DELETE CASCADE);
-
