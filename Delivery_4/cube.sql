@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS cube;
+DROP PROCEDURE IF EXISTS insert_cube;
 
 CREATE TABLE cube (
     l integer,
