@@ -41,7 +41,7 @@ CREATE TABLE reserva (
         data_id integer NOT NULL,
         estado varchar(255) NOT NULL,
         montante numeric(19,4) NOT NULL,
-        duracao integer NOT NULL,
+        duracao_em_dias integer NOT NULL,
         primary key(numero, nif, local_id, tempo_id, data_id),
         foreign key (nif) references user_dimension(nif) ON DELETE CASCADE,
         foreign key (local_id) references local_dimension(local_id) ON DELETE CASCADE,
