@@ -5,7 +5,10 @@ CREATE TABLE cube (
     l integer DEFAULT NULL,
     d integer DEFAULT NULL,
     paga integer DEFAULT NULL,
-   
+    primary key(l,d),
+    foreign key (l) references local_dimension(local_id) ON UPDATE CASCADE,
+    foreign key (d) references data_dimension(data_id) ON UPDATE CASCADE);
+
 DELIMITER $$
 CREATE PROCEDURE insert_cube()
     BEGIN
@@ -24,7 +27,7 @@ CREATE PROCEDURE insert_cube()
 
             WHILE @d_id <= @count_data 
             DO  
-              INSERT INTO cube (l,d,paga) VALUES (NULL,@d_id,NULL);
+              INSERT INTO cube (d) VALUES (@d_id);
               SET @d_id = @d_id+1;
             END WHILE;
         END IF;
