@@ -2,10 +2,10 @@ DROP TABLE IF EXISTS cube;
 DROP PROCEDURE IF EXISTS insert_cube;
 
 CREATE TABLE cube (
-    l integer DEFAULT NULL,
-    d integer DEFAULT NULL,
+    l integer DEFAULT 0,
+    d integer DEFAULT 0,
     paga integer DEFAULT NULL,
-    primary key(l,d),
+   
     foreign key (l) references local_dimension(local_id) ON UPDATE CASCADE,
     foreign key (d) references data_dimension(data_id) ON UPDATE CASCADE);
 
