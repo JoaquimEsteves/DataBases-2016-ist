@@ -38,19 +38,30 @@ INSERT INTO local_dimension (local_id, edificio, posto) VALUES ('21','ISEL','DEG
 INSERT INTO local_dimension (local_id, edificio, posto) VALUES ('22','ISEL','DEQ');
 
 
-INSERT INTO reserva VALUES ('2016-01','113056729','1','1111','453','aceite','250,00','30');
-INSERT INTO reserva VALUES ('2016-02','113056729','2','34','765','paga','123,00','30');
-INSERT INTO reserva VALUES ('2016-03','103246782','3','1020','123','aceite','1000,00','60');
-INSERT INTO reserva VALUES ('2016-04','113056729','4','400','234','aceite','250,00','30');
-INSERT INTO reserva VALUES ('2016-05','120456781','5','1400','134','paga','300,00','28');
-INSERT INTO reserva VALUES ('2016-06','120456781','6','123','423','aceite','250,00','23');
-INSERT INTO reserva VALUES ('2016-07','113056729','7','1321','143','aceite','250,00','10');
-INSERT INTO reserva VALUES ('2016-08','193336793','8','101','421','aceite','250,00','45');
-INSERT INTO reserva VALUES ('2016-09','113056729','9','34','133','aceite','100,00','34');
-INSERT INTO reserva VALUES ('2016-10','113056729','10','10','741','aceite','230,50','84');
-INSERT INTO reserva VALUES ('2016-11','113056729','11','1','800','aceite','250,00','90');
-INSERT INTO reserva VALUES ('2016-12','123456719','12','34','324','paga','333,00','12');
-INSERT INTO reserva VALUES ('2016-13','143856248','13','343','829','paga','666,00','23');
+INSERT INTO reservation_fact VALUES ('2016-01','113056729','1','1111','453','aceite','250,00','30');
+INSERT INTO reservation_fact VALUES ('2016-02','113056729','2','34','765','paga','123,00','30');
+INSERT INTO reservation_fact VALUES ('2016-03','103246782','1','1020','123','aceite','1000,00','60');
+INSERT INTO reservation_fact VALUES ('2016-04','113056729','4','400','234','aceite','250,00','30');
+INSERT INTO reservation_fact VALUES ('2016-05','120456781','5','1400','134','paga','300,00','28');
+INSERT INTO reservation_fact VALUES ('2016-06','120456781','1','123','423','aceite','250,00','23');
+INSERT INTO reservation_fact VALUES ('2016-07','113056729','7','1321','143','aceite','250,00','10');
+INSERT INTO reservation_fact VALUES ('2016-08','193336793','8','101','421','aceite','250,00','45');
+INSERT INTO reservation_fact VALUES ('2016-09','120456781','9','34','133','aceite','100,00','34');
+INSERT INTO reservation_fact VALUES ('2016-10','120456781','10','10','741','aceite','230,50','84');
+INSERT INTO reservation_fact VALUES ('2016-11','113056729','1','1','800','aceite','250,00','90');
+INSERT INTO reservation_fact VALUES ('2016-12','123456719','12','34','324','paga','333,00','12');
+INSERT INTO reservation_fact VALUES ('2016-13','103246782','3','343','829','paga','34,00','23');
+INSERT INTO reservation_fact VALUES ('2016-14','103246782','13','223','829','paga','666,00','23');
+INSERT INTO reservation_fact VALUES ('2016-15','143856248','15','323','749','paga','54,00','23');
+INSERT INTO reservation_fact VALUES ('2016-16','143856248','13','243','829','aceite','666,00','30');
+INSERT INTO reservation_fact VALUES ('2016-17','120456781','13','343','623','paga','43,00','23');
+INSERT INTO reservation_fact VALUES ('2016-18','143856248','20','33','829','paga','12,00','23');
+INSERT INTO reservation_fact VALUES ('2016-19','143856248','13','34','87','paga','234,00','23');
+INSERT INTO reservation_fact VALUES ('2016-20','120456781','12','343','829','paga','666,00','11');
+INSERT INTO reservation_fact VALUES ('2016-21','113056729','13','343','555','aceite','78,00','23');
+INSERT INTO reservation_fact VALUES ('2016-22','103246782','10','343','829','paga','34,00','56');
+INSERT INTO reservation_fact VALUES ('2016-23','143856248','13','343','567','paga','56,00','111');
+INSERT INTO reservation_fact VALUES ('2016-24','103246782','2','343','829','aceite','321,00','23');
+INSERT INTO reservation_fact VALUES ('2016-25','143856248','2','343','829','paga','666,00','22');
 
--- data_dimension & tempo_dimension are created by a procedure
-  
+-- date_dimension & time_dimension are created by a procedure
