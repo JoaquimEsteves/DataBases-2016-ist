@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS cube;
 DROP TABLE IF EXISTS reserva;
 DROP TABLE IF EXISTS user_dimension;
 DROP TABLE IF EXISTS local_dimension;
