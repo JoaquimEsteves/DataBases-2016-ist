@@ -25,7 +25,7 @@ CREATE PROCEDURE insert_date()
     BEGIN
         SET @id = 0;
         SET @dia = 1;
-        SET @total_semanas = 0;
+        SET @total_semanas = 1;
         SET @dias_semana = 1;
         SET @mes = 1;
         SET @semestre = 1;
@@ -35,7 +35,7 @@ CREATE PROCEDURE insert_date()
         DO
             SET @mes = 1;
             SET @semestre = 1;
-            SET @total_semanas = 0;
+            SET @total_semanas = 1;
             
             WHILE @mes <= 12
             DO
