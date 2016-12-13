@@ -5,9 +5,9 @@ CREATE TABLE cube (
     l integer,
     d integer,
     paga integer,
-    primary key(l,d),
+    primary key(l),
     foreign key  (l) references local_dimension(local_id),
-    foreign key (d) references data_dimension(data_id));
+    
 
 DELIMITER $$
 CREATE PROCEDURE insert_cube()
