@@ -30,7 +30,7 @@ CREATE PROCEDURE insert_cube()
               INSERT INTO cube (d) VALUES (@d_id);
               SET @d_id = @d_id+1;
             END WHILE;
-        ENDIF;
+        END IF;
 
     END; $$
 DELIMITER ;
