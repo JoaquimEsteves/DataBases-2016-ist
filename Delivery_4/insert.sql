@@ -38,7 +38,7 @@ INSERT INTO local_dimension (local_id, edificio, posto) VALUES ('21','ISEL','DEG
 INSERT INTO local_dimension (local_id, edificio, posto) VALUES ('22','ISEL','DEQ');
 
 
-INSERT INTO reserva VALUES ('2016-01','113056729','1','1111','453','aceite','250,00','45');
+INSERT INTO reserva VALUES ('2016-01','113056729', 1, 1111, 453, 'aceite', 250,00, 45);
 INSERT INTO reserva VALUES ('2016-02','113056729','2','34','765','paga','123,00','67');
 INSERT INTO reserva VALUES ('2016-03','103246782','3','1020','123','aceite','1000,00','17');
 INSERT INTO reserva VALUES ('2016-04','113056729','4','400','234','aceite','250,00','54');
