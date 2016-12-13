@@ -30,6 +30,3 @@ CREATE PROCEDURE insert_cube()
     END; $$
 DELIMITER ;
 
-call insert_cube;
-
-
