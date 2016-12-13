@@ -6,8 +6,8 @@ CREATE TABLE cube (
     d integer,
     paga integer,
     primary key(l,d),
-    foreign key  (l) references local_dimension(local_id)ON UPDATE CASCADE,
-    foreign key (d) references data_dimension(data_id) ON UPDATE CASCADE);
+    foreign key  (l) references local_dimension(local_id),
+    foreign key (d) references data_dimension(data_id));
 
 DELIMITER $$
 CREATE PROCEDURE insert_cube()
@@ -15,7 +15,11 @@ CREATE PROCEDURE insert_cube()
         SET @l_id = 1;
         SET @d_id = 1;
 
-        
+        WHILE @l_id < (SELECT count(local_id) FROM local_dimension)
+        DO
+          INSERT INTO cube (l,paga) VALUES (@l_id,(SELECT paga FROM local_dimension WHERE local_id = @l_id));
+          SET @l_id = @l_id+1;
+        END WHILE;
 
         WHILE @d_id < (SELECT count(data_id) FROM data_dimension)
         DO
