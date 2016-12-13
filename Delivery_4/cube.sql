@@ -6,8 +6,8 @@ CREATE TABLE cube (
     d integer,
     paga integer,
     primary key(l,d),
-    forgein key (l) references local_dimension(local_id)ON UPDATE CASCADE,
-    forgein key (d) references data_dimension(data_id) ON UPDATE CASCADE);
+    foreign key  (l) references local_dimension(local_id)ON UPDATE CASCADE,
+    foreign key (d) references data_dimension(data_id) ON UPDATE CASCADE);
 
 DELIMITER $$
 CREATE PROCEDURE insert_cube()
