@@ -15,11 +15,7 @@ CREATE PROCEDURE insert_cube()
         SET @l_id = 1;
         SET @d_id = 1;
 
-      --  WHILE @l_id < (SELECT count(local_id) FROM local_dimension)
-        --DO
-          --INSERT INTO cube (l,paga) VALUES (@l_id,(SELECT paga FROM local_dimension WHERE local_id = @l_id));
-          --SET @l_id = @l_id+1;
-        --END WHILE;
+        
 
         WHILE @d_id < (SELECT count(data_id) FROM data_dimension)
         DO
