@@ -16,7 +16,6 @@ CREATE TABLE local_dimension (
         edificio varchar(255) NOT NULL ,
         posto varchar(255) DEFAULT 'NO POSTO AVAILABLE',
         espaco varchar(255) DEFAULT 'NO ESPACO AVAILABLE',
-        paga numeric(19,2) NOT NULL,
         primary key (local_id));
 
 CREATE TABLE time_dimension (
