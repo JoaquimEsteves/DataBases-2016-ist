@@ -1,10 +1,12 @@
+DROP TABLE IF EXISTS cube;
+
 CREATE TABLE cube (
     l integer,
     d integer,
     paga integer,
     primary key(l,d),
-    forgein key (l) references local_dimension(local_id) UPDATE ON CASCADE,
-    forgein key (d) references data_dimension(data_id) UPDATE ON CASCADE);
+    forgein key (l) references local_dimension(local_id)ON UPDATE CASCADE,
+    forgein key (d) references data_dimension(data_id) ON UPDATE CASCADE);
 
 DELIMITER $$
 CREATE PROCEDURE insert_cube()
@@ -29,4 +31,4 @@ DELIMITER ;
 
 call insert_cube;
 
-SELECT l,d, avg(paga) as valor_medio FROM cube GROUP BY CUBE (f,d);
+
