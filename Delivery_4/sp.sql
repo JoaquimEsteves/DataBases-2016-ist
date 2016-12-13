@@ -30,13 +30,17 @@ CREATE PROCEDURE insert_date()
         SET @mes = 1;
         SET @semestre = 1;
         SET @ano = 2016;
+        
         WHILE @ano < 2020
         DO
             SET @mes = 1;
             SET @semestre = 1;
+            
             WHILE @mes <= 12
             DO
                 SET @dia = 1;
+                SET @dias_semana = 1;
+                
                 WHILE @dia < 28
                 DO
                     IF @mes = 1 THEN
@@ -80,7 +84,7 @@ CREATE PROCEDURE insert_date()
                    IF @dias_semana = 7 THEN
                         SET @dias_semana = 1;
                         SET @total_semanas = @total_semanas+1;
-                   ENDIF;
+                   END IF;
                    
                    SET @dias_semana = @dias_semana+1;
                    SET @dia = @dia+1;
