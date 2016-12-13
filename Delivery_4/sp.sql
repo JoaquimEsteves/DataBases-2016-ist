@@ -25,7 +25,8 @@ CREATE PROCEDURE insert_date()
     BEGIN
         SET @id = 0;
         SET @dia = 1;
-        SET @semana = 1;
+        SET @total_semanas = 1;
+        SET @dias_semana = 1;
         SET @mes = 1;
         SET @semestre = 1;
         SET @ano = 2016;
@@ -75,8 +76,16 @@ CREATE PROCEDURE insert_date()
                         INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
                             VALUES(@id, @dia, @semana, 'Dezembro', @semestre, @ano);
                     END IF;
-                   SET @dia = @dia +1;
+                    
+                   IF @dias_semana = 7 THEN
+                        SET @dias_semana = 1;
+                        SET @total_semanas = @total_semanas+1;
+                   ENDIF;
+                   
+                   SET @dias_semana = @dias_semana+1;
+                   SET @dia = @dia+1;
                    SET @id = @id+1;
+                 
                 END WHILE;
                 IF @mes = 6 THEN
                     SET @semestre = 2;
