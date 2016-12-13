@@ -13,7 +13,7 @@ CREATE TABLE user_dimension (
 
 CREATE TABLE local_dimension (
         local_id integer NOT NULL UNIQUE,
-        edificio varchar(255) NOT NULL ,
+        edificio varchar(255) DEFAULT 'NO EDIFICIO AVAILABLE' ,
         posto varchar(255) DEFAULT 'NO POSTO AVAILABLE',
         espaco varchar(255) DEFAULT 'NO ESPACO AVAILABLE',
         paga numeric(19,2) NOT NULL,
