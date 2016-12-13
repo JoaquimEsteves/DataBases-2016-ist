@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS cube;
 DROP TABLE IF EXISTS reserva;
 DROP TABLE IF EXISTS user_dimension;
 DROP TABLE IF EXISTS local_dimension;
@@ -13,21 +12,21 @@ CREATE TABLE user_dimension (
         primary key(nif));
 
 CREATE TABLE local_dimension (
-        local_id integer DEFAULT NULL,
+        local_id integer NOT NULL UNIQUE,,
         edificio varchar(255) NOT NULL ,
         posto varchar(255) DEFAULT 'NO POSTO AVAILABLE',
         espaco varchar(255) DEFAULT 'NO ESPACO AVAILABLE',
         paga numeric(19,2) NOT NULL,
         primary key (local_id));
 
-CREATE TABLE tempo_dimension (
+CREATE TABLE time_dimension (
         tempo_id integer NOT NULL UNIQUE,
         hora integer,
         minuto integer,
         primary key (tempo_id));
 
-CREATE TABLE data_dimension (
-        data_id integer DEFAULT NULL,
+CREATE TABLE date_dimension (
+        data_id integer NOT NULL UNIQUE,,
         dia integer,
         semana integer,
         mes varchar(255),
@@ -35,17 +34,17 @@ CREATE TABLE data_dimension (
         semestre integer,
         primary key(data_id));
 
-CREATE TABLE reserva (
+CREATE TABLE reservation_fact (
         numero varchar(255) NOT NULL UNIQUE,
         nif varchar(9) NOT NULL,
         local_id integer NOT NULL,
         tempo_id integer NOT NULL,
         data_id integer NOT NULL,
         estado varchar(255) NOT NULL,
-        duracao_em_dias integer NOT NULL,
+        duracao integer NOT NULL,
         primary key(numero, nif, local_id, tempo_id, data_id),
         foreign key (nif) references user_dimension(nif) ON DELETE CASCADE,
         foreign key (local_id) references local_dimension(local_id) ON DELETE CASCADE,
-        foreign key (tempo_id) references tempo_dimension(tempo_id) ON DELETE CASCADE,
-        foreign key (data_id) references data_dimension(data_id) ON DELETE CASCADE);
+        foreign key (tempo_id) references time_dimension(tempo_id) ON DELETE CASCADE,
+        foreign key (data_id) references date_dimension(data_id) ON DELETE CASCADE);
 
