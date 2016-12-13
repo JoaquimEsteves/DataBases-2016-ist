@@ -12,8 +12,8 @@ CREATE TABLE cube (
 DELIMITER $$
 CREATE PROCEDURE insert_cube()
     BEGIN
-        SET @l_id = 0;
-        SET @d_id = 0;
+        SET @l_id = 1;
+        SET @d_id = 1;
 
         WHILE @l_id <= (SELECT count(local_id) FROM local_dimension)
         DO
@@ -21,7 +21,7 @@ CREATE PROCEDURE insert_cube()
           SET @l_id = @l_id+1;
         END WHILE;
 
-        WHILE @d_id <= count(data_id)
+        WHILE @d_id <= (SELECT count(data_id) FROM data_dimension)
         DO
           INSERT INTO cube (d) VALUES (@d_id);
           SET @d_id = @d_id+1;
