@@ -15,9 +15,9 @@ CREATE PROCEDURE insert_cube()
         SET @l_id = 1;
         SET @d_id = 1;
         SET @count_data = (SELECT count(data_id) FROM data_dimension);
-        SET @count_local = (SELECT count(local_id) FROM local_dimension)
-        IF  @count_local < @count_data 
-        THEN
+        SET @count_local = (SELECT count(local_id) FROM local_dimension);
+        
+        IF  @count_local < @count_data THEN
             WHILE @l_id < @count_local
             DO
               INSERT INTO cube (l,d,paga) VALUES (@l_id,@d_id(SELECT paga FROM local_dimension WHERE local_id = @l_id));
