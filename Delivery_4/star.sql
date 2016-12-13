@@ -40,6 +40,7 @@ CREATE TABLE reservation_fact (
         tempo_id integer NOT NULL,
         data_id integer NOT NULL,
         estado varchar(255) NOT NULL,
+        paga numeric (19,4) NOT NULL,
         duracao integer NOT NULL,
         primary key(numero, nif, local_id, tempo_id, data_id),
         foreign key (nif) references user_dimension(nif) ON DELETE CASCADE,
