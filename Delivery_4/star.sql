@@ -12,8 +12,8 @@ CREATE TABLE user_dimension (
         primary key(nif));
 
 CREATE TABLE local_dimension (
-        local_id integer NOT NULL UNIQUE,
-        edificio varchar(255) DEFAULT 'NO EDIFICIO AVAILABLE' ,
+        local_id integer DEFAULT NULL,
+        edificio varchar(255) NOT NULL ,
         posto varchar(255) DEFAULT 'NO POSTO AVAILABLE',
         espaco varchar(255) DEFAULT 'NO ESPACO AVAILABLE',
         paga numeric(19,2) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE tempo_dimension (
         primary key (tempo_id));
 
 CREATE TABLE data_dimension (
-        data_id integer NOT NULL UNIQUE,
+        data_id integer DEFAULT NULL,
         dia integer,
         semana integer,
         mes varchar(255),
