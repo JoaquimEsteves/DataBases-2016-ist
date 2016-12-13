@@ -20,7 +20,7 @@ CREATE PROCEDURE insert_cube()
         IF  @count_local < @count_data THEN
             WHILE @l_id < @count_local
             DO
-              INSERT INTO cube (l,d,paga) VALUES (@l_id,@d_id(SELECT paga FROM local_dimension WHERE local_id = @l_id));
+              INSERT INTO cube (l,d,paga) VALUES (@l_id,@d_id,(SELECT paga FROM local_dimension WHERE local_id = @l_id));
               SET @l_id = @l_id+1;
               SET @d_id = @d_id+1;
             END WHILE;
