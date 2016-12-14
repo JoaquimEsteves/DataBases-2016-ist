@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS user_dimension;
 DROP TABLE IF EXISTS local_dimension;
 DROP TABLE IF EXISTS time_dimension;
 DROP TABLE IF EXISTS date_dimension;
-
+DROP TABLE IF EXISTS status_dimension;
 
 CREATE TABLE user_dimension (
         user_nif varchar (9) NOT NULL UNIQUE,
@@ -34,16 +34,21 @@ CREATE TABLE date_dimension (
         date_semester integer NOT NULL,
         primary key(date_id));
 
+CREATE TABLE status_dimension (
+        status_id integer NOT NULL UNIQUE,
+        status varchar(255));
+
 CREATE TABLE reservation_fact (
         reservation_id varchar (255) NOT NULL UNIQUE,
         user_nif varchar (9) NOT NULL,
         local_id integer NOT NULL,
         time_id integer NOT NULL,
         date_id integer NOT NULL,
-        status varchar (255) NOT NULL,
+        status_id integer NOT NULL,
         duration_in_days integer NOT NULL,
-        primary key (reservation_id, user_nif, local_id, time_id, date_id),
+        primary key (reservation_id, user_nif, local_id, time_id, date_id, status_id),
         foreign key (user_nif) references user_dimension(user_nif) ON DELETE CASCADE,
         foreign key (local_id) references local_dimension(local_id) ON DELETE CASCADE,
         foreign key (time_id) references time_dimension(time_id) ON DELETE CASCADE,
         foreign key (date_id) references date_dimension(date_id) ON DELETE CASCADE);
+        foreign key (status_id) references status_dimension(status_id) ON DELETE CASCADE);
