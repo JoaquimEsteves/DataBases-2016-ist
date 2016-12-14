@@ -22,83 +22,41 @@ CREATE PROCEDURE insert_time()
 END; $$
 
 CREATE PROCEDURE insert_date()
-    BEGIN
-        SET @id = 0;
-        SET @dia = 1;
-        SET @total_semanas = 1;
-        SET @dias_semana = 1;
-        SET @mes = 1;
-        SET @semestre = 1;
-        SET @ano = 2016;
+BEGIN
+
+    DECLARE v_full_date DATETIME;
+    DECLARE semester integer;
+    
+    SET v_full_date = '2016-01-01 00:00:00';
+    SET semester = 1;
+    
+    WHILE v_full_date < '2018-01-01 00:00:00' DO
+    
+        INSERT INTO date_dimension(
+            date_id,
+            date_year,
+            date_month_number,
+            date_week,
+            date_day,
+            date_semester
+       ) VALUES (
+           YEAR(v_full_date) * 10000 + MONTH(v_full_date)*100 + DAY(v_full_date),
+           YEAR(v_full_date),
+           MONTH(v_full_date),
+           WEEK(v_full_date),
+           DAY(v_full_date)
+           semester,
+       );
+ 
+       SET v_full_date = DATE_ADD(v_full_date, INTERVAL 1 DAY);
+       
+       IF MONTH(v_full_date) > 6 THEN
+            SET semestre = 2;
+       ELSE
+            SET semestre = 1;
+       END IF;
         
-        WHILE @ano < 2020
-        DO
-            SET @mes = 1;
-            SET @semestre = 1;
-            SET @total_semanas = 1;
-            
-            WHILE @mes <= 12
-            DO
-                SET @dia = 1;
-                SET @dias_semana = 1;
-                
-                WHILE @dia < 28
-                DO
-                    IF @mes = 1 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Janeiro', @semestre, @ano);
-                    ELSEIF @mes = 2 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Fevereiro', @semestre, @ano);
-                    ELSEIF @mes = 3 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Marco', @semestre, @ano);
-                    ELSEIF @mes = 4 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Abril', @semestre, @ano);
-                    ELSEIF @mes = 5 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Maio', @semestre, @ano);
-                    ELSEIF @mes = 6 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Junho', @semestre, @ano);
-                    ELSEIF @mes = 7 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Julho', @semestre, @ano);
-                    ELSEIF @mes = 8 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Agosto', @semestre, @ano);
-                    ELSEIF @mes = 9 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Setembro', @semestre, @ano);
-                    ELSEIF @mes = 10 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Outubro', @semestre, @ano);
-                    ELSEIF @mes = 11 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Novembro', @semestre, @ano);
-                    ELSEIF @mes = 12 THEN
-                        INSERT INTO date_dimension(data_id, dia, semana, mes, semestre, ano) 
-                            VALUES(@id, @dia, @total_semanas, 'Dezembro', @semestre, @ano);
-                    END IF;
-                    
-                   IF @dias_semana = 7 THEN
-                        SET @dias_semana = 1;
-                        SET @total_semanas = @total_semanas+1;
-                   END IF;
-                   
-                   SET @dias_semana = @dias_semana+1;
-                   SET @dia = @dia+1;
-                   SET @id = @id+1;
-                 
-                END WHILE;
-                IF @mes = 6 THEN
-                    SET @semestre = 2;
-                END IF;
-                SET @mes = @mes+1;
-            END WHILE;
-            SET @ano = @ano+1;
-        END WHILE;
+   END WHILE;
 END; $$
     
 DELIMITER ;
