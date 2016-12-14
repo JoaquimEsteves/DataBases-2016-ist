@@ -45,7 +45,7 @@ BEGIN
            semester
        );
        SET v_full_date = DATE_ADD(v_full_date, INTERVAL 1 DAY);
-       IF MONTH(v_full_date) <= 2 AND MONTH(v_full_date) <= 8 THEN
+       IF MONTH(v_full_date) >= 2 AND MONTH(v_full_date) <= 8 THEN
             SET semester = 2;
        ELSE
             SET semester = 1;
