@@ -70,7 +70,7 @@ create table oferta (
     codigo varchar(255),
     data_inicio date ,
     data_fim date,
-    tarifa numeric(19,4)
+    tarifa numeric(19,4),
     primary key(morada, codigo, data_inicio),
     foreign key(morada, codigo) references alugavel(morada, codigo) ON DELETE CASCADE ON UPDATE CASCADE);
 
