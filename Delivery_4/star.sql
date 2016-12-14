@@ -50,5 +50,5 @@ CREATE TABLE reservation_fact (
         foreign key (user_nif) references user_dimension(user_nif) ON DELETE CASCADE,
         foreign key (local_id) references local_dimension(local_id) ON DELETE CASCADE,
         foreign key (time_id) references time_dimension(time_id) ON DELETE CASCADE,
-        foreign key (date_id) references date_dimension(date_id) ON DELETE CASCADE),
+        foreign key (date_id) references date_dimension(date_id) ON DELETE CASCADE,
         foreign key (status_id) references status_dimension(status_id) ON DELETE CASCADE);
