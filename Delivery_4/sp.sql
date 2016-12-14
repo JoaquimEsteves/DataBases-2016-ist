@@ -12,7 +12,7 @@ CREATE PROCEDURE insert_time()
             SET @time_minute = 0;
             WHILE @time_minute < 60
             DO
-                INSERT INTO time_dimension(tempo_id, time_hour, time_minute) VALUES(@id, @time_hour, @time_minute);
+                INSERT INTO time_dimension(time_id, time_hour, time_minute) VALUES(@time_id, @time_hour, @time_minute);
                 SET @time_minute = @time_minute +1;
                 SET @id = @id+1;
             END WHILE;
