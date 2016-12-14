@@ -15,7 +15,7 @@ BEGIN
     SET @i = 0;
     SET @id = 1;
     
-    WHILE @i < 10000
+    WHILE @i < 1000
     DO
     
         SELECT SUBSTRING(MD5(RAND()) FROM 1 FOR 10) INTO codigo_espaco;
