@@ -14,7 +14,7 @@ CREATE PROCEDURE insert_time()
             DO
                 INSERT INTO time_dimension(time_id, time_hour, time_minute) VALUES(@time_id, @time_hour, @time_minute);
                 SET @time_minute = @time_minute +1;
-                SET @id = @id+1;
+                SET @time_id = @time_id+1;
             END WHILE;
             SET @time_hour = @time_hour+1;
         END WHILE;
