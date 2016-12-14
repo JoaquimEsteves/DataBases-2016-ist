@@ -36,7 +36,7 @@ BEGIN
         
         INSERT INTO fiscal(id) VALUES(@id);
         INSERT INTO arrenda(morada, codigo,nif) VALUES(morada, codigo,nif);
-        INSERT INTO fiscaliza(id, morada, codigo) VALUES(id, morada, codigo);
+        INSERT INTO fiscaliza(id, morada, codigo) VALUES(@id, morada, codigo);
         
         INSERT INTO espaco(morada, codigo) VALUES(morada, codigo);
         INSERT INTO posto(morada, codigo, codigo_espaco) VALUES(morada, codigo_espaco, codigo);
