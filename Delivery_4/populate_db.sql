@@ -28,6 +28,7 @@ BEGIN
         
         INSERT INTO edificio(morada) VALUES(morada);
         INSERT INTO alugavel(morada, codigo) VALUES(morada, codigo);
+        INSERT INTO alugavel(morada, codigo) VALUES(morada, codigo_espaco);
         INSERT INTO oferta(morada, codigo, data_inicio) VALUES(morada, codigo, data_inicio);
         
         INSERT INTO user(nif) VALUES(nif);
