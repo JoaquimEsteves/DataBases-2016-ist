@@ -4,20 +4,20 @@ DROP PROCEDURE IF EXISTS insert_date;
 DELIMITER $$
 CREATE PROCEDURE insert_time()
     BEGIN
-        SET @id = 0;
-        SET @hora = 0;
-        SET @minuto = 0;
-        WHILE @hora < 24
+        SET @time_id = 0;
+        SET @time_hour = 0;
+        SET @time_minute = 0;
+        WHILE @time_hour < 24
         DO
-            SET @minuto = 0;
-            WHILE @minuto < 60
+            SET @time_minute = 0;
+            WHILE @time_minute < 60
             DO
-                INSERT INTO time_dimension(tempo_id, hora, minuto) VALUES(@id, @hora, @minuto);
-                SET @minuto = @minuto +1;
+                INSERT INTO time_dimension(tempo_id, time_hour, time_minute) VALUES(@id, @time_hour, @time_minute);
+                SET @time_minute = @time_minute +1;
                 SET @id = @id+1;
 
             END WHILE;
-            SET @hora = @hora+1;
+            SET @time_hour = @time_hour+1;
         END WHILE;
 END; $$
 
