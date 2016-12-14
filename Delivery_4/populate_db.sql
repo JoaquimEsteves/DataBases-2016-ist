@@ -42,7 +42,7 @@ BEGIN
         INSERT INTO espaco(morada, codigo) VALUES(morada, codigo);
         INSERT INTO posto(morada, codigo, codigo_espaco) VALUES(morada, codigo_espaco, codigo);
         
-        INSERT INTO estado(numero, time_stamp) VALUES(numero, time_stamp);
+        INSERT INTO estado(numero, time_stamp,estado) VALUES(numero, time_stamp,'aceite');
         
         SET @i = @i+1;
         SET @id = @id+1;
