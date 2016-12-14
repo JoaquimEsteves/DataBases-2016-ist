@@ -27,11 +27,11 @@ CREATE TABLE time_dimension (
 
 CREATE TABLE date_dimension (
         date_id timestamp NOT NULL UNIQUE,
-        date_day integer NOT NULL,
-        date_week integer NOT NULL,
-        date_month varchar (255) NOT NULL,
-        date_year integer NOT NULL,
-        date_semester integer NOT NULL,
+        date_day varchar(2) NOT NULL,
+        date_week varchar(2) NOT NULL,
+        date_month varchar(2) (255) NOT NULL,
+        date_year varchar(4) NOT NULL,
+        date_semester varchar (255)NOT NULL,
         primary key(date_id));
 
 CREATE TABLE status_dimension (
