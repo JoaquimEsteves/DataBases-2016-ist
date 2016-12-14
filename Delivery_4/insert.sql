@@ -11,31 +11,31 @@ INSERT INTO user_dimension VALUES ('103246782', 'Luis Raposo', '995323123');
 INSERT INTO user_dimension VALUES ('120456781', 'Rui Vitória', '997323123');
 
 
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('1','IST','Central');
-INSERT INTO local_dimension VALUES ('2','IST','DEI','Lab1');
-INSERT INTO local_dimension VALUES ('3','IST','DEI','Lab2');
-INSERT INTO local_dimension VALUES ('4','IST','DEI','Lab3');
-INSERT INTO local_dimension VALUES ('5','IST','DEI','Lab4');
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('6','IST','DEG');
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('7','IST','DEQ');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('1','IST','Central','20,00');
+INSERT INTO local_dimension VALUES ('2','IST','DEI','Lab1','25,00');
+INSERT INTO local_dimension VALUES ('3','IST','DEI','Lab2','50,00');
+INSERT INTO local_dimension VALUES ('4','IST','DEI','Lab3','100,00');
+INSERT INTO local_dimension VALUES ('5','IST','DEI','Lab4'.'30,00');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('6','IST','DEG','25,00');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('7','IST','DEQ','28,00');
 
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('8','FEUP','Central');
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('9','FEUP','DEI');
-INSERT INTO local_dimension VALUES ('10','FEUP','DEG','Lab1');
-INSERT INTO local_dimension VALUES ('11','FEUP','DEG','Lab2');
-INSERT INTO local_dimension VALUES ('12','FEUP','DEG','Lab3');
-INSERT INTO local_dimension VALUES ('13','FEUP','DEG','Lab4');
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('14','FEUP','DEQ');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('8','FEUP','Central','33,00');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('9','FEUP','DEI','55,00');
+INSERT INTO local_dimension VALUES ('10','FEUP','DEG','Lab1','50,00');
+INSERT INTO local_dimension VALUES ('11','FEUP','DEG','Lab2','200,00');
+INSERT INTO local_dimension VALUES ('12','FEUP','DEG','Lab3','10,00');
+INSERT INTO local_dimension VALUES ('13','FEUP','DEG','Lab4','5,00');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('14','FEUP','DEQ','125,00');
 
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('15','Catolica','Central');
-INSERT INTO local_dimension VALUES ('16','Catolica','DMKT','Sala1');
-INSERT INTO local_dimension VALUES ('17','Catolica','DMKT','Sala2');
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('18','Catolica','DG');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('15','Catolica','Central','202,00');
+INSERT INTO local_dimension VALUES ('16','Catolica','DMKT','Sala1','50,00');
+INSERT INTO local_dimension VALUES ('17','Catolica','DMKT','Sala2','70,00');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('18','Catolica','DG','80,00');
 
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('19','ISEL','Central');
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('20','ISEL','DEI');
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('21','ISEL','DEG');
-INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('22','ISEL','DEQ');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('19','ISEL','Central','20,00');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('20','ISEL','DEI','80,00');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('21','ISEL','DEG','90,00');
+INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount) VALUES ('22','ISEL','DEQ','200,00');
 
 
 INSERT INTO reservation_fact VALUES ('2016-01','113056729','1','1111','453','aceite','30');
