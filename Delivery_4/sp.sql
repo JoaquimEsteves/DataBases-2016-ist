@@ -40,8 +40,8 @@ BEGIN
            YEAR(v_full_date),
            MONTH(v_full_date),
            WEEK(v_full_date),
-           DAY(v_full_date)
-           semester,
+           DAY(v_full_date),
+           semester
        );
        SET v_full_date = DATE_ADD(v_full_date, INTERVAL 1 DAY);
        IF MONTH(v_full_date) > 6 THEN
