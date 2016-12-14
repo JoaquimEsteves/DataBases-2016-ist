@@ -27,10 +27,10 @@ CREATE TABLE time_dimension (
 
 CREATE TABLE date_dimension (
         date_id timestamp NOT NULL UNIQUE,
-        date_day varchar (255),
-        date_week varchar (255),
-        date_month varchar (255),
         date_year varchar (255),
+        date_month_number varchar (255),
+        date_week varchar (255),
+        date_day varchar (255),
         date_semester varchar (255),
         primary key(date_id));
 
