@@ -15,7 +15,6 @@ CREATE PROCEDURE insert_time()
                 INSERT INTO time_dimension(tempo_id, time_hour, time_minute) VALUES(@id, @time_hour, @time_minute);
                 SET @time_minute = @time_minute +1;
                 SET @id = @id+1;
-
             END WHILE;
             SET @time_hour = @time_hour+1;
         END WHILE;
@@ -23,16 +22,13 @@ END; $$
 
 CREATE PROCEDURE insert_date()
 BEGIN
-
     DECLARE v_full_date DATETIME;
     DECLARE semester integer;
-    
     SET v_full_date = '2016-01-01 00:00:00';
-    SET semester = 1;
-    
+    SET semester = 1;  
     WHILE v_full_date < '2018-01-01 00:00:00' DO
     
-        INSERT INTO date_dimension(
+        INSERT INTO date_dimension (
             date_id,
             date_year,
             date_month_number,
@@ -47,15 +43,12 @@ BEGIN
            DAY(v_full_date)
            semester,
        );
- 
        SET v_full_date = DATE_ADD(v_full_date, INTERVAL 1 DAY);
-       
        IF MONTH(v_full_date) > 6 THEN
             SET semestre = 2;
        ELSE
             SET semestre = 1;
-       END IF;
-        
+       END IF;     
    END WHILE;
 END; $$
     
