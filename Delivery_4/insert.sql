@@ -40,13 +40,13 @@ INSERT INTO local_dimension (local_id, local_building, local_post, payed_amount)
 INSERT INTO status_dimension VALUES ('0','unpaid');
 INSERT INTO status_dimension VALUES ('1','payed');
 
-INSERT INTO reservation_fact VALUES ('2016-01','113056729','1','1111','453','0','30');
+INSERT INTO reservation_fact VALUES ('2016-01','113056729','1','111','453','0','30');
 INSERT INTO reservation_fact VALUES ('2016-02','113056729','2','34','765','0','30');
-INSERT INTO reservation_fact VALUES ('2016-03','103246782','1','1020','123','1','60');
+INSERT INTO reservation_fact VALUES ('2016-03','103246782','1','102','123','1','60');
 INSERT INTO reservation_fact VALUES ('2016-04','113056729','4','400','234','0','30');
-INSERT INTO reservation_fact VALUES ('2016-05','120456781','5','1400','134','1','28');
+INSERT INTO reservation_fact VALUES ('2016-05','120456781','5','14','134','1','28');
 INSERT INTO reservation_fact VALUES ('2016-06','120456781','1','123','423','0','23');
-INSERT INTO reservation_fact VALUES ('2016-07','113056729','7','1321','143','1','10');
+INSERT INTO reservation_fact VALUES ('2016-07','113056729','7','132','143','1','10');
 INSERT INTO reservation_fact VALUES ('2016-08','193336793','8','101','421','0','45');
 INSERT INTO reservation_fact VALUES ('2016-09','120456781','9','34','133','0','34');
 INSERT INTO reservation_fact VALUES ('2016-10','120456781','10','10','741','0','84');
