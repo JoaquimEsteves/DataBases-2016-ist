@@ -26,7 +26,7 @@ CREATE TABLE time_dimension (
         primary key (time_id));
 
 CREATE TABLE date_dimension (
-        date_id integer NOT NULL UNIQUE,
+        date_id timestamp NOT NULL UNIQUE,
         date_day integer NOT NULL,
         date_week integer NOT NULL,
         date_month varchar (255) NOT NULL,
