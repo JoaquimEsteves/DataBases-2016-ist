@@ -45,9 +45,9 @@ BEGIN
        );
        SET v_full_date = DATE_ADD(v_full_date, INTERVAL 1 DAY);
        IF MONTH(v_full_date) > 6 THEN
-            SET semestre = 2;
+            SET semester = 2;
        ELSE
-            SET semestre = 1;
+            SET semester = 1;
        END IF;     
    END WHILE;
 END; $$
