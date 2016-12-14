@@ -66,7 +66,7 @@ create table posto (
     foreign key(morada, codigo_espaco) references espaco(morada, codigo) ON DELETE CASCADE ON UPDATE CASCADE);
 
 create table oferta (
-    morada varchar(255)
+    morada varchar(255),
     codigo varchar(255),
     data_inicio date ,
     data_fim date,
@@ -99,6 +99,6 @@ create table paga (
 create table estado (
     numero varchar(255),
     time_stamp timestamp ,
-    estado varchar(255)
+    estado varchar(255),
     primary key(numero, time_stamp),
     foreign key(numero) references reserva(numero) ON DELETE CASCADE ON UPDATE CASCADE);
