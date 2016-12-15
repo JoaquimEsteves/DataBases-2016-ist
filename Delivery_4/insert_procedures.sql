@@ -1,6 +1,8 @@
 DROP PROCEDURE IF EXISTS insert_time;
 DROP PROCEDURE IF EXISTS insert_date;
 
+DELIMITER $$
+
 CREATE PROCEDURE insert_time()
     BEGIN
         SET @time_id = 0;
