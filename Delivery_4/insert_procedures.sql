@@ -1,7 +1,19 @@
 DROP PROCEDURE IF EXISTS insert_time;
 DROP PROCEDURE IF EXISTS insert_date;
+DROP TRIGGER IF EXISTS ins_on_reservation;
 
 DELIMITER $$
+CREATE TRIGGER ins_on_reservation AFTER INSERT ON reservation_fact
+        FOR EACH ROW
+        BEGIN
+                DECLARE payment;
+   
+                SELECT l.payment_amount INTO payment from local_dimension l where l.local_id = NEW.local_id;
+                
+                SET @total_payment = NEW.duration_in_days*payment;
+                UPDATE TABLE reservation_fact SET total_payment = payment WHERE reservation_id = NEW.reservation_id;
+END; $$
+
 CREATE PROCEDURE insert_time()
     BEGIN
         SET @time_id = 0;
