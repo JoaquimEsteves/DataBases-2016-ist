@@ -43,7 +43,7 @@ CREATE TABLE reservation_fact (
         user_nif varchar (9) NOT NULL,
         local_id integer NOT NULL,
         time_id integer NOT NULL,
-        date_id timestamp NOT NULL,
+        date_id integer NOT NULL,
         status_id integer NOT NULL,
         duration_in_days integer NOT NULL,
         total_payment integer,
