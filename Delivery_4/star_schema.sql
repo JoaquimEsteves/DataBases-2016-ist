@@ -16,7 +16,7 @@ CREATE TABLE local_dimension (
         local_building varchar (255) NOT NULL,
         local_post varchar (255) DEFAULT 'NO POSTO AVAILABLE',
         local_space varchar (255) DEFAULT 'NO ESPACO AVAILABLE',
-        payed_amount numeric (19,4) NOT NULL,
+        payed_amount numeric (19,2) NOT NULL,
         primary key (local_id));
 
 CREATE TABLE time_dimension (
@@ -46,7 +46,7 @@ CREATE TABLE reservation_fact (
         date_id integer NOT NULL,
         status_id integer NOT NULL,
         duration_in_days integer NOT NULL,
-        total_payment integer,
+        total_payment numeric (19,2),
         primary key (reservation_id, user_nif, local_id, time_id, date_id, status_id),
         foreign key (user_nif)  references user_dimension (user_nif),
         foreign key (local_id)  references local_dimension (local_id),
