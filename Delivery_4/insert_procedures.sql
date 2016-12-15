@@ -10,7 +10,7 @@ CREATE TRIGGER ins_on_reservation AFTER INSERT ON reservation_fact
                 SET @payment = (SELECT payed_amount from local_dimension where local_id = NEW.local_id);
                 
                 SET @total_payment = NEW.duration_in_days*@payment;
-                UPDATE TABLE reservation_fact SET total_payment = @payment WHERE reservation_id = NEW.reservation_id;
+                UPDATE reservation_fact SET total_payment = @payment WHERE reservation_id = NEW.reservation_id;
 END; $$
 
 CREATE PROCEDURE insert_time()
