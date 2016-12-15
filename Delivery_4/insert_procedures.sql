@@ -38,7 +38,8 @@ BEGIN
     DECLARE v_full_date DATETIME;
     DECLARE semester integer;
     SET v_full_date = '2016-01-01 00:00:00';
-    SET semester = 1;  
+    SET semester = 1;
+    SET @id = 1;
     WHILE v_full_date < '2018-01-01 00:00:00' DO
     
         INSERT INTO date_dimension (
@@ -49,7 +50,7 @@ BEGIN
             date_day,
             date_semester
        ) VALUES (
-           YEAR(v_full_date) * 10000 + MONTH(v_full_date)*100 + DAY(v_full_date),
+           @id,
            YEAR(v_full_date),
            MONTH(v_full_date),
            WEEK(v_full_date),
@@ -61,7 +62,8 @@ BEGIN
             SET semester = 2;
        ELSE
             SET semester = 1;
-       END IF;     
+       END IF;
+       SET @id = @id +1;
    END WHILE;
 END;
 $$  
