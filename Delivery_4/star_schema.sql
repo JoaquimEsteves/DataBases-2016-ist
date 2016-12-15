@@ -46,7 +46,7 @@ CREATE TABLE reservation_fact (
         date_id timestamp NOT NULL,
         status_id integer NOT NULL,
         duration_in_days integer NOT NULL,
-        total_payement integer,
+        total_payment integer,
         primary key (reservation_id, user_nif, local_id, time_id, date_id, status_id),
         foreign key (user_nif)  references user_dimension (user_nif),
         foreign key (local_id)  references local_dimension (local_id),
